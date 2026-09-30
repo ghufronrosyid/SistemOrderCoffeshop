@@ -1,0 +1,22 @@
+# Dependensi
+node_modules/
+
+# Database SQLite (dibuat otomatis saat server pertama dijalankan)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.db.*
+
+# Environment
+.env
+
+# File internal agen (bukan bagian aplikasi)
+hidden_files/
+crons/
+agent_notes/
+incoming-photos/
+
+# Sistem
+.DS_Store
+Thumbs.db
