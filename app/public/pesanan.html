@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dengan-nav">
+
+  <header class="header">
+    <h1><span class="cangkir"><svg class="ikon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg></span><span>My Orders</span></h1>
+    <nav class="nav-atas">
+      <a class="link-nav" href="/menu.html">＋ Order</a>
+    </nav>
+  </header>
+
+  <main class="kontainer">
+    <p class="keterangan">Orders from this device are tracked automatically — no need to enter a code.</p>
+    <div id="daftarPesanan"><div class="kosong">Loading orders...</div></div>
+
+    <div class="kartu-home fallback-kode">
+      <h3>Have a code from another device?</h3>
+      <p>Enter an order code to track it on this device too.</p>
+      <a class="tombol tombol-kecil" href="/lacak">Track with Code</a>
+    </div>
+  </main>
+
+  <script src="js/ikon.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/pesanan-saya.js"></script>
+</body>
+</html>
