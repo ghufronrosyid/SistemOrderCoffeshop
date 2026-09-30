@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Order</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dengan-nav">
+
+<header class="header">
+  <h1><span class="cangkir"><svg class="ikon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg></span><span id="namaToko">Loading...</span></h1>
+  <a class="link-lacak" href="/"><svg class="ikon-kecil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Order</a>
+</header>
+
+<main class="form-lacak">
+  <div class="kartu-form">
+    <h3><svg class="ikon-judul" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg> Track Your Order</h3>
+    <p style="color:#7A6553;font-size:.92rem;margin-top:0">Enter the order code you received after placing your order.</p>
+    <div class="baris-form">
+      <input class="input" id="kodeInput" type="text" maxlength="20" placeholder="E.G.: K7X2PQ" autocomplete="off">
+      <button class="tombol" id="btnLacak">Track</button>
+    </div>
+    <div class="pesan-error" id="errLacak"></div>
+  </div>
+
+  <div id="hasilLacak"></div>
+</main>
+
+<script src="js/ikon.js"></script>
+  <script src="js/lacak.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>
