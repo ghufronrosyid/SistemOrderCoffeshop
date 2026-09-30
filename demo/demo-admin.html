@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Panel Demo — Nordic by The Founders</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f3f4f6; color: #1f2937; font-size: 14px; line-height: 1.5;
+    display: flex; min-height: 100vh;
+  }
+  /* ===== Sidebar ===== */
+  .sidebar {
+    width: 212px; flex: 0 0 212px; background: #122019; color: #f5ede3;
+    display: flex; flex-direction: column; min-height: 100vh;
+    position: sticky; top: 0; height: 100vh;
+  }
+  .sidebar-brand { padding: 20px 18px 6px; font-weight: 800; font-size: 1.05rem; }
+  .sidebar-brand small { display: block; font-weight: 400; font-size: .72rem; color: #9db3a6; margin-top: 2px; }
+  .demo-badge {
+    margin: 10px 18px 0; font-size: .68rem; font-weight: 700; letter-spacing: .06em;
+    color: #122019; background: #c9a227; border-radius: 20px; padding: 3px 10px;
+    display: inline-block; align-self: flex-start;
+  }
+  .sidebar-nav { display: flex; flex-direction: column; gap: 2px; padding: 12px 10px; flex: 1; overflow-y: auto; }
+  .sidebar-link {
+    color: #9db3a6; text-decoration: none; padding: 9px 12px; border-radius: 8px;
+    font-weight: 500; cursor: pointer; border: 0; background: none; width: 100%;
+    text-align: left; font-size: .9rem; font-family: inherit;
+  }
+  .sidebar-link:hover { background: rgba(255,255,255,.07); color: #f5ede3; }
+  .sidebar-link.active { background: #c9a227; color: #122019; font-weight: 700; }
+  .sidebar-user { padding: 14px; border-top: 1px solid rgba(255,255,255,.12); }
+  .sidebar-user-name { font-weight: 600; font-size: .9rem; }
+  .sidebar-user-role { font-size: .75rem; color: #9db3a6; margin-bottom: 10px; text-transform: capitalize; }
+  /* ===== Main ===== */
+  #main { flex: 1; min-width: 0; padding: 24px; max-width: 1100px; }
+  .page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+  .page-head h1 { font-size: 1.45rem; margin: 0 0 .2rem; }
+  .page-head p { margin: 0; color: #6b7280; font-size: .88rem; }
+  .card { background: #fff; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 14px rgba(0,0,0,.06); padding: 18px; margin-bottom: 18px; }
+  .card h2 { font-size: 1.05rem; margin: 0 0 .8rem; }
+  .card-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: .8rem; flex-wrap: wrap; }
+  .card-head h2 { margin: 0; }
+  .muted { color: #6b7280; }
+  /* ===== Buttons ===== */
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px; border-radius: 8px;
+    padding: 8px 14px; font-size: .85rem; font-weight: 600; cursor: pointer;
+    border: 1px solid transparent; font-family: inherit; text-decoration: none;
+  }
+  .btn-primary { background: #14532d; color: #fff; }
+  .btn-primary:hover { background: #0f4224; }
+  .btn-ghost { background: #fff; border-color: #e5e7eb; color: #1f2937; }
+  .btn-ghost:hover { border-color: #c9a227; }
+  .btn-danger { background: #fef2f2; border-color: #fecaca; color: #b91c1c; }
+  .btn-sm { padding: 5px 10px; font-size: .78rem; }
+  .btn-block { width: 100%; justify-content: center; }
+  .sidebar .btn-ghost { border-color: rgba(255,255,255,.25); color: #f5ede3; background: transparent; }
+  /* ===== Stat cards ===== */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 18px; }
+  .stat-card { background: #fff; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 14px rgba(0,0,0,.06); padding: 16px 18px; border-top: 4px solid #c9a227; }
+  .stat-card.green { border-top-color: #14532d; }
+  .stat-label { font-size: .75rem; color: #6b7280; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 4px; }
+  .stat-value { font-size: 1.5rem; font-weight: 800; color: #122019; margin: 0; font-variant-numeric: tabular-nums; }
+  .stat-sub { font-size: .78rem; color: #6b7280; margin: 4px 0 0; }
+  .stat-sub.up { color: #14532d; font-weight: 600; }
+  /* ===== Chart ===== */
+  .chart { display: flex; align-items: flex-end; gap: 10px; height: 190px; padding: 10px 4px 0; }
+  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+  .bar { width: 70%; max-width: 44px; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, #1c6b3c, #14532d); min-height: 6px; position: relative; }
+  .bar.today { background: linear-gradient(180deg, #e3c565, #c9a227); }
+  .bar-val { font-size: .68rem; color: #6b7280; font-variant-numeric: tabular-nums; }
+  .bar-day { font-size: .72rem; color: #6b7280; font-weight: 600; }
+  /* ===== Tables ===== */
+  .table-wrap { overflow-x: auto; }
+  table.table { width: 100%; border-collapse: collapse; font-size: .87rem; }
+  .table th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: #6b7280; padding: 8px 10px; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+  .table td { padding: 10px; border-bottom: 1px solid #f0f1f3; vertical-align: middle; }
+  .table tbody tr:hover { background: #fafaf8; }
+  .table tbody tr.clickable { cursor: pointer; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .code { font-weight: 700; color: #14532d; white-space: nowrap; }
+  /* ===== Pills / badges ===== */
+  .pill { display: inline-block; font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+  .pill.baru { background: #fef3c7; color: #92400e; }
+  .pill.dikonfirmasi { background: #dbeafe; color: #1e40af; }
+  .pill.diproses { background: #e0e7ff; color: #3730a3; }
+  .pill.siap { background: #d1fae5; color: #065f46; }
+  .pill.selesai { background: #e5e7eb; color: #4b5563; }
+  .pill.dibatalkan { background: #fee2e2; color: #991b1b; }
+  .pill.lunas { background: #d1fae5; color: #065f46; }
+  .pill.belum { background: #fef3c7; color: #92400e; }
+  .pill.type-dinein { background: #ecfdf5; color: #14532d; border: 1px solid #a7d3b8; }
+  .pill.type-takeaway { background: #fffbeb; color: #92400e; border: 1px solid #f5d78e; }
+  .pill.method { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+  .pill.active-yes { background: #d1fae5; color: #065f46; }
+  .pill.active-no { background: #f3f4f6; color: #6b7280; }
+  /* ===== Filter seg ===== */
+  .filter-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .seg { display: inline-flex; background: #f3f4f6; border-radius: 10px; padding: 3px; gap: 2px; flex-wrap: wrap; }
+  .seg button { border: 0; background: none; padding: 7px 12px; border-radius: 8px; font-size: .8rem; font-weight: 600; color: #6b7280; cursor: pointer; font-family: inherit; }
+  .seg button.active { background: #fff; color: #122019; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .search { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 12px; font-size: .85rem; font-family: inherit; min-width: 220px; }
+  .search:focus { outline: 2px solid #c9a227; border-color: #c9a227; }
+  /* ===== Modal ===== */
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(18,32,25,.55); display: flex; align-items: center; justify-content: center; padding: 18px; z-index: 50; }
+  .modal-backdrop[hidden] { display: none; }
+  .modal-card { background: #fff; border-radius: 14px; max-width: 560px; width: 100%; max-height: 88vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+  .modal-head { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; background: #fff; }
+  .modal-head h2 { margin: 0; font-size: 1.1rem; }
+  .modal-body { padding: 18px; }
+  .kv { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; font-size: .88rem; border-bottom: 1px dashed #f0f1f3; }
+  .kv:last-child { border-bottom: 0; }
+  .kv .k { color: #6b7280; }
+  .kv .v { font-weight: 600; text-align: right; }
+  .order-items { margin: 12px 0; }
+  .order-item { display: flex; justify-content: space-between; gap: 8px; padding: 8px 0; border-bottom: 1px solid #f0f1f3; font-size: .88rem; }
+  .order-item:last-child { border-bottom: 0; }
+  .order-item .opt { display: block; font-size: .76rem; color: #6b7280; }
+  .modal-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  /* ===== Settings ===== */
+  .set-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: .78rem; font-weight: 600; color: #374151; margin-bottom: 4px; }
+  .field input[type="text"], .field input[type="url"], .field input[type="number"] {
+    width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 12px; font-size: .87rem; font-family: inherit;
+  }
+  .field input:focus { outline: 2px solid #c9a227; border-color: #c9a227; }
+  .chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 20px; padding: 6px 8px 6px 14px; font-size: .85rem; font-weight: 600; }
+  .chip button { border: 0; background: #fee2e2; color: #991b1b; border-radius: 50%; width: 20px; height: 20px; font-size: .7rem; cursor: pointer; line-height: 1; }
+  .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f1f3; font-size: .9rem; }
+  .toggle-row:last-child { border-bottom: 0; }
+  .switch { position: relative; width: 44px; height: 24px; flex: 0 0 44px; cursor: pointer; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider { position: absolute; inset: 0; background: #d1d5db; border-radius: 24px; transition: .2s; }
+  .slider:before { content: ""; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s; box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+  .switch input:checked + .slider { background: #14532d; }
+  .switch input:checked + .slider:before { transform: translateX(20px); }
+  /* ===== Toast ===== */
+  #toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(20px); background: #122019; color: #f5ede3; padding: 10px 18px; border-radius: 10px; font-size: .85rem; font-weight: 600; opacity: 0; pointer-events: none; transition: .25s; z-index: 99; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .page { display: none; }
+  .page.active { display: block; }
+  @media (max-width: 760px) {
+    .sidebar { width: 64px; flex-basis: 64px; }
+    .sidebar-brand, .sidebar-user, .demo-badge { display: none; }
+    .sidebar-link { text-align: center; padding: 10px 4px; font-size: 0; }
+    .sidebar-link::first-letter { font-size: .95rem; }
+    #main { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-brand">☕ Admin Panel<small>Nordic by The Founders</small></div>
+  <span class="demo-badge">DEMO • SAMPLE DATA</span>
+  <nav class="sidebar-nav" id="nav"></nav>
+  <div class="sidebar-user">
+    <div class="sidebar-user-name">Ghufron</div>
+    <div class="sidebar-user-role">owner</div>
+    <button type="button" class="btn btn-ghost btn-block btn-sm" id="btn-logout">Log Out</button>
+  </div>
+</aside>
+
+<main id="main">
+
+  <!-- ================= DASHBOARD ================= -->
+  <section class="page active" id="page-dashboard">
+    <header class="page-head">
+      <div><h1>Dashboard</h1><p class="muted">Thursday, October 1, 2026</p></div>
+    </header>
+    <div class="stat-grid">
+      <div class="stat-card green"><p class="stat-label">Today's Revenue</p><p class="stat-value">Rp 1.284K</p><p class="stat-sub up">▲ 12% vs yesterday</p></div>
+      <div class="stat-card"><p class="stat-label">Orders Today</p><p class="stat-value">34</p><p class="stat-sub">26 completed · 8 in progress</p></div>
+      <div class="stat-card"><p class="stat-label">Active Orders</p><p class="stat-value">8</p><p class="stat-sub">3 new · 5 being prepared</p></div>
+      <div class="stat-card"><p class="stat-label">Avg. Order Value</p><p class="stat-value">Rp 37.8K</p><p class="stat-sub up">▲ 4% this week</p></div>
+    </div>
+    <div class="card">
+      <h2>Last 7 Days Revenue</h2>
+      <div class="chart" id="chart"></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h2>Latest Orders</h2><button class="btn btn-ghost btn-sm" data-nav="pesanan">View all</button></div>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Code</th><th>Time</th><th>Customer</th><th>Type</th><th class="num">Total</th><th>Status</th></tr></thead>
+        <tbody id="latest-body"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- ================= ORDERS ================= -->
+  <section class="page" id="page-pesanan">
+    <header class="page-head">
+      <div><h1>Orders</h1><p class="muted">Manage and monitor all customer orders.</p></div>
+      <button class="btn btn-ghost" id="btn-reload">⟳ Reload</button>
+    </header>
+    <div class="card">
+      <div class="filter-row">
+        <div class="seg" id="status-filter">
+          <button type="button" data-status="" class="active">All</button>
+          <button type="button" data-status="baru">New</button>
+          <button type="button" data-status="dikonfirmasi">Confirmed</button>
+          <button type="button" data-status="diproses">In Progress</button>
+          <button type="button" data-status="siap">Ready</button>
+          <button type="button" data-status="selesai">Completed</button>
+        </div>
+        <input type="search" class="search" id="order-search" placeholder="Search code / customer name…">
+      </div>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Code</th><th>Time</th><th>Customer</th><th>Type</th><th class="num">Total</th><th>Payment</th><th>Status</th></tr></thead>
+        <tbody id="orders-body"></tbody>
+      </table></div>
+      <p class="muted" id="orders-empty" hidden>No matching orders.</p>
+    </div>
+  </section>
+
+  <!-- ================= MENU ================= -->
+  <section class="page" id="page-menu">
+    <header class="page-head">
+      <div><h1>Master Data</h1><p class="muted">Manage categories, menus, option groups, and tables.</p></div>
+    </header>
+    <div class="seg" id="menu-tabs" style="margin-bottom:16px">
+      <button type="button" data-tab="kategori" class="active">Category</button>
+      <button type="button" data-tab="menu">Menu</button>
+      <button type="button" data-tab="opsi">Option Groups</button>
+      <button type="button" data-tab="meja">Tables</button>
+    </div>
+    <div class="card" id="tab-kategori">
+      <div class="card-head"><h2>Category</h2><button class="btn btn-primary btn-sm" data-toast="Add Category — demo only">+ Add Category</button></div>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Name</th><th>Order</th><th>Active</th></tr></thead>
+        <tbody>
+          <tr><td><b>Espresso Based</b></td><td class="num">1</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>Manual Brew</b></td><td class="num">2</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>Non Coffee</b></td><td class="num">3</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>Artisan Tea</b></td><td class="num">4</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>Food</b></td><td class="num">5</td><td><span class="pill active-yes">Yes</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card" id="tab-menu" hidden>
+      <div class="card-head"><h2>Menu</h2><button class="btn btn-primary btn-sm" data-toast="Add Menu — demo only">+ Add Menu</button></div>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Name</th><th>Category</th><th class="num">Price</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><b>Magic</b> <span class="pill siap">New</span></td><td>Espresso Based</td><td class="num">Rp 32K</td><td><span class="pill active-yes">Active</span></td></tr>
+          <tr><td><b>V60 West Java</b></td><td>Manual Brew</td><td class="num">Rp 35K</td><td><span class="pill active-yes">Active</span></td></tr>
+          <tr><td><b>Matcha Latte</b></td><td>Non Coffee</td><td class="num">Rp 30K</td><td><span class="pill active-yes">Active</span></td></tr>
+          <tr><td><b>Grilled Cheese Kimchi</b> <span class="pill siap">New</span></td><td>Food</td><td class="num">Rp 45K</td><td><span class="pill active-yes">Active</span></td></tr>
+          <tr><td><b>Exotic Tea Tasting</b></td><td>Artisan Tea</td><td class="num">Rp 400K</td><td><span class="pill active-no">Hidden</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card" id="tab-opsi" hidden>
+      <div class="card-head"><h2>Option Groups</h2><button class="btn btn-primary btn-sm" data-toast="Add Group — demo only">+ Add Group</button></div>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Group Name</th><th>Type</th><th>Required</th><th>Active</th></tr></thead>
+        <tbody>
+          <tr><td><b>Temperature</b></td><td>Single select</td><td>Yes</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>Size</b></td><td>Single select</td><td>No</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>Sweetness</b></td><td>Single select</td><td>No</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>Topping</b></td><td>Multi select</td><td>No</td><td><span class="pill active-yes">Yes</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card" id="tab-meja" hidden>
+      <div class="card-head"><h2>Tables</h2><button class="btn btn-primary btn-sm" data-toast="Add Table — demo only">+ Add Table</button></div>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Number</th><th>Seats</th><th>Active</th></tr></thead>
+        <tbody>
+          <tr><td><b>1</b></td><td class="num">2</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>2</b></td><td class="num">2</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>3</b></td><td class="num">4</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>4</b></td><td class="num">4</td><td><span class="pill active-yes">Yes</span></td></tr>
+          <tr><td><b>5</b></td><td class="num">6</td><td><span class="pill active-yes">Yes</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- ================= REPORTS ================= -->
+  <section class="page" id="page-laporan">
+    <header class="page-head">
+      <div><h1>Reports</h1><p class="muted">Sales summary and best sellers.</p></div>
+    </header>
+    <div class="stat-grid">
+      <div class="stat-card green"><p class="stat-label">Revenue (7 days)</p><p class="stat-value">Rp 8.412K</p><p class="stat-sub up">▲ 9% vs last week</p></div>
+      <div class="stat-card"><p class="stat-label">Orders (7 days)</p><p class="stat-value">231</p><p class="stat-sub">198 dine-in · 33 take away</p></div>
+      <div class="stat-card"><p class="stat-label">Best Payment</p><p class="stat-value">QRIS</p><p class="stat-sub">64% of transactions</p></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h2>Best Sellers</h2></div>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>#</th><th>Item</th><th class="num">Sold</th><th class="num">Revenue</th></tr></thead>
+        <tbody>
+          <tr><td><b>1</b></td><td><b>Magic</b></td><td class="num">86</td><td class="num">Rp 2.752K</td></tr>
+          <tr><td><b>2</b></td><td><b>Matcha Latte</b></td><td class="num">64</td><td class="num">Rp 1.920K</td></tr>
+          <tr><td><b>3</b></td><td><b>V60 West Java</b></td><td class="num">41</td><td class="num">Rp 1.435K</td></tr>
+          <tr><td><b>4</b></td><td><b>Signature Iced Coffee</b></td><td class="num">38</td><td class="num">Rp 1.140K</td></tr>
+          <tr><td><b>5</b></td><td><b>Grilled Cheese Kimchi</b></td><td class="num">22</td><td class="num">Rp 990K</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- ================= SETTINGS ================= -->
+  <section class="page" id="page-pengaturan">
+    <header class="page-head">
+      <div><h1>Settings</h1><p class="muted">Everything here updates the customer app instantly — no code changes needed.</p></div>
+      <button class="btn btn-primary" data-toast="Settings saved (demo)">Save Changes</button>
+    </header>
+    <div class="set-grid">
+      <div class="card">
+        <h2>Store Information</h2>
+        <div class="field"><label>Store name</label><input type="text" value="Nordic by The Founders"></div>
+        <div class="field"><label>Address</label><input type="text" value="Jl. Puri Widya Kencana No.JT1/28, Surabaya"></div>
+        <div class="field"><label>WhatsApp</label><input type="text" value="+62895385381158"></div>
+        <div class="field"><label>Tax (%)</label><input type="number" value="10"></div>
+      </div>
+      <div class="card">
+        <h2>Payment Methods</h2>
+        <div class="chip-row" id="pay-chips">
+          <span class="chip">QRIS <button type="button" data-toast="QRIS removed (demo)">×</button></span>
+          <span class="chip">Cash <button type="button" data-toast="Cash removed (demo)">×</button></span>
+          <span class="chip">Bank Transfer <button type="button" data-toast="Bank Transfer removed (demo)">×</button></span>
+        </div>
+        <p class="muted" style="font-size:.8rem;margin:10px 0 0">Shown on the customer checkout exactly as listed here.</p>
+      </div>
+      <div class="card">
+        <h2>Social Media</h2>
+        <div class="field"><label>Instagram URL</label><input type="url" placeholder="https://instagram.com/…"></div>
+        <div class="field"><label>TikTok URL</label><input type="url" placeholder="https://tiktok.com/@…"></div>
+        <div class="field"><label>Facebook URL</label><input type="url" placeholder="https://facebook.com/…"></div>
+        <div class="field"><label>WhatsApp URL</label><input type="url" value="https://wa.me/62895385381158"></div>
+        <p class="muted" style="font-size:.8rem;margin:0">Only filled links appear as icons on the Info page.</p>
+      </div>
+      <div class="card">
+        <h2>Order Types</h2>
+        <div class="toggle-row"><span><b>Dine-In</b><br><span class="muted" style="font-size:.78rem">Customer orders from a table</span></span><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="toggle-row"><span><b>Take Away</b><br><span class="muted" style="font-size:.78rem">Customer picks up at counter</span></span><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PLACEHOLDER PAGES ================= -->
+  <section class="page" id="page-kds">
+    <header class="page-head"><div><h1>Kitchen (KDS)</h1><p class="muted">Live kitchen display for baristas.</p></div></header>
+    <div class="set-grid" id="kds-grid"></div>
+  </section>
+  <section class="page" id="page-qr-meja">
+    <header class="page-head"><div><h1>Table QR</h1><p class="muted">Print QR codes to stick on each table.</p></div><button class="btn btn-primary" data-toast="Print dialog (demo)">Print All</button></header>
+    <div class="card"><div class="chip-row" id="qr-list"></div></div>
+  </section>
+  <section class="page" id="page-promo">
+    <header class="page-head"><div><h1>Promos</h1><p class="muted">Flash sales and discount campaigns.</p></div><button class="btn btn-primary btn-sm" data-toast="Add Promo — demo only">+ Add Promo</button></header>
+    <div class="card"><div class="table-wrap"><table class="table">
+      <thead><tr><th>Name</th><th>Discount</th><th>Period</th><th>Active</th></tr></thead>
+      <tbody>
+        <tr><td><b>Omakase Week</b></td><td>15%</td><td>Oct 1 – Oct 7</td><td><span class="pill active-yes">Yes</span></td></tr>
+        <tr><td><b>Flash Sale: Magic Hour</b></td><td>Rp 8K off</td><td>Oct 1, 15:00–17:00</td><td><span class="pill active-yes">Yes</span></td></tr>
+      </tbody>
+    </table></div></div>
+  </section>
+  <section class="page" id="page-banner">
+    <header class="page-head"><div><h1>Ad Banner</h1><p class="muted">Home page carousel banners.</p></div><button class="btn btn-primary btn-sm" data-toast="Add Banner — demo only">+ Add Banner</button></header>
+    <div class="card"><div class="table-wrap"><table class="table">
+      <thead><tr><th>Title</th><th>Theme</th><th>Order</th><th>Active</th></tr></thead>
+      <tbody>
+        <tr><td><b>Omakase Experience</b></td><td>Green</td><td class="num">1</td><td><span class="pill active-yes">Yes</span></td></tr>
+        <tr><td><b>Flash Sale Today</b></td><td>Gold</td><td class="num">2</td><td><span class="pill active-yes">Yes</span></td></tr>
+      </tbody>
+    </table></div></div>
+  </section>
+  <section class="page" id="page-pengguna">
+    <header class="page-head"><div><h1>Users</h1><p class="muted">Staff accounts and roles.</p></div><button class="btn btn-primary btn-sm" data-toast="Add User — demo only">+ Add User</button></header>
+    <div class="card"><div class="table-wrap"><table class="table">
+      <thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Active</th></tr></thead>
+      <tbody>
+        <tr><td><b>Ghufron</b></td><td>owner</td><td>Owner</td><td><span class="pill active-yes">Yes</span></td></tr>
+        <tr><td><b>Kasir 1</b></td><td>kasir</td><td>Cashier</td><td><span class="pill active-yes">Yes</span></td></tr>
+      </tbody>
+    </table></div></div>
+  </section>
+
+</main>
+
+<!-- Order detail modal -->
+<div class="modal-backdrop" id="order-modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <div class="modal-head"><h2 id="modal-title">Order Details</h2><button type="button" class="btn btn-ghost btn-sm" id="modal-close">Close</button></div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var NAV = [
+    { key: "dashboard",  label: "Dashboard" },
+    { key: "pesanan",    label: "Orders" },
+    { key: "kds",        label: "Kitchen (KDS)" },
+    { key: "menu",       label: "Menu" },
+    { key: "laporan",    label: "Reports" },
+    { key: "qr-meja",    label: "Table QR" },
+    { key: "promo",      label: "Promos" },
+    { key: "banner",     label: "Ad Banner" },
+    { key: "pengaturan", label: "Settings" },
+    { key: "pengguna",   label: "Users" }
+  ];
+
+  var ORDERS = [
+    { code: "NDC-20261001-034", time: "11:42", customer: "Sinta",  type: "dinein",    table: "3", total: 86000,  method: "QRIS",           pay: "lunas",      status: "diproses",
+      items: [["Magic (Hot)", "Reguler", 2, 64000], ["Grilled Cheese Kimchi", "", 1, 45000]], tax: 7800, subtotal: 109000 },
+    { code: "NDC-20261001-033", time: "11:35", customer: "Bimo",   type: "takeaway",  table: "",  total: 65000,  method: "Cash",           pay: "belum",      status: "baru",
+      items: [["Matcha Latte (Iced)", "Large", 1, 35000], ["V60 West Java (Hot)", "", 1, 35000]], tax: 5900, subtotal: 70000 },
+    { code: "NDC-20261001-032", time: "11:28", customer: "Ayu",    type: "dinein",    table: "5", total: 132000, method: "Bank Transfer",  pay: "lunas",      status: "siap",
+      items: [["Omakase Set", "", 1, 120000]], tax: 12000, subtotal: 120000 },
+    { code: "NDC-20261001-031", time: "11:15", customer: "Raka",   type: "dinein",    table: "1", total: 45000,  method: "QRIS",           pay: "lunas",      status: "selesai",
+      items: [["Signature Iced Coffee", "Less sugar", 1, 30000], ["Croissant", "", 1, 15000]], tax: 4100, subtotal: 45000 },
+    { code: "NDC-20261001-030", time: "11:02", customer: "Nadia",  type: "takeaway",  table: "",  total: 97000,  method: "QRIS",           pay: "lunas",      status: "selesai",
+      items: [["Magic (Iced)", "Oat milk", 2, 72000], ["Banana Cake", "", 1, 25000]], tax: 8800, subtotal: 97000 },
+    { code: "NDC-20261001-029", time: "10:48", customer: "Fajar",  type: "dinein",    table: "2", total: 58000,  method: "Cash",           pay: "belum",      status: "dikonfirmasi",
+      items: [["Manual Brew V60", "West Java", 1, 35000], ["Espresso", "", 1, 23000]], tax: 5300, subtotal: 58000 }
+  ];
+
+  var STATUS_LABEL = { baru: "New", dikonfirmasi: "Confirmed", diproses: "In Progress", siap: "Ready", selesai: "Completed", dibatalkan: "Cancelled" };
+
+  function rp(n) { return "Rp " + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function typePill(t) {
+    return t === "dinein"
+      ? '<span class="pill type-dinein">Dine-In</span>'
+      : '<span class="pill type-takeaway">Take Away</span>';
+  }
+  function payPill(p) {
+    return p === "lunas" ? '<span class="pill lunas">Paid</span>' : '<span class="pill belum">Unpaid</span>';
+  }
+
+  /* ---------- Navigation ---------- */
+  var navEl = document.getElementById("nav");
+  function renderNav(active) {
+    navEl.innerHTML = NAV.map(function (item) {
+      return '<button type="button" class="sidebar-link' + (item.key === active ? " active" : "") +
+        '" data-page="' + item.key + '">' + esc(item.label) + "</button>";
+    }).join("");
+    navEl.querySelectorAll("[data-page]").forEach(function (b) {
+      b.addEventListener("click", function () { showPage(b.getAttribute("data-page")); });
+    });
+  }
+  function showPage(key) {
+    document.querySelectorAll(".page").forEach(function (p) { p.classList.remove("active"); });
+    var el = document.getElementById("page-" + key);
+    if (el) el.classList.add("active");
+    renderNav(key);
+    document.getElementById("main").scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll("[data-nav]").forEach(function (b) {
+    b.addEventListener("click", function () { showPage(b.getAttribute("data-nav")); });
+  });
+  renderNav("dashboard");
+
+  /* ---------- Dashboard chart ---------- */
+  var chartData = [
+    { d: "Thu", v: 912 }, { d: "Fri", v: 1240 }, { d: "Sat", v: 1680 },
+    { d: "Sun", v: 1520 }, { d: "Mon", v: 980 }, { d: "Tue", v: 796 }, { d: "Wed", v: 1284, today: true }
+  ];
+  var maxV = Math.max.apply(null, chartData.map(function (x) { return x.v; }));
+  document.getElementById("chart").innerHTML = chartData.map(function (x) {
+    var h = Math.max(6, Math.round((x.v / maxV) * 150));
+    return '<div class="bar-col"><span class="bar-val">' + x.v + "K</span>" +
+      '<div class="bar' + (x.today ? " today" : "") + '" style="height:' + h + 'px"></div>' +
+      '<span class="bar-day">' + x.d + "</span></div>";
+  }).join("");
+
+  /* ---------- Orders tables ---------- */
+  function orderRow(o) {
+    return '<tr class="clickable" data-code="' + esc(o.code) + '">' +
+      '<td><span class="code">' + esc(o.code) + "</span></td>" +
+      "<td>" + esc(o.time) + "</td>" +
+      "<td><b>" + esc(o.customer) + "</b>" + (o.table ? ' <span class="muted">· T' + esc(o.table) + "</span>" : "") + "</td>" +
+      "<td>" + typePill(o.type) + "</td>" +
+      '<td class="num"><b>' + rp(o.total) + "</b></td>" +
+      "<td>" + payPill(o.pay) + "</td>" +
+      '<td><span class="pill ' + esc(o.status) + '">' + esc(STATUS_LABEL[o.status] || o.status) + "</span></td>" +
+      "</tr>";
+  }
+  function renderOrders() {
+    var f = document.querySelector('#status-filter button.active').getAttribute("data-status");
+    var q = document.getElementById("order-search").value.trim().toLowerCase();
+    var list = ORDERS.filter(function (o) {
+      var okS = !f || o.status === f;
+      var okQ = !q || o.code.toLowerCase().indexOf(q) !== -1 || o.customer.toLowerCase().indexOf(q) !== -1;
+      return okS && okQ;
+    });
+    var body = document.getElementById("orders-body");
+    body.innerHTML = list.map(orderRow).join("");
+    document.getElementById("orders-empty").hidden = list.length > 0;
+    bindRows(body);
+  }
+  function bindRows(scope) {
+    scope.querySelectorAll("tr.clickable").forEach(function (tr) {
+      tr.addEventListener("click", function () { openOrder(tr.getAttribute("data-code")); });
+    });
+  }
+  document.getElementById("latest-body").innerHTML = ORDERS.slice(0, 5).map(function (o) {
+    return '<tr class="clickable" data-code="' + esc(o.code) + '">' +
+      '<td><span class="code">' + esc(o.code) + "</span></td>" +
+      "<td>" + esc(o.time) + "</td><td><b>" + esc(o.customer) + "</b></td>" +
+      "<td>" + typePill(o.type) + "</td>" +
+      '<td class="num"><b>' + rp(o.total) + "</b></td>" +
+      '<td><span class="pill ' + esc(o.status) + '">' + esc(STATUS_LABEL[o.status] || o.status) + "</span></td></tr>";
+  }).join("");
+  bindRows(document.getElementById("latest-body"));
+
+  document.querySelectorAll("#status-filter button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#status-filter button").forEach(function (x) { x.classList.remove("active"); });
+      b.classList.add("active");
+      renderOrders();
+    });
+  });
+  document.getElementById("order-search").addEventListener("input", renderOrders);
+  document.getElementById("btn-reload").addEventListener("click", function () { renderOrders(); toast("Orders reloaded"); });
+  renderOrders();
+
+  /* ---------- Order modal ---------- */
+  var modal = document.getElementById("order-modal");
+  function openOrder(code) {
+    var o = ORDERS.filter(function (x) { return x.code === code; })[0];
+    if (!o) return;
+    document.getElementById("modal-title").textContent = "Order " + o.code;
+    var items = o.items.map(function (it) {
+      return '<div class="order-item"><div><b>' + esc(it[0]) + "</b>" +
+        (it[1] ? '<span class="opt">' + esc(it[1]) + "</span>" : "") +
+        '<span class="opt">Qty ' + it[2] + "</span></div>" +
+        '<div class="num"><b>' + rp(it[3] * it[2]) + "</b></div></div>";
+    }).join("");
+    document.getElementById("modal-body").innerHTML =
+      '<div class="kv"><span class="k">Customer</span><span class="v">' + esc(o.customer) + "</span></div>" +
+      '<div class="kv"><span class="k">Time</span><span class="v">' + esc(o.time) + " · Oct 1, 2026</span></div>" +
+      '<div class="kv"><span class="k">Type</span><span class="v">' + (o.type === "dinein" ? "Dine-In" + (o.table ? " · Table " + esc(o.table) : "") : "Take Away") + "</span></div>" +
+      '<div class="kv"><span class="k">Payment</span><span class="v">' + esc(o.method) + " · " + (o.pay === "lunas" ? "Paid" : "Unpaid") + "</span></div>" +
+      '<div class="kv"><span class="k">Status</span><span class="v"><span class="pill ' + esc(o.status) + '">' + esc(STATUS_LABEL[o.status]) + "</span></span></div>" +
+      '<div class="order-items">' + items + "</div>" +
+      '<div class="kv"><span class="k">Subtotal</span><span class="v">' + rp(o.subtotal) + "</span></div>" +
+      '<div class="kv"><span class="k">Tax (10%)</span><span class="v">' + rp(o.tax) + "</span></div>" +
+      '<div class="kv"><span class="k"><b>Total</b></span><span class="v"><b>' + rp(o.total) + "</b></span></div>" +
+      '<div class="modal-actions">' +
+        '<button class="btn btn-primary btn-sm" data-toast="Order confirmed (demo)">Confirm</button>' +
+        '<button class="btn btn-ghost btn-sm" data-toast="Marked as paid (demo)">Mark Paid</button>' +
+        '<button class="btn btn-ghost btn-sm" data-toast="Receipt sent to printer (demo)">Print Receipt</button>' +
+        '<button class="btn btn-danger btn-sm" data-toast="Order cancelled (demo)">Cancel</button>' +
+      "</div>";
+    modal.hidden = false;
+    bindToasts(document.getElementById("modal-body"));
+  }
+  document.getElementById("modal-close").addEventListener("click", function () { modal.hidden = true; });
+  modal.addEventListener("click", function (e) { if (e.target === modal) modal.hidden = true; });
+
+  /* ---------- Menu tabs ---------- */
+  document.querySelectorAll("#menu-tabs button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#menu-tabs button").forEach(function (x) { x.classList.remove("active"); });
+      b.classList.add("active");
+      ["kategori", "menu", "opsi", "meja"].forEach(function (t) {
+        document.getElementById("tab-" + t).hidden = (t !== b.getAttribute("data-tab"));
+      });
+    });
+  });
+
+  /* ---------- KDS cards ---------- */
+  var kds = ORDERS.filter(function (o) { return o.status === "diproses" || o.status === "baru" || o.status === "dikonfirmasi"; });
+  document.getElementById("kds-grid").innerHTML = kds.map(function (o) {
+    var items = o.items.map(function (it) {
+      return "<div><b>" + it[2] + "×</b> " + esc(it[0]) + (it[1] ? ' <span class="muted">(' + esc(it[1]) + ")</span>" : "") + "</div>";
+    }).join("");
+    return '<div class="card" style="border-top:4px solid #c9a227"><h2 style="margin-bottom:4px">' +
+      (o.table ? "Table " + esc(o.table) : esc(o.customer)) + '</h2><p class="muted" style="margin:0 0 10px;font-size:.8rem">' +
+      esc(o.code) + " · " + esc(o.time) + '</p><div style="font-size:.88rem">' + items + "</div>" +
+      '<div class="modal-actions"><button class="btn btn-primary btn-sm" data-toast="Marked ready (demo)">Ready</button></div></div>';
+  }).join("") || '<div class="card"><p class="muted" style="margin:0">No active kitchen tickets.</p></div>';
+
+  /* ---------- Table QR chips ---------- */
+  document.getElementById("qr-list").innerHTML = [1, 2, 3, 4, 5].map(function (n) {
+    return '<span class="chip">Table ' + n + " QR</span>";
+  }).join("");
+
+  /* ---------- Toasts & misc ---------- */
+  var toastEl = document.getElementById("toast");
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 1800);
+  }
+  function bindToasts(scope) {
+    scope.querySelectorAll("[data-toast]").forEach(function (b) {
+      if (b.__toastBound) return;
+      b.__toastBound = true;
+      b.addEventListener("click", function () { toast(b.getAttribute("data-toast")); });
+    });
+  }
+  bindToasts(document);
+  document.getElementById("btn-logout").addEventListener("click", function () { toast("Logged out (demo)"); });
+  document.getElementById("pay-chips").addEventListener("click", function (e) {
+    var btn = e.target.closest("button");
+    if (btn) { btn.closest(".chip").remove(); toast("Payment method removed (demo)"); }
+  });
+})();
+</script>
+</body>
+</html>
