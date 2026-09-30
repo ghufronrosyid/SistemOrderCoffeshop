@@ -8,6 +8,14 @@ node_modules/
 *.db-shm
 *.db.*
 
+# Foto/gambar binary tidak ikut push (file besar, & gambar saat ini hanya
+# contoh sementara — toko mengganti dengan foto asli). Upload foto asli via
+# GitHub web (drag-drop ke app/public/img/) atau copy langsung ke server.
+# Aplikasi otomatis memakai img/placeholder.svg bila file gambar tidak ada.
+app/public/img/*.jpg
+app/public/img/*.jpeg
+app/public/img/*.png
+
 # Environment
 .env
 

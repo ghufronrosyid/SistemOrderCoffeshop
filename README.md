@@ -67,6 +67,12 @@ SistemOrderCoffeshop/
 >
 > 📖 Panduan instalasi versi super-detail untuk orang toko (non-teknis):
 > [`PANDUAN_INSTALASI_TOKO.md`](PANDUAN_INSTALASI_TOKO.md).
+>
+> 🖼️ **Catatan gambar:** file foto di `app/public/img/` (gambar contoh
+> sementara) tidak ikut di-push ke repo. Aplikasi otomatis menampilkan
+> `img/placeholder.svg` bila gambar tidak ada. Upload foto asli toko ke
+> folder tersebut — via GitHub web (drag & drop) atau copy langsung ke
+> komputer toko.
 
 ## Cara Membuka
 
