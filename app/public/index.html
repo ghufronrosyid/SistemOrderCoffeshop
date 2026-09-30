@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nordic by The Founders</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dengan-nav halaman-home">
+
+  <div class="splash" id="splash"><div class="splash-inner">
+    <img class="splash-emblem" src="img/nordic-emblem.png" alt="Nordic emblem">
+    <div class="splash-word" aria-label="NORDIC"><span>N</span><span>O</span><span>R</span><span>D</span><span>I</span><span>C</span></div>
+    <div class="splash-rule"></div>
+    <img class="splash-founders" src="img/nordic-founders.png" alt="by the Founders">
+  </div></div>
+
+  <main class="kontainer home">
+
+    <!-- Tipe pesanan -->
+    <section class="kartu-home" aria-label="Order Type">
+      <div class="segmen" id="segmenTipe" role="tablist" aria-label="Select order type">
+        <button type="button" data-tipe="takeaway" role="tab"><svg class="ikon-tipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 8 1.75 12.28a2 2 0 0 0 2 1.72h4.54a2 2 0 0 0 2-1.72L18 8"/><path d="M5 8h14"/><path d="M7 15a6.47 6.47 0 0 1 5 0 6.47 6.47 0 0 0 5 0"/><path d="m12 8 1-6h2"/></svg><span>Take Away</span></button>
+        <button type="button" data-tipe="dine-in" role="tab"><svg class="ikon-tipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg><span>Dine-In</span></button>
+      </div>
+    </section>
+
+    <!-- Banner iklan -->
+    <section id="seksiBanner" class="seksi-banner sembunyi" aria-label="Promos">
+      <div class="korsel-banner" id="korselBanner"></div>
+      <div class="titik-banner" id="titikBanner" aria-hidden="true"></div>
+    </section>
+
+    <!-- Flash sale -->
+    <section id="seksiPromo" class="seksi-home sembunyi" aria-label="Flash sale">
+      <div class="kepala-seksi">
+        <h2><svg class="ikon-judul" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Flash Sale</h2>
+        <div class="hitung-mundur" id="hitungMundur" title="Ends in">--:--:--</div>
+      </div>
+      <div class="rel-h" id="relPromo"></div>
+    </section>
+
+    <!-- Produk baru -->
+    <section class="seksi-home" aria-label="New products">
+      <div class="kepala-seksi">
+        <h2><svg class="ikon-judul" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg> New Products</h2>
+        <a href="/menu.html" class="lihat-semua">View all →</a>
+      </div>
+      <div class="rel-h" id="relUntukmu"><div class="kosong">Loading recommendations...</div></div>
+    </section>
+
+    <!-- Pesan lagi -->
+    <section id="seksiPesanLagi" class="seksi-home sembunyi" aria-label="Order again">
+      <div class="kepala-seksi"><h2><svg class="ikon-judul" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg> Order Again</h2></div>
+      <div id="daftarPesanLagi"></div>
+    </section>
+
+    <!-- Info toko -->
+    <section class="kartu-home info-toko" id="infoToko" aria-label="Store info"></section>
+
+  </main>
+
+  <script src="js/ikon.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/home.js"></script>
+  <script>
+  (function(){
+    var sp = document.getElementById('splash');
+    if(!sp) return;
+    function tutup(){ sp.classList.add('pergi'); setTimeout(function(){ sp.remove(); }, 650); }
+    try{
+      if(sessionStorage.getItem('nordicSplash')){ sp.remove(); return; }
+      sessionStorage.setItem('nordicSplash','1');
+    }catch(e){}
+    setTimeout(tutup, 2500);
+  })();
+  </script>
+</body>
+</html>
