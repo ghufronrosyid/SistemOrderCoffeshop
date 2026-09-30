@@ -1,0 +1,1 @@
+{"dependencies":{"bcrypt":"^5.1.1","better-sqlite3":"^12.11.1","express":"^4.21.2","express-session":"^1.18.1","qrcode":"^1.5.4"},"description":"Sistem pemesanan online coffee shop — web pelanggan + dashboard admin + cetak struk","engines":{"node":">=18"},"main":"server.js","name":"sistem-pemesanan-coffee-shop","scripts":{"start":"node server.js"},"version":"0.1.0"}
