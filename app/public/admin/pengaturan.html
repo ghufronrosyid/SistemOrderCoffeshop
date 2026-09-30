@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings — Admin</title>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<aside id="sidebar"></aside>
+<main id="main">
+  <div class="page-head">
+    <div>
+      <h1>Settings</h1>
+      <p class="muted">Store identity, tax &amp; service, receipt text, and printer.</p>
+    </div>
+  </div>
+
+  <form id="form-pengaturan">
+    <div class="card">
+      <div class="card-head"><h2>Store Identity</h2></div>
+      <label class="field"><span>Store Name*</span><input id="set-store_name" required maxlength="150"></label>
+      <label class="field"><span>Tagline</span><input id="set-store_tagline" maxlength="200" placeholder="E.g.: Artisan specialty coffee slow bar & roastery"></label>
+      <label class="field"><span>Short Description</span><textarea id="set-store_description" rows="2"></textarea></label>
+      <label class="field"><span>Address</span><textarea id="set-store_address" rows="2"></textarea></label>
+      <label class="field"><span>Phone</span><input id="set-store_phone" maxlength="30"></label>
+      <label class="field"><span>Opening Hours</span><input id="set-store_hours" maxlength="150" placeholder="E.g.: Closes 7:00 PM (take away 9:00 AM–5:00 PM)"></label>
+      <label class="field"><span>Currency</span><input id="set-currency" maxlength="10" placeholder="Rp"></label>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Social Media</h2></div>
+      <p class="muted" style="font-size:.85rem">Link tampil sebagai ikon di halaman About. Kosongkan bila tidak dipakai.</p>
+      <label class="field"><span>Instagram URL</span><input id="set-social-instagram" maxlength="300" placeholder="https://instagram.com/..."></label>
+      <label class="field"><span>TikTok URL</span><input id="set-social-tiktok" maxlength="300" placeholder="https://tiktok.com/@..."></label>
+      <label class="field"><span>Facebook URL</span><input id="set-social-facebook" maxlength="300" placeholder="https://facebook.com/..."></label>
+      <label class="field"><span>WhatsApp URL</span><input id="set-social-whatsapp" maxlength="300" placeholder="https://wa.me/628..."></label>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Order Type</h2></div>
+      <p class="muted" style="font-size:.85rem">Check the types that are active for customers. At least one must be active.</p>
+      <label class="field"><span><input id="set-order_types-dine-in" type="checkbox" value="dine-in" style="width:auto"><svg class="ic-cb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg> Dine-In <small class="muted">(dine on-site)</small></span></label>
+      <label class="field"><span><input id="set-order_types-takeaway" type="checkbox" value="takeaway" style="width:auto"><svg class="ic-cb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 8 1.75 12.28a2 2 0 0 0 2 1.72h4.54a2 2 0 0 0 2-1.72L18 8"/><path d="M5 8h14"/><path d="M7 15a6.47 6.47 0 0 1 5 0 6.47 6.47 0 0 0 5 0"/><path d="m12 8 1-6h2"/></svg> Take Away <small class="muted">(self pickup)</small></span></label>
+      <label class="field"><span><input id="set-order_types-delivery" type="checkbox" value="delivery" style="width:auto"><svg class="ic-cb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg> Delivery <small class="muted">(delivered — requires address)</small></span></label>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Payment Method</h2></div>
+      <p class="muted" style="font-size:.85rem">One method per line, format: <code>id | Label</code> (id: lowercase, no spaces).</p>
+      <label class="field"><span>Method List</span><textarea id="set-payment_methods" rows="4" placeholder="qris | QRIS&#10;cash | Cash&#10;transfer | Bank Transfer"></textarea></label>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Tax &amp; Service</h2></div>
+      <label class="field"><span>Tax (%)</span><input id="set-tax_percent" type="number" min="0" step="0.01"></label>
+      <label class="field"><span>Service (%)</span><input id="set-service_percent" type="number" min="0" step="0.01"></label>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Receipt Text</h2></div>
+      <label class="field"><span>Receipt Header</span><textarea id="set-receipt_header" rows="3" placeholder="Text at the top of the receipt"></textarea></label>
+      <label class="field"><span>Receipt Footer</span><textarea id="set-receipt_footer" rows="3" placeholder="Text at the bottom of the receipt"></textarea></label>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Customer Access (Table QR)</h2></div>
+      <p class="muted" style="font-size:.85rem">The server address customers open on their phones via the store WiFi. Fill in the <b>store computer's LAN IP</b>, e.g. <code>http://192.168.1.10:3000</code> (no trailing slash). Per-table QR codes are generated from this address — see the <b>Table QR</b> page.</p>
+      <label class="field"><span>Server Address (Base URL)</span><input id="set-public_base_url" maxlength="150" placeholder="http://192.168.1.10:3000"></label>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Printer</h2></div>
+      <label class="field"><span>Printer Provider</span>
+        <select id="set-printer_provider">
+          <option value="browser">Browser (open receipt page)</option>
+          <option value="escpos">ESC/POS (print directly)</option>
+        </select>
+      </label>
+      <p class="muted" style="font-size:.85rem">Note: escpos mode needs further implementation on the server side (thermal printer connected to the store computer).</p>
+      <label class="field"><span>Paper Width</span>
+        <select id="set-printer_width">
+          <option value="58">58 mm</option>
+          <option value="80">80 mm</option>
+        </select>
+      </label>
+    </div>
+
+    <div style="margin:8px 0 24px">
+      <button type="submit" class="btn btn-primary btn-lg">Save Settings</button>
+    </div>
+  </form>
+</main>
+
+<script src="/js/ikon.js"></script>
+<script src="/js/admin-core.js"></script>
+<script type="module" src="/js/pengaturan.js"></script>
+</body>
+</html>

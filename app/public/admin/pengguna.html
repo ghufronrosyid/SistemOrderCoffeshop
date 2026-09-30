@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Users — Admin</title>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<aside id="sidebar"></aside>
+<main id="main">
+  <div class="page-head">
+    <div>
+      <h1>Users</h1>
+      <p class="muted">Manage owner, cashier, and barista accounts.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <h2>User List</h2>
+      <button class="btn btn-primary" id="btn-tambah-user" type="button">+ Add User</button>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Username</th><th>Name</th><th>Role</th><th>Active</th><th>Actions</th></tr></thead>
+        <tbody id="tbody-user"><tr><td colspan="5"><div class="empty-note">Loading…</div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<!-- Modal Tambah -->
+<div class="modal-backdrop" id="modal-user-tambah" style="display:none">
+  <div class="modal-card">
+    <div class="modal-head"><h2>Add User</h2><button type="button" class="btn btn-sm" data-tutup>Close</button></div>
+    <div class="modal-body">
+      <form id="form-user-tambah">
+        <label class="field"><span>Username*</span><input id="tu-username" required maxlength="50" autocomplete="off"></label>
+        <label class="field"><span>Password*</span><input id="tu-password" type="password" required autocomplete="new-password"></label>
+        <label class="field"><span>Name*</span><input id="tu-nama" required maxlength="100"></label>
+        <label class="field"><span>Role*</span>
+          <select id="tu-role" required>
+            <option value="kasir">Cashier</option>
+            <option value="barista">Barista</option>
+            <option value="owner">Owner</option>
+          </select>
+        </label>
+        <label class="field"><span><input id="tu-aktif" type="checkbox" style="width:auto" checked> Active</span></label>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button type="button" class="btn" data-tutup>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit -->
+<div class="modal-backdrop" id="modal-user-edit" style="display:none">
+  <div class="modal-card">
+    <div class="modal-head"><h2>Edit User</h2><button type="button" class="btn btn-sm" data-tutup>Close</button></div>
+    <div class="modal-body">
+      <form id="form-user-edit">
+        <input type="hidden" id="eu-id">
+        <label class="field"><span>Username</span><input id="eu-username" disabled></label>
+        <label class="field"><span>New Password</span><input id="eu-password" type="password" autocomplete="new-password" placeholder="Leave empty if unchanged"></label>
+        <label class="field"><span>Name*</span><input id="eu-nama" required maxlength="100"></label>
+        <label class="field"><span>Role*</span>
+          <select id="eu-role" required>
+            <option value="kasir">Cashier</option>
+            <option value="barista">Barista</option>
+            <option value="owner">Owner</option>
+          </select>
+        </label>
+        <label class="field"><span><input id="eu-aktif" type="checkbox" style="width:auto"> Active</span></label>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button type="button" class="btn" data-tutup>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/admin-core.js"></script>
+<script type="module" src="/js/pengguna.js"></script>
+</body>
+</html>

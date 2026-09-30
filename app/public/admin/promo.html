@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Promos — Admin Panel</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/admin.css">
+<style>
+  .promo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .promo-card { background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:18px; border-top:4px solid #e8590c; }
+  .promo-card.nonaktif { border-top-color:#ccc; opacity:.75; }
+  .promo-card h3 { margin:0 0 4px; font-size:1.05rem; }
+  .promo-item { color:var(--muted); font-size:.9rem; margin:0 0 8px; }
+  .promo-harga { margin:6px 0; }
+  .promo-harga s { color:var(--muted); }
+  .promo-harga b { color:#d9480f; font-size:1.15rem; }
+  .promo-meta { font-size:.8rem; color:var(--muted); margin:6px 0 12px; }
+  .promo-aksi { display:flex; gap:8px; }
+  .badge-aktif { background:#d3f9d8; color:#2b8a3e; font-size:.75rem; font-weight:700; padding:3px 10px; border-radius:12px; }
+  .badge-mati { background:#e9ecef; color:#868e96; font-size:.75rem; font-weight:700; padding:3px 10px; border-radius:12px; }
+  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .form-grid .penuh { grid-column:1 / -1; }
+  @media (max-width:520px){ .form-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+  <aside id="sidebar"></aside>
+  <main id="main">
+    <header class="page-head">
+      <div>
+        <h1>Promos / Flash Sale</h1>
+        <p class="muted">Promos appear on the customer Home page as a Flash Sale with a countdown. Fill in a special price <b>or</b> a discount percentage.</p>
+      </div>
+      <button class="btn btn-primary" id="btn-tambah">＋ Add Promo</button>
+    </header>
+
+    <section class="card sembunyi" id="form-wrap">
+      <h3 id="form-judul">Add Promo</h3>
+      <form id="form-promo">
+        <input type="hidden" id="f-id">
+        <div class="form-grid">
+          <div class="penuh">
+            <label class="label" for="f-title">Promo title *</label>
+            <input class="input" id="f-title" maxlength="120" placeholder="e.g.: Flash Sale: Milk Coffee" required>
+          </div>
+          <div class="penuh">
+            <label class="label" for="f-desc">Description</label>
+            <input class="input" id="f-desc" maxlength="200" placeholder="Brief terms & conditions">
+          </div>
+          <div class="penuh">
+            <label class="label" for="f-item">Menu *</label>
+            <select class="input" id="f-item" required><option value="">— Select menu —</option></select>
+          </div>
+          <div>
+            <label class="label" for="f-harga">Special price (Rp)</label>
+            <input class="input" id="f-harga" type="number" min="0" step="500" placeholder="e.g.: 25000">
+          </div>
+          <div>
+            <label class="label" for="f-diskon">or Discount (%)</label>
+            <input class="input" id="f-diskon" type="number" min="0" max="100" placeholder="e.g.: 20">
+          </div>
+          <div>
+            <label class="label" for="f-mulai">Starts</label>
+            <input class="input" id="f-mulai" type="datetime-local">
+          </div>
+          <div>
+            <label class="label" for="f-selesai">Ends</label>
+            <input class="input" id="f-selesai" type="datetime-local">
+          </div>
+          <div>
+            <label class="label" for="f-urut">Order</label>
+            <input class="input" id="f-urut" type="number" value="0">
+          </div>
+          <div>
+            <label class="label" for="f-aktif">Status</label>
+            <select class="input" id="f-aktif">
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <p class="pesan-error" id="form-err"></p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn" id="btn-batal">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="daftar"><p class="muted">Loading…</p></section>
+  </main>
+<script src="/js/ikon.js"></script>
+<script src="/js/admin-core.js"></script>
+<script type="module" src="/js/promo.js"></script>
+</body>
+</html>

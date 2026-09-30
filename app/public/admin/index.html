@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — Admin Panel</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <aside id="sidebar"></aside>
+  <main id="main">
+    <header class="page-head">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="muted" id="dash-date"></p>
+      </div>
+    </header>
+
+    <section class="stat-grid" id="stat-grid" aria-label="Today's statistics">
+      <!-- 4 kartu statistik diisi oleh dashboard.js -->
+    </section>
+
+    <section class="card">
+      <h2>Last 7 Days Revenue</h2>
+      <div class="chart" id="chart-7h" aria-label="7-day revenue chart"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Latest Orders</h2>
+        <a href="/admin/pesanan.html" class="btn btn-ghost">View all</a>
+      </div>
+      <div class="table-wrap">
+        <table class="table" id="latest-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Time</th>
+              <th>Customer</th>
+              <th>Type</th>
+              <th>Total</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="/js/admin-core.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

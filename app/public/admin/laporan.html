@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sales Report — Admin</title>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<aside id="sidebar"></aside>
+<main id="main">
+  <div class="page-head">
+    <div>
+      <h1>Sales Report</h1>
+      <p class="muted">Summary of revenue, orders, and best-selling menus.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <form id="form-filter" class="filter-row">
+      <label class="field" style="margin-bottom:0"><span>From</span><input type="date" id="tgl-dari" required></label>
+      <label class="field" style="margin-bottom:0"><span>To</span><input type="date" id="tgl-sampai" required></label>
+      <button type="submit" class="btn btn-primary" style="align-self:flex-end">Show</button>
+    </form>
+  </div>
+
+  <div class="stat-grid" id="ringkasan">
+    <div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value" id="st-omzet">-</div></div>
+    <div class="stat-card"><div class="stat-label">Total Orders</div><div class="stat-value" id="st-pesanan">-</div></div>
+    <div class="stat-card"><div class="stat-label">Average / Order</div><div class="stat-value" id="st-rata">-</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 20px">
+    <div class="card">
+      <div class="card-head"><h2>Revenue per Day</h2></div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Date</th><th class="num">Orders</th><th class="num">Revenue</th></tr></thead>
+          <tbody id="tbody-hari"><tr><td colspan="3"><div class="empty-note">Select a date range, then press Show.</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h2>By Payment Method</h2></div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Method</th><th class="num">Orders</th><th class="num">Revenue</th></tr></thead>
+          <tbody id="tbody-metode"><tr><td colspan="3"><div class="empty-note">-</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Best-Selling Menu</h2></div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>#</th><th>Menu</th><th class="num">Sold</th><th class="num">Revenue</th></tr></thead>
+        <tbody id="tbody-terlaris"><tr><td colspan="4"><div class="empty-note">-</div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="/js/admin-core.js"></script>
+<script type="module" src="/js/laporan.js"></script>
+</body>
+</html>

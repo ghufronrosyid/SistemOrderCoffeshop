@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orders — Admin Panel</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <aside id="sidebar"></aside>
+  <main id="main">
+    <header class="page-head">
+      <div>
+        <h1>Orders</h1>
+        <p class="muted">Manage and monitor all customer orders.</p>
+      </div>
+      <button class="btn btn-ghost" id="btn-refresh">⟳ Reload</button>
+    </header>
+
+    <section class="card">
+      <div class="filter-row">
+        <div class="seg" id="status-filter" role="group" aria-label="Status filter">
+          <button type="button" data-status="" class="active">All</button>
+          <button type="button" data-status="baru">New</button>
+          <button type="button" data-status="dikonfirmasi">Confirmed</button>
+          <button type="button" data-status="diproses">In Progress</button>
+          <button type="button" data-status="siap">Ready</button>
+          <button type="button" data-status="selesai">Completed</button>
+          <button type="button" data-status="dibatalkan">Cancelled</button>
+        </div>
+        <input type="search" id="q" class="search" placeholder="Search code / customer name…" aria-label="Order search">
+      </div>
+      <div class="table-wrap">
+        <table class="table" id="orders-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Time</th>
+              <th>Customer</th>
+              <th>Type</th>
+              <th>Total</th>
+              <th>Payment</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="muted empty-note" id="orders-empty" hidden>No matching orders.</p>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="order-modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <h2 id="modal-title">Order Details</h2>
+        <button type="button" class="btn btn-ghost" id="modal-close"><svg class="ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Close</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="/js/ikon.js"></script>
+<script src="/js/admin-core.js"></script>
+  <script src="/js/printer-client.js"></script>
+  <script src="/js/pesanan.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kitchen (KDS) — Admin Panel</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="kds">
+  <aside id="sidebar"></aside>
+  <main id="main">
+    <header class="page-head">
+      <div>
+        <h1>Kitchen (KDS)</h1>
+        <p class="muted">Cook queue — refreshes automatically every 10 seconds.</p>
+      </div>
+      <button class="btn btn-ghost" id="btn-refresh">⟳ Reload</button>
+    </header>
+
+    <div class="kds-grid" id="kds-grid"></div>
+    <p class="kds-empty" id="kds-empty" hidden>No active orders</p>
+  </main>
+  <script src="/js/ikon.js"></script>
+<script src="/js/admin-core.js"></script>
+  <script src="/js/kds.js"></script>
+</body>
+</html>

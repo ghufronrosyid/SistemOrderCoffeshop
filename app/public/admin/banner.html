@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ad Banners — Admin Panel</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/admin.css">
+<style>
+  .banner-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .banner-card { background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:18px; border-top:4px solid #1C3A2E; }
+  .banner-card.nonaktif { border-top-color:#ccc; opacity:.75; }
+  .banner-card h3 { margin:0 0 4px; font-size:1.05rem; }
+  .banner-sub { color:var(--muted); font-size:.9rem; margin:0 0 8px; }
+  .banner-pratinjau { border-radius:10px; min-height:74px; padding:12px; margin:8px 0; display:flex; flex-direction:column; justify-content:flex-end; }
+  .banner-pratinjau .t-judul { font-weight:800; margin:0 0 2px; }
+  .banner-pratinjau .t-sub { font-size:.78rem; margin:0 0 8px; opacity:.85; }
+  .banner-pratinjau .t-cta { align-self:flex-start; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 12px; border-radius:999px; }
+  .tema-hijau { background:linear-gradient(135deg,#1C3A2E,#2E5A45); color:#F5EFE3; }
+  .tema-hijau .t-cta { background:#C9A227; color:#1C3A2E; }
+  .tema-emas { background:linear-gradient(135deg,#C9A227,#A88420); color:#1C3A2E; }
+  .tema-emas .t-cta { background:#1C3A2E; color:#F5EFE3; }
+  .tema-kopi { background:linear-gradient(135deg,#5C3D2E,#3E2A20); color:#F5EFE3; }
+  .tema-kopi .t-cta { background:#C9A227; color:#1C3A2E; }
+  .banner-meta { font-size:.8rem; color:var(--muted); margin:6px 0 12px; }
+  .banner-aksi { display:flex; gap:8px; }
+  .badge-aktif { background:#d3f9d8; color:#2b8a3e; font-size:.75rem; font-weight:700; padding:3px 10px; border-radius:12px; }
+  .badge-mati { background:#e9ecef; color:#868e96; font-size:.75rem; font-weight:700; padding:3px 10px; border-radius:12px; }
+  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .form-grid .penuh { grid-column:1 / -1; }
+  @media (max-width:520px){ .form-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+  <aside id="sidebar"></aside>
+  <main id="main">
+    <header class="page-head">
+      <div>
+        <h1>Ad Banners</h1>
+        <p class="muted">Banners appear on the customer Home page as a swipe carousel above Flash Sale. Tap a banner to open its link.</p>
+      </div>
+      <button class="btn btn-primary" id="btn-tambah">＋ Add Banner</button>
+    </header>
+
+    <section class="card sembunyi" id="form-wrap">
+      <h3 id="form-judul">Add Banner</h3>
+      <form id="form-banner">
+        <input type="hidden" id="f-id">
+        <div class="form-grid">
+          <div class="penuh">
+            <label class="label" for="f-judul">Title *</label>
+            <input class="input" id="f-judul" maxlength="80" placeholder="e.g.: Omakase Coffee Experience" required>
+          </div>
+          <div class="penuh">
+            <label class="label" for="f-sub">Subtitle</label>
+            <input class="input" id="f-sub" maxlength="140" placeholder="e.g.: Manual brewing ritual guided by our brewers">
+          </div>
+          <div class="penuh">
+            <label class="label" for="f-gambar">Image (path)</label>
+            <input class="input" id="f-gambar" placeholder="e.g.: /img/omakase.jpg — leave empty for theme background">
+          </div>
+          <div>
+            <label class="label" for="f-cta">Button text</label>
+            <input class="input" id="f-cta" maxlength="24" placeholder="e.g.: View Menu">
+          </div>
+          <div>
+            <label class="label" for="f-tautan">Link on tap</label>
+            <input class="input" id="f-tautan" placeholder="e.g.: /menu.html">
+          </div>
+          <div>
+            <label class="label" for="f-tema">Color theme</label>
+            <select class="input" id="f-tema">
+              <option value="hijau">Marble green (default)</option>
+              <option value="emas">Gold</option>
+              <option value="kopi">Coffee</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="f-urut">Order</label>
+            <input class="input" id="f-urut" type="number" value="0">
+          </div>
+          <div>
+            <label class="label" for="f-aktif">Status</label>
+            <select class="input" id="f-aktif">
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <p class="pesan-error" id="form-err"></p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn" id="btn-batal">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="daftar"><p class="muted">Loading…</p></section>
+  </main>
+<script src="/js/ikon.js"></script>
+<script src="/js/admin-core.js"></script>
+<script type="module" src="/js/banner.js"></script>
+</body>
+</html>

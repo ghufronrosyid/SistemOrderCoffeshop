@@ -1,0 +1,59 @@
+/* Gaya struk thermal 58mm / 80mm */
+body {
+  margin: 0;
+  padding: 12px;
+  background: #f2f2f2;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.struk {
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  line-height: 1.45;
+  padding: 8px 6px;
+  margin: 0 auto;
+  word-wrap: break-word;
+}
+.struk-58 { width: 58mm; }
+.struk-80 { width: 80mm; }
+
+.struk .tengah { text-align: center; }
+.struk .nama-toko { font-size: 16px; font-weight: bold; margin-bottom: 2px; }
+.struk .header-teks, .struk .footer-teks { white-space: pre-line; margin: 4px 0; }
+
+.struk .garis {
+  border-top: 1px dashed #000;
+  margin: 6px 0;
+}
+
+.struk .baris {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.struk .baris span:last-child { text-align: right; white-space: nowrap; }
+.struk .kecil { font-size: 11px; }
+.struk .item { margin-bottom: 4px; }
+.struk .baris.total { font-weight: bold; font-size: 14px; margin-top: 2px; }
+.struk .muted { color: #666; }
+
+/* Toolbar hanya tampil di layar, tidak ikut tercetak */
+.toolbar {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.toolbar .btn {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px 18px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; padding: 0; margin: 0; }
+  .struk { padding: 0; margin: 0; }
+  @page { size: auto; margin: 0; }
+}

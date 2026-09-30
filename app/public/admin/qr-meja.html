@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Table QR — Admin Panel</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/css/admin.css">
+<style>
+  .qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+  .qr-card {
+    background: #fff; border-radius: 14px; box-shadow: var(--shadow);
+    padding: 20px; text-align: center; border-top: 4px solid var(--accent);
+  }
+  .qr-card img { width: 100%; max-width: 220px; height: auto; margin: 0 auto 10px; }
+  .qr-meja { font-size: 1.5rem; font-weight: 800; color: var(--brand); margin: 0 0 4px; }
+  .qr-url { font-size: .75rem; color: var(--muted); word-break: break-all; margin: 0 0 10px; }
+  .qr-brand { font-size: .8rem; color: var(--muted); margin: 0; }
+  @media print {
+    #sidebar, .page-head .btn, .no-print { display: none !important; }
+    body { display: block; background: #fff; }
+    #main { max-width: none; padding: 0; }
+    .qr-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .qr-card { box-shadow: none; border: 2px solid #ddd; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <aside id="sidebar"></aside>
+  <main id="main">
+    <header class="page-head">
+      <div>
+        <h1>Table QR</h1>
+        <p class="muted">Print QR codes to stick on each table. Customers scan → the order page opens with the table number pre-filled.</p>
+      </div>
+      <button class="btn btn-primary" id="btn-cetak"><svg class="ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg> Print All</button>
+    </header>
+
+    <section class="card no-print">
+      <p class="muted" style="margin:0; font-size:.9rem">
+        QRs are generated from the <b>Server Address</b> on the Settings page.
+        Make sure the store computer's LAN IP is filled in (e.g. <code>http://192.168.1.10:3000</code>) so QRs can be opened from customers' phones connected to the store WiFi.
+        Current address: <code id="base-url">…</code>
+      </p>
+    </section>
+
+    <section id="qr-wrap"><p class="muted">Loading…</p></section>
+  </main>
+<script src="/js/ikon.js"></script>
+<script src="/js/admin-core.js"></script>
+<script type="module" src="/js/qr-meja.js"></script>
+</body>
+</html>

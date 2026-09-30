@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Master Data — Admin</title>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<aside id="sidebar"></aside>
+<main id="main">
+  <div class="page-head">
+    <div>
+      <h1>Master Data</h1>
+      <p class="muted">Manage categories, menus, option groups, and tables.</p>
+    </div>
+  </div>
+
+  <div class="seg" style="margin-bottom:16px">
+    <button type="button" class="active" data-tab="kategori">Category</button>
+    <button type="button" data-tab="menu">Menu</button>
+    <button type="button" data-tab="opsi">Option Groups</button>
+    <button type="button" data-tab="meja">Tables</button>
+  </div>
+
+  <!-- ============ TAB KATEGORI ============ -->
+  <section id="tab-kategori" class="tab-pane">
+    <div class="card">
+      <div class="card-head">
+        <h2>Category</h2>
+        <button class="btn btn-primary" id="btn-tambah-kategori" type="button">+ Add Category</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Name</th><th>Order</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="tbody-kategori"><tr><td colspan="4"><div class="empty-note">Loading…</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB MENU ============ -->
+  <section id="tab-menu" class="tab-pane" style="display:none">
+    <div class="card">
+      <div class="card-head">
+        <h2>Menu</h2>
+        <button class="btn btn-primary" id="btn-tambah-menu" type="button">+ Add Menu</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Name</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="tbody-menu"><tr><td colspan="5"><div class="empty-note">Loading…</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB GRUP OPSI ============ -->
+  <section id="tab-opsi" class="tab-pane" style="display:none">
+    <div class="card">
+      <div class="card-head">
+        <h2>Option Groups</h2>
+        <button class="btn btn-primary" id="btn-tambah-grup" type="button">+ Add Group</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Group Name</th><th>Type</th><th>Required</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="tbody-grup"><tr><td colspan="5"><div class="empty-note">Loading…</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card" id="card-opsi" style="display:none">
+      <div class="card-head">
+        <h2>Options — <span id="opsi-nama-grup"></span></h2>
+        <button class="btn btn-primary" id="btn-tambah-opsi" type="button">+ Add Option</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Name</th><th>Extra Price</th><th>Order</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="tbody-opsi"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB MEJA ============ -->
+  <section id="tab-meja" class="tab-pane" style="display:none">
+    <div class="card">
+      <div class="card-head">
+        <h2>Tables</h2>
+        <button class="btn btn-primary" id="btn-tambah-meja" type="button">+ Add Table</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Table Number</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="tbody-meja"><tr><td colspan="3"><div class="empty-note">Loading…</div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Modal Kategori -->
+<div class="modal-backdrop" id="modal-kategori" style="display:none">
+  <div class="modal-card">
+    <div class="modal-head"><h2 id="modal-kategori-judul">Add Category</h2><button type="button" class="btn btn-sm" data-tutup>Close</button></div>
+    <div class="modal-body">
+      <form id="form-kategori">
+        <input type="hidden" id="kat-id">
+        <label class="field"><span>Name*</span><input id="kat-nama" required maxlength="100"></label>
+        <label class="field"><span>Order</span><input id="kat-urutan" type="number" value="0"></label>
+        <label class="field"><span><input id="kat-aktif" type="checkbox" style="width:auto" checked> Active</span></label>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button type="button" class="btn" data-tutup>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Menu -->
+<div class="modal-backdrop" id="modal-menu" style="display:none">
+  <div class="modal-card">
+    <div class="modal-head"><h2 id="modal-menu-judul">Add Menu</h2><button type="button" class="btn btn-sm" data-tutup>Close</button></div>
+    <div class="modal-body">
+      <form id="form-menu">
+        <input type="hidden" id="menu-id">
+        <label class="field"><span>Category*</span><select id="menu-kategori" required></select></label>
+        <label class="field"><span>Name*</span><input id="menu-nama" required maxlength="150"></label>
+        <label class="field"><span>Description</span><textarea id="menu-deskripsi" rows="2"></textarea></label>
+        <label class="field"><span>Price (Rp)*</span><input id="menu-harga" type="number" min="0" required></label>
+        <label class="field"><span>Order</span><input id="menu-urutan" type="number" value="0"></label>
+        <label class="field"><span>Image (path)</span><input id="menu-gambar" placeholder="/img/placeholder.svg"></label>
+        <label class="field"><span><input id="menu-best" type="checkbox" style="width:auto"> Best seller</span></label>
+        <label class="field"><span><input id="menu-new" type="checkbox" style="width:auto"> New</span></label>
+        <label class="field"><span><input id="menu-aktif" type="checkbox" style="width:auto" checked> Active</span></label>
+        <div class="field"><span>Option Groups</span><div id="menu-grup-opsi"><span class="muted">Loading option groups…</span></div></div>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button type="button" class="btn" data-tutup>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Grup Opsi -->
+<div class="modal-backdrop" id="modal-grup" style="display:none">
+  <div class="modal-card">
+    <div class="modal-head"><h2 id="modal-grup-judul">Add Option Group</h2><button type="button" class="btn btn-sm" data-tutup>Close</button></div>
+    <div class="modal-body">
+      <form id="form-grup">
+        <input type="hidden" id="grup-id">
+        <label class="field"><span>Name*</span><input id="grup-nama" required maxlength="100" placeholder="e.g.: Size, Sugar Level"></label>
+        <label class="field"><span>Type*</span>
+          <select id="grup-tipe" required><option value="single">Single (select one)</option><option value="multiple">Multiple (select many)</option></select>
+        </label>
+        <label class="field"><span>Order</span><input id="grup-urutan" type="number" value="0"></label>
+        <label class="field"><span><input id="grup-required" type="checkbox" style="width:auto"> Required selection</span></label>
+        <label class="field"><span><input id="grup-aktif" type="checkbox" style="width:auto" checked> Active</span></label>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button type="button" class="btn" data-tutup>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Opsi -->
+<div class="modal-backdrop" id="modal-opsi" style="display:none">
+  <div class="modal-card">
+    <div class="modal-head"><h2 id="modal-opsi-judul">Add Option</h2><button type="button" class="btn btn-sm" data-tutup>Close</button></div>
+    <div class="modal-body">
+      <form id="form-opsi">
+        <input type="hidden" id="opsi-id">
+        <label class="field"><span>Name*</span><input id="opsi-nama" required maxlength="100" placeholder="e.g.: Oat Milk"></label>
+        <label class="field"><span>Extra Price (Rp)</span><input id="opsi-harga" type="number" value="0"></label>
+        <label class="field"><span>Order</span><input id="opsi-urutan" type="number" value="0"></label>
+        <label class="field"><span><input id="opsi-aktif" type="checkbox" style="width:auto" checked> Active</span></label>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button type="button" class="btn" data-tutup>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Meja -->
+<div class="modal-backdrop" id="modal-meja" style="display:none">
+  <div class="modal-card">
+    <div class="modal-head"><h2>Add Table</h2><button type="button" class="btn btn-sm" data-tutup>Close</button></div>
+    <div class="modal-body">
+      <form id="form-meja">
+        <label class="field"><span>Table Number*</span><input id="meja-nomor" required maxlength="20" placeholder="e.g.: A1"></label>
+        <label class="field"><span><input id="meja-aktif" type="checkbox" style="width:auto" checked> Active</span></label>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button type="button" class="btn" data-tutup>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/admin-core.js"></script>
+<script type="module" src="/js/menu.js"></script>
+</body>
+</html>
