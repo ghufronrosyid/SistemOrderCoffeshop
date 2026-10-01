@@ -1,11 +1,15 @@
+<head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"></head>
 <style>
 .ndemo{box-sizing:border-box;width:100%;display:flex;justify-content:center;background:transparent;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:#2C2822}
 .ndemo *{box-sizing:border-box}
 .ndemo .phone{width:100%;max-width:430px;background:#F7F2E6;min-height:560px;height:720px;position:relative;border-radius:18px;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:var(--hatch-widget-shadow,0 4px 18px rgba(0,0,0,.18));border:1px solid var(--hatch-widget-border,rgba(0,0,0,.08))}
+/* Halaman mandiri (Pages, bukan iframe/widget): layar kecil jadi full-bleed */
+html.standalone body{margin:0;background:#F7F2E6}
+@media(max-width:480px){html.standalone .ndemo .phone{max-width:none;height:100dvh;min-height:100dvh;border-radius:0;border:0;box-shadow:none}html.standalone .ndemo .splash{height:100dvh;margin-bottom:-100dvh}}
 
 
 
-.ndemo .tabs{position:fixed;left:50%;transform:translateX(-50%);width:min(398px,calc(100vw - 32px));bottom:14px;z-index:60;display:flex;gap:2px;background:#0F2019;border-radius:999px;padding:7px;box-shadow:0 8px 24px rgba(15,32,25,.42);border:1px solid rgba(201,162,39,.28)}
+.ndemo .tabs{position:fixed;left:50%;transform:translateX(-50%);width:min(398px,calc(100vw - 32px));bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;display:flex;gap:2px;background:#0F2019;border-radius:999px;padding:7px;box-shadow:0 8px 24px rgba(15,32,25,.42);border:1px solid rgba(201,162,39,.28)}
 .ndemo .tabs button{flex:1;background:none;border:none;color:#9db3a6;padding:9px 0;border-radius:999px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;transition:background .25s ease,color .25s ease}
 .ndemo .tabs button.on{background:#F7F2E6;color:#1C3A2E}
 .ndemo .tabs button .ic-nav{width:23px;height:23px}
@@ -567,6 +571,8 @@ border-bottom:1px solid rgba(201,162,39,.45)}
 <script>
 (function(){
 "use strict";
+/* Halaman mandiri (bukan iframe/widget): tandai <html> agar CSS full-bleed aktif */
+try{ if(window.self===window.top){ document.documentElement.classList.add("standalone"); } }catch(e){}
 /* Ikon SVG garis (turunan Lucide, ISC). ic(nama, kelas) -> svg string. */
 var IC_RAW = {
   beranda: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg>",
