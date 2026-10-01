@@ -1,0 +1,17 @@
+# Render Blueprint — deploy gratis aplikasi Nordic untuk testing.
+# Cara pakai: hubungkan repo ini ke Render (New → Web Service),
+# Render otomatis membaca file ini lalu deploy.
+services:
+  - type: web
+    name: nordic-test
+    runtime: node
+    plan: free
+    rootDir: app
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+    # PORT diisi otomatis oleh Render; config.js sudah membacanya.
