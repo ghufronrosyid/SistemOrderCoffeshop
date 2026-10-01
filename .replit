@@ -1,0 +1,5 @@
+# Replit — testing gratis aplikasi Nordic (tanpa kartu).
+# Cara pakai: replit.com → Create Repl → Import from GitHub →
+# tempel: ghufronrosyid/SistemOrderCoffeshop → Run.
+# Kalau error "module not found", buka tab Shell sekali lalu jalankan: npm install
+run = "cd app && npm start"
