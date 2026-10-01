@@ -1,0 +1,1216 @@
+<style>
+.ndemo{box-sizing:border-box;width:100%;display:flex;justify-content:center;background:transparent;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:#2C2822}
+.ndemo *{box-sizing:border-box}
+.ndemo .phone{width:100%;max-width:430px;background:#F7F2E6;min-height:560px;height:720px;position:relative;border-radius:18px;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:var(--hatch-widget-shadow,0 4px 18px rgba(0,0,0,.18));border:1px solid var(--hatch-widget-border,rgba(0,0,0,.08))}
+
+
+
+.ndemo .tabs{position:fixed;left:50%;transform:translateX(-50%);width:min(398px,calc(100vw - 32px));bottom:14px;z-index:60;display:flex;gap:2px;background:#0F2019;border-radius:999px;padding:7px;box-shadow:0 8px 24px rgba(15,32,25,.42);border:1px solid rgba(201,162,39,.28)}
+.ndemo .tabs button{flex:1;background:none;border:none;color:#9db3a6;padding:9px 0;border-radius:999px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;transition:background .25s ease,color .25s ease}
+.ndemo .tabs button.on{background:#F7F2E6;color:#1C3A2E}
+.ndemo .tabs button .ic-nav{width:23px;height:23px}
+.ndemo .tabs{transition:transform .3s ease,opacity .3s ease}
+.ndemo .fab{transition:opacity .3s ease}
+.ndemo.modal-terbuka .tabs{transform:translateX(-50%) translateY(140%);opacity:0;pointer-events:none}
+.ndemo.modal-terbuka .fab{opacity:0;pointer-events:none}
+.ndemo .view{display:none;padding-bottom:96px}
+.ndemo .view.on{display:block}
+.ndemo .pills{display:flex;gap:8px;overflow-x:auto;padding:12px 14px;background:#F7F2E6;scrollbar-width:none}
+.ndemo .pills::-webkit-scrollbar{display:none}
+.ndemo .pill{flex:0 0 auto;border:1.5px solid #1C3A2E;background:#fff;color:#1C3A2E;border-radius:999px;padding:8px 16px;font-size:.85rem;cursor:pointer;font-family:inherit}
+.ndemo .pill.on{background:#1C3A2E;color:#fff}
+.ndemo .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:4px 14px 16px}
+.ndemo .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(20,42,33,.12);cursor:pointer;display:flex;flex-direction:column;position:relative;border:none;padding:0;text-align:left;font-family:inherit;color:inherit;width:100%}
+.ndemo .card:active{transform:scale(.98)}
+.ndemo .art{height:92px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1C3A2E,#2d5a46)}
+.ndemo .cb{padding:10px 12px 14px;flex:1;display:flex;flex-direction:column}
+.ndemo .cn{font-weight:700;font-size:.9rem;margin:0 0 4px}
+.ndemo .cd{font-size:.76rem;color:#7D7261;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;margin:0 0 8px}
+.ndemo .cp{font-weight:800;color:#1C3A2E;font-size:.92rem}
+.ndemo .bdg{position:absolute;top:8px;left:8px;background:#C9A227;color:#0F2019;font-size:.66rem;font-weight:800;padding:3px 9px;border-radius:999px;z-index:2}
+.ndemo .ov{position:fixed;inset:0;background:rgba(15,32,25,.55);z-index:50;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.ndemo .ov.open{opacity:1;pointer-events:auto}
+.ndemo .sheet{background:#fff;width:100%;max-width:430px;max-height:92%;overflow-y:auto;border-radius:20px 20px 0 0;transform:translateY(30px);transition:transform .25s}
+.ndemo .ov.open .sheet{transform:none}
+.ndemo .sart{height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1C3A2E,#2d5a46)}
+.ndemo .sb{padding:18px 20px 26px}
+.ndemo .sb h2{margin:0 0 4px;font-size:1.22rem}
+.ndemo .sbd{color:#7D7261;font-size:.88rem;margin:0 0 6px}
+.ndemo .sbp{font-weight:700;color:#1C3A2E;margin:0 0 4px;font-size:.92rem}
+.ndemo .x{float:right;border:none;background:#EFE6CF;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;color:#1C3A2E;font-family:inherit}
+.ndemo .og{margin:14px 0;border-top:1px dashed #E2D3B0;padding-top:10px}
+.ndemo .og h4{font-size:.93rem;margin:0 0 6px}
+.ndemo .req{color:#B3261E}
+.ndemo .op{display:flex;align-items:center;gap:12px;padding:11px 4px;font-size:.93rem;cursor:pointer;border-bottom:1px solid #F7F2E6}
+.ndemo .op input{width:20px;height:20px;accent-color:#1C3A2E;flex:0 0 auto}
+.ndemo .op .onm{flex:1}
+.ndemo .op .dl{color:#7D7261;font-size:.83rem}
+.ndemo .op .dl.free{color:#2F7D4F}
+.ndemo .qtyrow{display:flex;align-items:center;justify-content:space-between;margin:16px 0}
+.ndemo .step{display:flex;align-items:center;gap:14px}
+.ndemo .step button{width:44px;height:44px;border-radius:50%;border:1.5px solid #1C3A2E;background:#fff;color:#1C3A2E;font-size:1.3rem;font-weight:800;cursor:pointer;font-family:inherit}
+.ndemo .qv{font-size:1.15rem;font-weight:800;min-width:28px;text-align:center}
+.ndemo .live{font-size:1.22rem;font-weight:800;color:#1C3A2E}
+.ndemo .btn{display:block;width:100%;border:none;border-radius:12px;background:#1C3A2E;color:#fff;font-size:1.02rem;font-weight:700;padding:15px;cursor:pointer;margin-top:8px;font-family:inherit}
+.ndemo .btn:active{transform:scale(.99)}
+.ndemo .btn.gold{background:#C9A227;color:#0F2019}
+.ndemo .btn.ghost{background:#EFE6CF;color:#1C3A2E;border:1.5px solid #E2D3B0}
+.ndemo .err{display:none;background:#FDECEA;color:#B3261E;border:1px solid #B3261E;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:.88rem}
+.ndemo .err.show{display:block}
+.ndemo .fab{position:fixed;right:max(16px,calc(50vw - 199px));bottom:96px;z-index:40;min-width:62px;height:62px;border-radius:999px;border:none;background:#1C3A2E;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(15,32,25,.45);display:flex;align-items:center;justify-content:center;gap:6px;padding:0 16px;font-family:inherit;font-weight:700;font-size:.85rem}
+.ndemo .fab .n{position:absolute;top:-5px;right:-5px;background:#B3261E;color:#fff;font-size:.72rem;font-weight:800;min-width:24px;height:24px;border-radius:999px;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.ndemo .dov{position:fixed;inset:0;background:rgba(15,32,25,.55);z-index:50;display:none}
+.ndemo .dov.open{display:block}
+.ndemo .drw{position:fixed;top:50%;left:50%;width:min(430px,calc(100% - 32px));max-height:88%;background:#F7F2E6;z-index:51;border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.3);transform:translate(-50%,-50%) scale(.94);opacity:0;pointer-events:none;transition:transform .25s ease,opacity .25s ease;display:flex;flex-direction:column}
+.ndemo .drw.open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
+.ndemo .dh{color:#F7F2E6;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;background:radial-gradient(120% 100% at 50% 0%,rgba(201,162,39,.14),rgba(201,162,39,0) 55%),linear-gradient(135deg,#0F2019 0%,#1C3A2E 70%,#2A4A3B 100%);border-bottom:1px solid rgba(201,162,39,.35)}
+.ndemo .dh h2{flex:1;text-align:center;margin:0}
+.ndemo .df{padding:12px 14px 16px;background:#F7F2E6;border-top:1px solid rgba(0,0,0,.08)}
+.ndemo .df:empty{display:none}
+.ndemo .dh h2{margin:0;font-size:1.08rem}
+.ndemo .db{overflow-y:auto;padding:14px 14px 30px;flex:1}
+.ndemo .ci{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(20,42,33,.1);padding:12px 14px;margin-bottom:10px}
+.ndemo .ci .t{display:flex;justify-content:space-between;gap:8px;font-weight:700;font-size:.92rem}
+.ndemo .ci .o{font-size:.8rem;color:#7D7261;margin:4px 0}
+.ndemo .ci .b{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.ndemo .ci .st{font-weight:800;color:#1C3A2E}
+.ndemo .del{border:none;background:none;color:#B3261E;font-size:.82rem;font-weight:700;cursor:pointer;padding:6px;font-family:inherit;text-decoration:underline}
+.ndemo .step.sm button{width:34px;height:34px;font-size:1.1rem}
+.ndemo .step.sm .qv{font-size:1rem}
+.ndemo .fm{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(20,42,33,.1);padding:16px;margin:16px 0}
+.ndemo .fm h3{font-size:.98rem;color:#142A21;margin:0 0 10px}
+.ndemo .lbl{display:block;font-weight:700;margin:10px 0 6px;font-size:.88rem}
+.ndemo .inp{width:100%;border:1.5px solid #E2D3B0;border-radius:10px;padding:12px 14px;font-size:1rem;font-family:inherit;background:#fff;color:#2C2822}
+.ndemo .inp:focus{outline:2px solid #C9A227;border-color:#C9A227}
+.ndemo .seg{display:flex;gap:8px;flex-wrap:wrap}
+.ndemo .seg label{flex:1;border:1.5px solid #E2D3B0;border-radius:10px;padding:11px 8px;text-align:center;font-size:.86rem;cursor:pointer;background:#fff;min-width:88px}
+.ndemo .seg label.on{border-color:#1C3A2E;background:#F4EDD9;font-weight:700}
+.ndemo .seg input{display:none}
+.ndemo .tr{display:flex;justify-content:space-between;padding:5px 0;font-size:.93rem}
+.ndemo .tr.tt{font-weight:800;font-size:1.12rem;color:#1C3A2E;border-top:2px solid #E2D3B0;margin-top:6px;padding-top:10px}
+.ndemo .suc{text-align:center;padding:44px 24px}
+.ndemo .ck{width:72px;height:72px;border-radius:50%;background:#2F7D4F;color:#fff;font-size:2.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto}
+.ndemo .suc h2{color:#142A21;margin:12px 0;font-size:1.25rem}
+.ndemo .code{font-size:2rem;font-weight:800;letter-spacing:3px;color:#1C3A2E;background:#fff;border:2px dashed #C9A227;border-radius:12px;padding:14px 8px;margin:14px 0}
+.ndemo .suc .tt2{font-size:1.2rem;font-weight:700;margin-bottom:6px}
+.ndemo .suc p{color:#7D7261;font-size:.88rem;margin:0 0 4px}
+.ndemo .lf{max-width:400px;margin:24px auto;padding:0 16px}
+.ndemo .lkrow{display:flex;gap:8px}
+.ndemo .tl{list-style:none;margin:16px 0 8px;padding:0}
+.ndemo .tl li{position:relative;padding:0 0 20px 40px}
+.ndemo .tl li::before{content:"";position:absolute;left:12px;top:28px;bottom:-2px;width:3px;background:#E2D3B0}
+.ndemo .tl li:last-child::before{display:none}
+.ndemo .tl li.done::before{background:#1C3A2E}
+.ndemo .dt{position:absolute;left:4px;top:2px;width:22px;height:22px;border-radius:50%;background:#fff;border:2.5px solid #E2D3B0}
+.ndemo .tl li.done .dt{background:#1C3A2E;border-color:#1C3A2E}
+.ndemo .tl li.now .dt{background:#C9A227;border-color:#A88420;box-shadow:0 0 0 5px rgba(201,162,39,.25)}
+.ndemo .tn{font-weight:700;font-size:.93rem}
+.ndemo .tl li.done .tn,.ndemo .tl li.now .tn{color:#142A21}
+.ndemo .tk{font-size:.8rem;color:#7D7261}
+.ndemo .kartu{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(20,42,33,.1);padding:16px;margin-bottom:14px}
+.ndemo .kartu h3{font-size:.98rem;color:#142A21;margin:0 0 8px}
+.ndemo .kartu p{font-size:.9rem;margin:0 0 8px}
+.ndemo .kv{font-size:.8rem;color:#7D7261;margin-top:8px}
+.ndemo .kv b{display:block;color:#2C2822;font-size:.93rem;font-weight:700}
+.ndemo .stt{font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:999px;background:#dcfce7;color:#15803d}
+.ndemo .ab{padding:20px 16px}
+.ndemo .pmap{border-radius:14px;overflow:hidden;border:1px solid #E3D5A8;box-shadow:0 4px 14px rgba(30,58,43,.10);margin:10px 0 12px;line-height:0}
+.ndemo .pmap svg{width:100%;height:auto;display:block}
+.ndemo .ppulsa{transform-origin:205px 118px;animation:ppulsa 2.2s ease-out infinite}
+@keyframes ppulsa{0%{transform:scale(.6);opacity:.35}70%{transform:scale(1.7);opacity:0}100%{transform:scale(1.7);opacity:0}}
+.ndemo .rute{display:inline-block;margin-top:10px;background:linear-gradient(135deg,#C9A227,#B8911F);color:#1E3A2B;font-weight:700;font-size:.85rem;padding:10px 18px;border-radius:999px;text-decoration:none}
+.ndemo .rute:active{transform:scale(.96)}
+.ndemo .ab h4{color:#1E3A2B;margin:18px 0 8px;font-size:.95rem}
+.ndemo .psoc{display:flex;gap:12px;flex-wrap:wrap}
+.ndemo .psoc a{width:50px;height:50px;border-radius:50%;background:#1E3A2B;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(30,58,43,.18)}
+.ndemo .psoc a:active{transform:scale(.9)}
+.ndemo .psoc svg{width:23px;height:23px;color:#F7F2E6}
+.ndemo .ppay{display:flex;gap:8px;flex-wrap:wrap}
+.ndemo .ppay .chip{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border:1.5px solid #C9A227;border-radius:999px;background:#FFFDF6;color:#1E3A2B;font-weight:600;font-size:.82rem}
+.ndemo .ppay .chip svg{width:18px;height:18px}
+.ndemo .note{background:var(--hatch-widget-surface-muted,rgba(0,0,0,.04));border:1px solid var(--hatch-widget-border,rgba(0,0,0,.1));border-radius:10px;padding:10px 14px;font-size:.8rem;color:var(--hatch-widget-muted,#666);margin:12px 14px 18px}
+.ndemo .note b{color:var(--hatch-widget-text,#333)}
+.ndemo .empty{text-align:center;color:#7D7261;padding:36px 16px;font-size:.92rem}
+.ndemo .irow{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid #F7F2E6;font-size:.9rem}
+.ndemo .irow:last-child{border-bottom:none}
+.ndemo .isub{font-size:.78rem;color:#7D7261}
+
+.ndemo .hdr{color:#F7F2E6;padding:24px 16px 20px;text-align:center;position:sticky;top:0;z-index:45;overflow:hidden;transition:padding .35s ease,box-shadow .35s ease;
+background:radial-gradient(100% 75% at 50% -12%,rgba(247,242,230,.13),rgba(247,242,230,0) 60%),radial-gradient(85% 55% at 50% 112%,rgba(201,162,39,.14),rgba(201,162,39,0) 70%),linear-gradient(168deg,#1E4033 0%,#162E24 58%,#0E2019 100%);
+border-bottom:1px solid rgba(201,162,39,.45)}
+.ndemo .hdr h1{margin:0;font-size:1.16rem;font-weight:700;letter-spacing:2.5px}
+.ndemo .hdr .hdiv{display:flex;align-items:center;justify-content:center;gap:9px;margin:10px 0 8px}
+.ndemo .hdr .hdiv::before,.ndemo .hdr .hdiv::after{content:"";height:1px;width:52px}
+.ndemo .hdr .hdiv::before{background:linear-gradient(90deg,rgba(201,162,39,0),rgba(201,162,39,.9))}
+.ndemo .hdr .hdiv::after{background:linear-gradient(90deg,rgba(201,162,39,.9),rgba(201,162,39,0))}
+.ndemo .hdr .hdiv i{width:6px;height:6px;background:#C9A227;transform:rotate(45deg);display:block}
+.ndemo .hdr p{margin:0;font-size:.66rem;letter-spacing:3.5px;text-indent:3.5px;color:#C9A227;font-weight:600;text-transform:uppercase;transition:font-size .35s ease,letter-spacing .35s ease}
+.ndemo .hdr .hdiv{transition:opacity .3s ease,margin .35s ease,max-height .35s ease;max-height:26px;overflow:hidden}
+.ndemo .hdr .mode-chip{transition:margin .35s ease}
+.ndemo.scrolled .hdr{padding:10px 14px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,.32)}
+.ndemo.scrolled .hdr .hdiv{opacity:0;max-height:0;margin-top:0;margin-bottom:0}
+.ndemo.scrolled .hdr p{font-size:.6rem;letter-spacing:2px}
+.ndemo.scrolled .hdr .mode-chip{margin:0}
+.ndemo .mode-chip{display:none;margin:9px auto 0;padding:5px 14px;border-radius:999px;border:1px solid rgba(201,162,39,.55);background:rgba(0,0,0,.28);color:#F7F2E6;font-size:.66rem;font-weight:700;letter-spacing:2px;text-indent:2px;text-transform:uppercase;cursor:pointer}
+.ndemo .mode-chip.tampil{display:block}
+
+.ndemo .pill.s1{background:#E3EDF7;color:#1D5FA8}
+
+
+.ndemo .pill.s2{background:#FFF3E2;color:#C25E00}
+
+.ndemo .pill.s3{background:#DFF2E3;color:#1E7A34}
+
+
+.ndemo .pill.s4{background:#1C3A2E;color:#fff}
+
+
+.ndemo .ocard{background:#fff;border-radius:18px;padding:16px;box-shadow:0 2px 12px rgba(20,42,33,.10);margin:0 0 14px}
+.ndemo .ocard .oh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.ndemo .ocard .oc{margin:0 0 4px;font-weight:800;font-size:1.02rem;letter-spacing:.02em;color:#1C3A2E}
+.ndemo .ocard .ow{margin:0;color:#8a7f68;font-size:.85rem}
+.ndemo .ocard .pill{flex:0 0 auto;cursor:default;font-size:.72rem;font-weight:800;padding:7px 13px;white-space:nowrap}
+.ndemo .ocard .of{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px dashed #E7DFC9}
+.ndemo .ocard .ot{font-weight:800;font-size:1.05rem;color:#1C3A2E}
+/* Timeline vertikal: node ikon + garis alur */
+.ndemo .steps{margin:16px 0 2px}
+.ndemo .tstep{position:relative;display:flex;align-items:center;gap:12px;padding:0 0 20px}
+.ndemo .tstep:last-child{padding-bottom:2px}
+.ndemo .tstep:not(:last-child)::before{content:"";position:absolute;left:16px;top:36px;bottom:0;width:2px;border-radius:2px;background:#E9E1CB}
+.ndemo .tstep.done:not(:last-child)::before{background:#1C3A2E}
+.ndemo .tnode{position:relative;z-index:1;width:34px;height:34px;flex:0 0 34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#F4EEE0;color:#A29372;border:1.5px solid #E9E1CB}
+.ndemo .tnode .ic-stage{width:19px;height:19px}
+.ndemo .tstep.done .tnode{background:#1C3A2E;border-color:#1C3A2E;color:#F7F2E6}
+.ndemo .tstep.now .tnode{background:#fff;border-color:#C9A227;color:#1C3A2E;box-shadow:0 0 0 4px rgba(201,162,39,.18)}
+.ndemo .tlab{font-size:.88rem;font-weight:600;color:#A29372}
+.ndemo .tstep.done .tlab{color:#1C3A2E}
+.ndemo .tstep.now .tlab{color:#1C3A2E;font-weight:800}
+/* Splash screen */
+.ndemo .splash{position:sticky;top:0;z-index:100;height:720px;margin-bottom:-720px;display:flex;align-items:center;justify-content:center;background-color:#F8F7F3;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.045 0"/></filter><rect width="140" height="140" filter="url(%23n)"/></svg>');transition:opacity .55s ease,visibility .55s}
+.ndemo .splash.pergi{opacity:0;visibility:hidden;pointer-events:none}
+.ndemo .splash-inner{text-align:center;padding:0 40px}
+.ndemo .splash-emblem{width:108px;height:108px;mix-blend-mode:multiply;animation:splEmblem .7s cubic-bezier(.2,.9,.3,1.25) both}
+.ndemo .splash-word{margin:16px 0 0;font-family:ui-rounded,"SF Pro Rounded","Hiragino Maru Gothic ProN",system-ui,-apple-system,sans-serif;font-weight:700;font-size:2.1rem;letter-spacing:.32em;text-indent:.32em;color:#1E3A2A;white-space:nowrap}
+.ndemo .splash-word span{display:inline-block;opacity:0;animation:splHuruf .55s cubic-bezier(.2,.8,.3,1.15) forwards}
+.ndemo .splash-word span:nth-child(1){animation-delay:.45s}
+.ndemo .splash-word span:nth-child(2){animation-delay:.53s}
+.ndemo .splash-word span:nth-child(3){animation-delay:.61s}
+.ndemo .splash-word span:nth-child(4){animation-delay:.69s}
+.ndemo .splash-word span:nth-child(5){animation-delay:.77s}
+.ndemo .splash-word span:nth-child(6){animation-delay:.85s}
+.ndemo .splash-rule{height:2px;width:0;margin:12px auto 0;background:linear-gradient(90deg,transparent,#C9A227,transparent);animation:splRule .6s ease 1.15s forwards}
+.ndemo .splash-founders{width:180px;margin-top:12px;mix-blend-mode:multiply;opacity:0;animation:splFade .7s ease 1.35s forwards}
+@keyframes splEmblem{from{opacity:0;transform:scale(.78)}to{opacity:1;transform:scale(1)}}
+@keyframes splHuruf{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes splRule{to{width:160px}}
+@keyframes splFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+
+
+.ndemo .auto-note{font-size:.78rem;color:#7D7261;margin:0 0 10px}
+
+
+.ndemo .lagi{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(20,42,33,.1);padding:12px 14px;margin-bottom:8px}
+
+
+.ndemo .lagi .lk{margin:0;font-weight:800;font-size:.85rem}
+
+
+.ndemo .lagi .lt{margin:2px 0 0;font-size:.72rem;color:#7D7261}
+
+
+.ndemo .btn.sm{width:auto;margin:0;padding:9px 16px;font-size:.8rem}
+
+
+.ndemo .emptybox{text-align:center;background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(20,42,33,.1);padding:30px 16px;font-size:2rem}
+
+
+.ndemo .emptybox p{font-size:.82rem;color:#7D7261}
+
+
+
+/* ===== Ikon SVG garis + animasi tap ===== */
+.ndemo svg.ic-nav{width:26px;height:26px}
+
+
+.ndemo svg.ic-t{width:26px;height:26px;vertical-align:-6px;margin-right:2px}
+
+
+.ndemo svg.ic-h{width:19px;height:19px;vertical-align:-3px}
+
+
+.ndemo svg.ic-x{width:18px;height:18px}
+
+
+.ndemo svg.ic-bdg{width:13px;height:13px;vertical-align:-2px}
+
+
+.ndemo svg.ic-btn{width:17px;height:17px;vertical-align:-3px}
+
+
+.ndemo svg.ic-del{width:18px;height:18px}
+
+
+.ndemo svg.ic-step{width:15px;height:15px}
+
+
+.ndemo svg.ic-back{width:22px;height:22px}
+
+
+.ndemo svg.ic-stage{width:22px;height:22px}
+
+
+.ndemo svg.ic-empty{width:46px;height:46px;color:#B9AC93;margin-bottom:8px}
+
+
+.ndemo svg.ic-sm{width:15px;height:15px;vertical-align:-2px}
+
+
+.ndemo .back{display:inline-flex;align-items:center}
+
+
+.ndemo .seg button svg.ic-t{vertical-align:middle}
+
+
+.ndemo .ketuk{animation:ketuk .32s ease}
+
+
+.ndemo button{-webkit-tap-highlight-color:transparent}@keyframes ketuk{0%{transform:scale(1)}35%{transform:scale(.84)}70%{transform:scale(1.07)}100%{transform:scale(1)}}
+.ndemo .sechead{display:flex;justify-content:space-between;align-items:center;margin:0 0 8px}
+.ndemo .sechead h3{margin:0;font-size:1rem}
+.ndemo .sechead .cd{background:#FFF3E2;color:#C25E00;font-weight:800;font-size:.8rem;padding:5px 12px;border-radius:16px}
+.ndemo .sechead .link{background:none;border:none;color:#1C3A2E;font-weight:700;font-size:.78rem;cursor:pointer}
+.ndemo .hscroll{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x mandatory}
+.ndemo .hscroll::-webkit-scrollbar{display:none}
+.ndemo #wrap-banner{margin:2px 0 4px}
+.ndemo .kor-banner{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 8px;scrollbar-width:none}
+.ndemo .kor-banner::-webkit-scrollbar{display:none}
+.ndemo .kor-banner .bnr{position:relative;flex:0 0 86%;scroll-snap-align:center;border-radius:18px;overflow:hidden;color:#F7F2E6;padding:20px 18px 16px;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;text-decoration:none;cursor:pointer}
+.ndemo .kor-banner .bnr .blatar{position:absolute;inset:0;background-size:cover;background-position:center}
+.ndemo .kor-banner .bnr.t-hijau{background:linear-gradient(135deg,#1C3A2E,#2E5B45)}
+.ndemo .kor-banner .bnr.t-emas{background:linear-gradient(135deg,#8A6D1F,#C9A227)}
+.ndemo .kor-banner .bnr.t-kopi{background:linear-gradient(135deg,#4A3226,#6B4A34)}
+.ndemo .bnr h4{margin:0;font-size:1.02rem;position:relative}
+.ndemo .bnr p{margin:0;font-size:.8rem;opacity:.92;position:relative}
+.ndemo .bnr .bcta{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:999px;background:#C9A227;color:#1C3A2E;position:relative;align-self:flex-start;margin-top:4px}
+.ndemo .bnr.t-emas .bcta{background:#1C3A2E;color:#F7F2E6}
+.ndemo .titik-banner{display:flex;justify-content:center;gap:6px;padding:2px 0 4px}
+.ndemo .titik-banner span{width:6px;height:6px;border-radius:4px;background:#D8CFBF;transition:all .3s}
+.ndemo .titik-banner span.on{width:20px;background:#C9A227}
+.ndemo .kor-banner .bnr.g{padding:0;min-height:0;display:block;aspect-ratio:16/9}
+.ndemo .kor-banner .bnr.g img{width:100%;height:100%;object-fit:cover;display:block}
+/* ===== Kartu Flash Sale ===== */
+.ndemo .pcard{position:relative;flex:0 0 240px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(20,42,33,.12);border:1px solid #FFE1B8;scroll-snap-align:start}
+.ndemo .pimg{height:120px;background:#1C3A2E;display:flex;align-items:center;justify-content:center}
+.ndemo .pb{padding:12px 14px 14px}
+.ndemo .pb h4{margin:0 0 2px;font-size:.95rem;color:#1C3A2E}
+.ndemo .pb .pn{margin:0 0 8px;font-size:.7rem;color:#a89a7c;letter-spacing:.05em}
+.ndemo .ph.tumpuk{display:flex;flex-direction:column;gap:1px;padding-right:54px}
+.ndemo .coret s{color:#a89a7c;font-size:.82rem}
+.ndemo .merah{color:#D9480F;font-weight:800;font-size:1.06rem}
+.ndemo .padd{position:absolute;right:10px;bottom:10px;width:46px;height:46px;border:none;border-radius:50%;background:#1C3A2E;color:#F6F1E8;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 14px rgba(20,42,33,.3);font-family:inherit;padding:0}
+.ndemo .padd .ic-btn{width:22px;height:22px}
+.ndemo .pplus{position:absolute;top:-3px;right:-3px;width:20px;height:20px;border-radius:50%;background:#C9A227;color:#1C3A2E;font-size:14px;font-weight:800;line-height:20px;text-align:center}
+/* ===== Tombol mode Dine-In / Take Away ===== */
+.ndemo #seg-tipe{display:flex;gap:8px}
+.ndemo #seg-tipe button{flex:1 1 0;overflow:hidden;border:2px solid #EFE7D3;background:#FBF7EC;border-radius:14px;padding:12px 4px;min-height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:#1C3A2E;font-family:inherit;transition:flex .38s ease,padding .38s ease,min-height .38s ease}
+.ndemo #seg-tipe button .ic-t{width:26px;height:26px;flex:0 0 auto}
+.ndemo #seg-tipe button span{font-size:.78rem;font-weight:700;transition:opacity .22s ease}
+.ndemo #seg-tipe button.on{border-color:#1C3A2E;background:#fff;box-shadow:0 2px 10px rgba(20,42,33,.14)}
+.ndemo #seg-tipe.ada-pilih button.on{flex:2.8}
+.ndemo #seg-tipe.ada-pilih button:not(.on){flex:.6;padding:8px 2px;min-height:50px}
+.ndemo #seg-tipe.ada-pilih button:not(.on) span{opacity:0;font-size:0}
+/* ===== Kartu Produk Baru ===== */
+.ndemo .ucard{position:relative;flex:0 0 168px;background:#fff;border:none;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(20,42,33,.12);cursor:pointer;font-family:inherit;text-align:left;padding:0;color:inherit;scroll-snap-align:start}
+.ndemo .uimg{height:104px;background:#1C3A2E;display:flex;align-items:center;justify-content:center}
+.ndemo .ub{padding:10px 12px 12px}
+.ndemo .ub h4{margin:0 0 4px;font-size:.85rem;color:#1C3A2E;line-height:1.3}
+.ndemo .up{font-size:.85rem;font-weight:800;color:#1C3A2E}
+/* ===== Badge ===== */
+.ndemo .bdg-new{position:absolute;top:8px;left:8px;z-index:2;display:inline-flex;align-items:center;gap:4px;background:#1C3A2E;color:#F7F2E6;font-size:.62rem;font-weight:800;letter-spacing:.05em;padding:4px 9px;border-radius:999px}
+.ndemo .bdg-new .ic-bdg{width:12px;height:12px}
+.ndemo .tag-new{display:inline-flex;align-items:center;gap:4px;background:#1C3A2E;color:#F7F2E6;font-size:.62rem;font-weight:800;letter-spacing:.05em;padding:4px 9px;border-radius:999px;vertical-align:middle}
+.ndemo .tag-new .ic-bdg{width:12px;height:12px}
+.ndemo .bdg2{display:inline-block;background:#FFF3E2;color:#C25E00;font-size:.68rem;font-weight:800;padding:3px 8px;border-radius:999px;margin-top:4px}
+.ndemo .bdg2 .ic-bdg{width:12px;height:12px;vertical-align:-2px}
+/* ===== Teks fallback banner (tanpa gambar) ===== */
+.ndemo .kor-banner .bnr .bi{position:relative;padding:18px;width:100%}
+.ndemo .kor-banner .bnr .bi h3{margin:0 0 4px;font-size:1.02rem}
+.ndemo .kor-banner .bnr .bi p{margin:0 0 10px;font-size:.78rem;opacity:.85}
+.ndemo .bcta{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:#C9A227;color:#1C3A2E}
+.ndemo .art,.ndemo .pimg,.ndemo .uimg{display:block;overflow:hidden;padding:0}.ndemo .sheet{display:flex;flex-direction:column;overflow:visible;position:relative;background:transparent}.ndemo .toast{position:absolute;left:20px;right:20px;bottom:calc(100% + 12px);z-index:60;background:rgba(28,42,34,.96);color:#FFF6E3;border:1px solid rgba(201,162,75,.45);border-radius:14px;padding:13px 16px;font-size:.9rem;font-weight:600;text-align:center;box-shadow:0 14px 32px rgba(20,35,28,.4);opacity:0;transform:translateY(10px);transition:opacity .25s ease,transform .25s ease;pointer-events:none}.ndemo .toast.show{opacity:1;transform:translateY(0)}.ndemo .sart{display:block;position:relative;z-index:2;flex:none;height:220px;margin:14px 16px 0;border-radius:18px;background:#1C3A2E;background-size:cover;background-position:center;box-shadow:0 12px 26px rgba(28,58,46,.20);overflow:hidden}.ndemo .spanel{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;background:#fff;border-radius:24px 24px 0 0;margin-top:-110px;padding-top:110px}.ndemo .sart.noimg{display:flex;align-items:center;justify-content:center}.ndemo .sart .cupbig{display:flex;align-items:center;justify-content:center}.ndemo .sb{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain}.ndemo .sfoot{flex:none;position:relative;background:#fff;border-top:1px solid #EFE7D3;padding:10px 20px calc(14px + env(safe-area-inset-bottom,0px));box-shadow:0 -10px 24px rgba(28,58,46,.08)}.ndemo .sfoot .qtyrow{margin:2px 0 10px}.ndemo .sart .x{position:absolute;top:10px;right:10px;float:none;margin:0;z-index:6}.ndemo .sname{position:absolute;left:0;right:0;bottom:0;margin:0;padding:34px 16px 14px;color:#FFF6E3;font-size:1.08rem;font-weight:700;line-height:1.25;background:linear-gradient(transparent,rgba(12,26,19,.80))}.ndemo .art img,.ndemo .pimg img,.ndemo .uimg img{width:100%;height:100%;object-fit:cover;display:block}.ndemo .cupw{display:flex;align-items:center;justify-content:center;width:100%;height:196px;border-radius:18px;box-shadow:0 12px 26px rgba(28,58,46,.20);background:linear-gradient(135deg,#1C3A2E,#2d5a46)}
+/* ===== Checkout modern (2026-10-01): premium + animasi ===== */
+.ndemo{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){.ndemo .dov,.ndemo .drw{transition:none}.ndemo .drw.fresh .db>*,.ndemo .drw.fresh .df>*{animation:none}.ndemo .btn.gold::after,.ndemo .btn .spin{animation:none}}
+
+.ndemo .dov{display:block;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility 0s linear .35s}
+.ndemo .dov.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .35s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ndemo .drw{border-radius:26px;background:#FCFAF2;box-shadow:0 32px 80px rgba(8,20,15,.45),0 0 0 1px rgba(201,162,39,.22);transform:translate(-50%,-48%) scale(.92);transition:transform .45s cubic-bezier(.22,1.36,.36,1),opacity .3s ease}
+.ndemo .drw.open{transform:translate(-50%,-50%) scale(1)}
+.ndemo .drw.fresh .db>*{animation:mdlUp .55s cubic-bezier(.22,1,.36,1) both}
+.ndemo .drw.fresh .db>*:nth-child(2){animation-delay:.07s}
+.ndemo .drw.fresh .db>*:nth-child(3){animation-delay:.14s}
+.ndemo .drw.fresh .db>*:nth-child(4){animation-delay:.21s}
+.ndemo .drw.fresh .db>*:nth-child(5){animation-delay:.28s}
+.ndemo .drw.fresh .db>*:nth-child(n+6){animation-delay:.34s}
+.ndemo .drw.fresh .df>*{animation:mdlUp .55s .16s cubic-bezier(.22,1,.36,1) both}
+@keyframes mdlUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.ndemo .dh{position:relative;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:12px;padding:16px 18px 15px}
+.ndemo .dh::after{content:"";position:absolute;left:18px;right:18px;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,.55),transparent)}
+.ndemo .dh-top{display:flex;align-items:center;justify-content:space-between}
+.ndemo .dh h2{font-size:1.14rem;letter-spacing:.01em}
+.ndemo .csteps{display:flex;gap:6px}
+.ndemo .csteps span{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font-size:.66rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:rgba(247,242,230,.42);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);padding:7px 4px;border-radius:999px;transition:all .35s ease}
+.ndemo .csteps span i{font-style:normal;flex:none;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.14);display:inline-flex;align-items:center;justify-content:center;font-size:.62rem}
+.ndemo .csteps span.on{background:rgba(201,162,39,.22);border-color:rgba(201,162,39,.55);color:#F3D98B}
+.ndemo .csteps span.on i{background:#C9A227;color:#0F2019}
+.ndemo .db{padding:16px 16px 24px}
+.ndemo .df{padding:14px 16px calc(16px + env(safe-area-inset-bottom,0px));background:#F7F2E6;border-top:1px solid rgba(201,162,39,.28)}
+.ndemo .ci{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid rgba(226,211,176,.55);border-radius:18px;box-shadow:0 8px 22px rgba(20,42,33,.08);padding:12px;margin-bottom:12px}
+.ndemo .cit{flex:none;width:64px;height:64px;border-radius:14px;background-color:#1C3A2E;background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.ndemo .cit.noimg{display:flex;align-items:center;justify-content:center}
+.ndemo .cinfo{flex:1;min-width:0}
+.ndemo .ci .t{font-weight:800;font-size:.95rem;color:#142A21;letter-spacing:.01em}
+.ndemo .ci .o{font-size:.78rem;color:#8A7E66;margin:3px 0 10px;line-height:1.45}
+.ndemo .ci .b{display:flex;justify-content:flex-start;align-items:center;gap:10px}
+.ndemo .ci .st{font-weight:700;color:#1C3A2E;font-size:.88rem;white-space:nowrap;margin:3px 0 0;letter-spacing:.01em}
+.ndemo .del{flex:none;width:34px;height:34px;border:none;border-radius:11px;background:#FBEFEA;color:#B3261E;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:transform .15s,background .2s}
+.ndemo .del:active{transform:scale(.88);background:#F6E2DB}
+.ndemo .del svg{width:16px;height:16px}
+.ndemo .step.sm button{width:32px;height:32px;border:1.5px solid #D8CBA6;background:#FCFAF2;font-size:1.05rem;transition:all .18s}
+.ndemo .step.sm button:active{background:#1C3A2E;border-color:#1C3A2E;color:#fff;transform:scale(.9)}
+.ndemo .empty-ic{width:76px;height:76px;margin:8px auto 14px;border-radius:24px;background:linear-gradient(135deg,#1C3A2E,#2d5a46);color:#F3D98B;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(28,58,46,.25)}
+.ndemo .empty-ic svg{width:34px;height:34px}
+.ndemo .empty b{display:block;font-size:1.02rem;color:#142A21;margin-bottom:6px}
+.ndemo .empty p{margin:0;font-size:.88rem}
+.ndemo .fm{background:#fff;border:1px solid rgba(226,211,176,.55);border-radius:18px;box-shadow:0 8px 22px rgba(20,42,33,.08);padding:16px 18px;margin:14px 0}
+.ndemo .fm h3{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:#8A7E66;margin:0 0 12px}
+.ndemo .tr{padding:7px 0;font-size:.93rem;color:#4A4438}
+.ndemo .tr.tt{border-top:1px solid #EFE6CF;font-size:1.18rem;color:#142A21;margin-top:8px;padding-top:12px}
+.ndemo .lbl{font-size:.74rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#8A7E66;margin:16px 0 7px}
+.ndemo .lbl .opt{text-transform:none;letter-spacing:0;font-weight:400}
+.ndemo .inp{border:1.5px solid #E7DCC0;border-radius:14px;padding:14px 16px;background:#fff;transition:border-color .25s,box-shadow .25s}
+.ndemo .inp:focus{outline:none;border-color:#C9A227;box-shadow:0 0 0 4px rgba(201,162,39,.16)}
+.ndemo .inp::placeholder{color:#BCAF92}
+.ndemo .pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ndemo .pick.cols3{grid-template-columns:repeat(3,1fr)}
+.ndemo .pick-c{position:relative;display:flex;align-items:center;gap:11px;border:1.5px solid #E7DCC0;border-radius:16px;padding:12px;background:#fff;cursor:pointer;transition:border-color .25s,background .25s,box-shadow .25s,transform .25s}
+.ndemo .pick-c input{position:absolute;opacity:0;pointer-events:none}
+.ndemo .pick-c.on{border-color:#C9A227;background:linear-gradient(135deg,#FFFEF9,#FBF3DA);box-shadow:0 10px 22px rgba(201,162,39,.20)}
+.ndemo .pk-ic{flex:none;width:44px;height:44px;border-radius:14px;background:#F1EAD3;color:#1C3A2E;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.ndemo .pk-ic svg{width:22px;height:22px}
+.ndemo .pick-c.on .pk-ic{background:#1C3A2E;color:#F3D98B}
+.ndemo .pk-tx{min-width:0}
+.ndemo .pk-tx b{display:block;font-size:.9rem;color:#142A21}
+.ndemo .pk-tx small{display:block;font-size:.7rem;color:#8A7E66;margin-top:2px;line-height:1.35}
+.ndemo .pk-check{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;background:#C9A227;color:#0F2019;display:flex;align-items:center;justify-content:center;transform:scale(0);transition:transform .32s cubic-bezier(.34,1.65,.64,1);box-shadow:0 4px 10px rgba(201,162,39,.4)}
+.ndemo .pk-check svg{width:13px;height:13px}
+.ndemo .pick-c.on .pk-check{transform:scale(1)}
+.ndemo .pick.cols3 .pick-c{flex-direction:column;gap:8px;text-align:center;padding:16px 8px 13px}
+.ndemo .pick.cols3 .pk-tx b{font-size:.8rem}
+.ndemo .pick.cols3 .pk-tx small{font-size:.66rem}
+/* ===== Payment tiles: premium ===== */
+.ndemo #f-bayar .pick-c{flex-direction:column;gap:10px;text-align:center;padding:20px 8px 16px;border-radius:20px;background:linear-gradient(160deg,#FFFFFF 0%,#FDF8EA 100%)}
+.ndemo #f-bayar .pk-ic{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#F8F0D8,#EDDFAE);color:#8A6D1A;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 5px 12px rgba(201,162,39,.20)}
+.ndemo #f-bayar .pk-ic svg{width:27px;height:27px}
+.ndemo #f-bayar .pick-c.on{background:linear-gradient(160deg,#234231 0%,#132A20 100%);border-color:#C9A227;box-shadow:0 14px 28px rgba(20,42,33,.35),0 0 0 1px rgba(201,162,39,.35)}
+.ndemo #f-bayar .pick-c.on .pk-ic{background:radial-gradient(circle at 32% 28%,#F5DC8E,#C9A227);color:#142A21;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 5px 12px rgba(201,162,39,.35)}
+.ndemo #f-bayar .pk-tx b{font-size:.85rem;letter-spacing:.03em}
+.ndemo #f-bayar .pick-c.on .pk-tx b{color:#F7F2E6}
+.ndemo #f-bayar .pk-tx small{font-size:.68rem}
+.ndemo #f-bayar .pick-c.on .pk-tx small{color:#C4B896}
+.ndemo .btn{position:relative;overflow:hidden;border-radius:16px;letter-spacing:.01em;transition:transform .15s,box-shadow .25s,filter .2s}
+.ndemo .btn:active{transform:scale(.97)}
+.ndemo .btn.gold{background:linear-gradient(135deg,#DDB84A 0%,#C9A227 55%,#AE8C1D 100%);color:#0F2019;box-shadow:0 12px 26px rgba(201,162,39,.35),inset 0 1px 0 rgba(255,255,255,.55)}
+.ndemo .btn.gold::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-30%;width:45px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-18deg);animation:shine 4.2s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%,58%{left:-30%}88%,100%{left:130%}}
+.ndemo .btn.ghost{background:rgba(255,255,255,.65);border:1.5px solid #D8CBA6;color:#1C3A2E;box-shadow:none}
+.ndemo .dfrow{display:flex;gap:10px;margin-top:10px}
+.ndemo .dfrow .btn{width:auto;min-width:0;margin-top:0;display:flex;align-items:center;justify-content:center}
+.ndemo .dfrow .ghost{flex:0 0 auto;padding:15px 20px;font-size:.92rem}
+.ndemo .dfrow .gold{flex:1}
+.ndemo .ic-bk{width:18px;height:18px;margin-right:7px}
+.ndemo .btn .spin{display:inline-block;width:17px;height:17px;vertical-align:-3px;margin-right:9px;border:2.5px solid rgba(15,32,25,.25);border-top-color:#0F2019;border-radius:50%;animation:spinPutar .7s linear infinite}
+@keyframes spinPutar{to{transform:rotate(360deg)}}
+.ndemo .btn[disabled]{filter:saturate(.65);cursor:wait}
+.ndemo .err{border-radius:12px}
+.ndemo .err.show{display:block;animation:errIn .3s ease}
+@keyframes errIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+/* ===== Checkout responsif: layar kecil ===== */
+@media (max-width:380px){
+  .ndemo .drw{width:calc(100% - 24px);border-radius:22px}
+  .ndemo .dh{padding:18px 16px 12px}
+  .ndemo .db{padding:12px 16px}
+  .ndemo .df{padding:10px 16px calc(14px + env(safe-area-inset-bottom))}
+  .ndemo .pick{gap:8px}
+  .ndemo .pick.cols3{grid-template-columns:1fr}
+  .ndemo .pick-c{padding:11px 10px}
+  .ndemo #f-bayar .pick-c{flex-direction:row;text-align:left;padding:12px 14px;gap:13px}
+  .ndemo #f-bayar .pk-ic{width:50px;height:50px}
+  .ndemo #f-bayar .pk-tx{flex:1;min-width:0}
+  .ndemo .csteps span{font-size:.6rem;letter-spacing:.04em}
+  .ndemo .ci .t{font-size:.88rem}
+}
+</style>
+<div class="ndemo">
+<div class="phone">
+<div class="splash" id="splash"><div class="splash-inner">
+<img class="splash-emblem" src="app/public/img/placeholder.svg" alt="Nordic emblem">
+<div class="splash-word" aria-label="NORDIC"><span>N</span><span>O</span><span>R</span><span>D</span><span>I</span><span>C</span></div>
+<div class="splash-rule"></div>
+<img class="splash-founders" src="app/public/img/placeholder.svg" alt="by the Founders">
+</div></div>
+  <div class="hdr"><button class="mode-chip" id="mode-chip" type="button" aria-label="Order mode"></button><div class="hdiv" aria-hidden="true"><i></i></div><p>Artisan specialty coffee &bull; Surabaya</p></div>
+  <div class="tabs">
+    <button class="on" data-v="beranda" aria-label="Home"><svg class="ic-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></button>
+    <button data-v="pesan" aria-label="Menu"><svg class="ic-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></button>
+    <button data-v="lacak" aria-label="Orders"><svg class="ic-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg></button>
+    <button data-v="tentang" aria-label="About"><svg class="ic-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></button>
+  </div>
+
+  <div class="view on" id="v-beranda">
+    <div class="seg" id="seg-tipe" style="margin-top:14px">
+      <button data-t="takeaway"><svg class="ic-t" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>Take Away</span></button>
+      <button data-t="dine-in"><svg class="ic-t" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg><span>Dine-In</span></button>
+    </div>
+    <div id="wrap-banner"><div class="kor-banner" id="kor-banner"></div><div class="titik-banner" id="titik-banner" aria-hidden="true"></div></div>
+    <div class="sechead"><h3><svg class="ic-h" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg> Flash Sale</h3><span class="cd" id="cd">--:--:--</span></div>
+    <div class="hscroll" id="hs-promo"></div>
+    <div class="sechead"><h3><svg class="ic-h" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg> New Products</h3><button class="link" id="go-menu" type="button">View all &rarr;</button></div>
+    <div class="hscroll" id="hs-untukmu"></div>
+    <div id="wrap-lagi"></div>
+  </div>
+
+  <div class="view" id="v-pesan">
+    <div class="pills" id="pills"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div class="view" id="v-lacak">
+    <div class="lf">
+      <p class="auto-note">Your orders are tracked automatically below &mdash; no need to enter a code.</p>
+      <div id="hasil-lacak"></div>
+    </div>
+  </div>
+
+  <div class="view" id="v-tentang">
+    <div class="ab">
+      <div class="kartu">
+        <h3>Nordic by The Founders</h3>
+        <p>Artisan specialty coffee slow bar &amp; roastery &mdash; carefully curated single origin coffee, matcha, &amp; kombucha in Citraland, West Surabaya.</p>
+        <div class="pmap" role="img" aria-label="Stylized map showing the Nordic by The Founders location">
+          <svg viewBox="0 0 400 210" aria-hidden="true">
+            <rect width="400" height="210" fill="#EAE4D0"/>
+            <rect x="22" y="16" width="98" height="62" rx="10" fill="#D8E2C2"/>
+            <circle cx="54" cy="42" r="10" fill="#C2D2A4"/>
+            <circle cx="90" cy="58" r="7" fill="#C2D2A4"/>
+            <rect x="250" y="20" width="60" height="44" rx="6" fill="#DFD8BE"/>
+            <rect x="322" y="20" width="56" height="44" rx="6" fill="#DFD8BE"/>
+            <rect x="22" y="140" width="120" height="48" rx="6" fill="#DFD8BE"/>
+            <rect x="250" y="140" width="128" height="48" rx="6" fill="#DFD8BE"/>
+            <path d="M0 96 H400" stroke="#F4EFE0" stroke-width="7"/>
+            <path d="M140 0 V210" stroke="#F4EFE0" stroke-width="7"/>
+            <path d="M330 78 V210" stroke="#F4EFE0" stroke-width="7"/>
+            <path d="M0 176 H400" stroke="#F4EFE0" stroke-width="7"/>
+            <path d="M0 118 H400" stroke="#D3C9AB" stroke-width="17"/>
+            <path d="M0 118 H400" stroke="#FDFBF4" stroke-width="12"/>
+            <path d="M205 0 V210" stroke="#D3C9AB" stroke-width="17"/>
+            <path d="M205 0 V210" stroke="#FDFBF4" stroke-width="12"/>
+            <circle class="ppulsa" cx="205" cy="118" r="12" fill="#1E3A2B"/>
+            <circle cx="205" cy="118" r="13" fill="#1E3A2B" stroke="#C9A227" stroke-width="3"/>
+            <circle cx="205" cy="118" r="4" fill="#F7F2E6"/>
+            <rect x="116" y="58" width="178" height="26" rx="13" fill="#FFFDF6" stroke="#C9A227" stroke-width="1.5"/>
+            <text x="205" y="75" text-anchor="middle" font-size="12" font-family="Georgia, serif" fill="#1E3A2B">Nordic by The Founders</text>
+          </svg>
+        </div>
+        <div class="kv">Address<b>Jl. Puri Widya Kencana No.JT1/28, Lidah Kulon, Lakarsantri, Surabaya 60213</b></div>
+        <a class="rute" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Nordic%20by%20The%20Founders%2C%20Jl.%20Puri%20Widya%20Kencana%20No.JT1%2F28%2C%20Lidah%20Kulon%2C%20Surabaya%2060213">Get Directions</a>
+        <div class="kv">Opening Hours<b>Closes 7:00 PM (Take Away 9:00 AM&ndash;5:00 PM)</b></div>
+        <h4>Follow Us</h4>
+        <div class="psoc" id="demo-sosmed"></div>
+        <h4>Payment</h4>
+        <div class="ppay" id="demo-bayar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note"><b>Interactive demo</b> &mdash; a simulation of the real app with real menu data (47 items). Orders placed here are not sent anywhere.</div>
+
+  <button class="fab" id="fab" aria-label="Open cart"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M2 3h3l2.6 12.4a1.5 1.5 0 0 0 1.5 1.1h7.9a1.5 1.5 0 0 0 1.5-1.2L20.5 7H6"/></svg><span class="n" id="fab-n" style="display:none">0</span></button>
+  <div class="dov" id="dov"></div>
+  <aside class="drw" id="drw">
+    <div class="dh"><div class="dh-top"><h2>Cart</h2><button class="x" id="drw-x" aria-label="Close cart" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="csteps"><span class="on"><i>1</i>Cart</span><span><i>2</i>Details</span><span><i>3</i>Payment</span></div></div>
+    <div class="db" id="drw-b"></div>
+    <div class="df" id="drw-f"></div>
+  </aside>
+  <div class="dov" id="dov2"></div>
+  <aside class="drw" id="drw2">
+    <div class="dh"><div class="dh-top"><h2>Order Details</h2><button class="x" id="drw2-x" aria-label="Close order details" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="csteps"><span><i>1</i>Cart</span><span class="on"><i>2</i>Details</span><span><i>3</i>Payment</span></div></div>
+    <div class="db" id="drw2-b"></div>
+    <div class="df" id="drw2-f"></div>
+  </aside>
+  <div class="dov" id="dov3"></div>
+  <aside class="drw" id="drw3">
+    <div class="dh"><div class="dh-top"><h2>Payment</h2><button class="x" id="drw3-x" aria-label="Close payment" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="csteps"><span><i>1</i>Cart</span><span><i>2</i>Details</span><span class="on"><i>3</i>Payment</span></div></div>
+    <div class="db" id="drw3-b"></div>
+    <div class="df" id="drw3-f"></div>
+  </aside>
+  <div class="dov" id="dov4"></div>
+  <aside class="drw" id="drw4">
+    <div class="dh"><div class="dh-top"><h2>Order Status</h2><button class="x" id="drw4-x" aria-label="Close order status" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div></div>
+    <div class="db" id="drw4-b"></div>
+    <div class="df" id="drw4-f"></div>
+  </aside>
+  <div class="ov" id="ov"><div class="sheet" id="sheet"></div></div>
+</div>
+</div>
+<script>
+(function(){
+"use strict";
+/* Ikon SVG garis (turunan Lucide, ISC). ic(nama, kelas) -> svg string. */
+var IC_RAW = {
+  beranda: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg>",
+  menu: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"8\" height=\"4\" x=\"8\" y=\"2\" rx=\"1\" ry=\"1\"/><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"/><path d=\"M12 11h4\"/><path d=\"M12 16h4\"/><path d=\"M8 11h.01\"/><path d=\"M8 16h.01\"/></svg>",
+  pesanan: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M13 16H8\"/><path d=\"M14 8H8\"/><path d=\"M16 12H8\"/><path d=\"M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z\"/></svg>",
+  tentang: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 16v-4\"/><path d=\"M12 8h.01\"/></svg>",
+  dinein: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10 2v2\"/><path d=\"M14 2v2\"/><path d=\"M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1\"/><path d=\"M6 2v2\"/></svg>",
+  takeaway: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>",
+  delivery: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"18.5\" cy=\"17.5\" r=\"3.5\"/><circle cx=\"5.5\" cy=\"17.5\" r=\"3.5\"/><circle cx=\"15\" cy=\"5\" r=\"1\"/><path d=\"M12 17.5V14l-3-3 4-3 2 3h2\"/></svg>",
+  keranjang: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M16 10a4 4 0 0 1-8 0\"/><path d=\"M3.103 6.034h17.794\"/><path d=\"M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z\"/></svg>",
+  tambah: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg>",
+  kurang: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg>",
+  tutup: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/></svg>",
+  kembali: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 19-7-7 7-7\"/><path d=\"M19 12H5\"/></svg>",
+  hapus: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10 11v6\"/><path d=\"M14 11v6\"/><path d=\"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6\"/><path d=\"M3 6h18\"/><path d=\"M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2\"/></svg>",
+  sukses: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m16 9-5.5 5.5L8 12\"/></svg>",
+  api: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\"/></svg>",
+  kilau: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z\"/><path d=\"M20 2v4\"/><path d=\"M22 4h-4\"/><circle cx=\"4\" cy=\"20\" r=\"2\"/></svg>",
+  pesta: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5.8 11.3 2 22l10.7-3.79\"/><path d=\"M4 3h.01\"/><path d=\"M22 8h.01\"/><path d=\"M15 2h.01\"/><path d=\"M22 20h.01\"/><path d=\"m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10\"/><path d=\"m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17\"/><path d=\"m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7\"/><path d=\"M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z\"/></svg>",
+  catatan: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4\"/><path d=\"M2 6h4\"/><path d=\"M2 10h4\"/><path d=\"M2 14h4\"/><path d=\"M2 18h4\"/><path d=\"M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\"/></svg>",
+  bel: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10.268 21a2 2 0 0 0 3.464 0\"/><path d=\"M22 8c0-2.3-.8-4.3-2-6\"/><path d=\"M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326\"/><path d=\"M4 2C2.8 3.7 2 5.7 2 8\"/></svg>",
+  ulangi: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m17 2 4 4-4 4\"/><path d=\"M3 11v-1a4 4 0 0 1 4-4h14\"/><path d=\"m7 22-4-4 4-4\"/><path d=\"M21 13v1a4 4 0 0 1-4 4H3\"/></svg>",
+  kosong: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polyline points=\"22 12 16 12 14 15 10 15 8 12 2 12\"/><path d=\"M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z\"/></svg>",
+  bintang: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z\"/></svg>",
+  pin: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/></svg>",
+  chat: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719\"/></svg>",
+  paket: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z\"/><path d=\"M12 22V12\"/><polyline points=\"3.29 7 12 12 20.71 7\"/><path d=\"m7.5 4.27 9 5.15\"/></svg>",
+  jam: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 6v6l4 2\"/></svg>",
+  qr: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"5\" height=\"5\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"5\" height=\"5\" x=\"16\" y=\"3\" rx=\"1\"/><rect width=\"5\" height=\"5\" x=\"3\" y=\"16\" rx=\"1\"/><path d=\"M21 16h-3a2 2 0 0 0-2 2v3\"/><path d=\"M21 21v.01\"/><path d=\"M12 7v3a2 2 0 0 1-2 2H7\"/><path d=\"M3 12h.01\"/><path d=\"M12 3h.01\"/><path d=\"M12 16v.01\"/><path d=\"M16 12h1\"/><path d=\"M21 12v.01\"/><path d=\"M12 21v-1\"/></svg>",
+  printer: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2\"/><path d=\"M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6\"/><rect x=\"6\" y=\"14\" width=\"12\" height=\"8\" rx=\"1\"/></svg>",
+  tunai: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"12\" x=\"2\" y=\"6\" rx=\"2\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/><path d=\"M6 12h.01M18 12h.01\"/></svg>",
+    transfer: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\"/><line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\"/><line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\"/><line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\"/><line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\"/><polygon points=\"12 2 20 7 4 7\"/></svg>",
+    instagram: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"20\" x=\"2\" y=\"2\" rx=\"5\" ry=\"5\"/><path d=\"M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\"/><line x1=\"17.5\" x2=\"17.51\" y1=\"6.5\" y2=\"6.5\"/></svg>",
+    facebook: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\"/></svg>",
+    tiktok: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"17\" r=\"4\"/><path d=\"M13 17V4\"/><path d=\"M13 4c.6 3 2.6 5 6 5.4\"/></svg>",
+    whatsapp: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z\"/><path d=\"M9.1 8.9c.2-.5.8-.6 1.2-.2l.9 1c.2.3.2.7-.1 1l-.6.6c.6 1.2 1.5 2.1 2.7 2.7l.6-.6c.3-.3.7-.3 1-.1l1 .9c.4.4.3 1-.2 1.2-2.9 1.3-7.3-3.1-6-6\"/></svg>",
+  dompet: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"/><path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"/></svg>",
+  cari: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m21 21-4.34-4.34\"/><circle cx=\"11\" cy=\"11\" r=\"8\"/></svg>",
+  batal: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m15 9-6 6\"/><path d=\"m9 9 6 6\"/></svg>",
+  segarkan: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8\"/><path d=\"M21 3v5h-5\"/><path d=\"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16\"/><path d=\"M8 16H3v5\"/></svg>",
+  kamera: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z\"/><circle cx=\"12\" cy=\"13\" r=\"3\"/></svg>",
+  pensil: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\"/><path d=\"m15 5 4 4\"/></svg>",
+  bank: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\"/><line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\"/><line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\"/><line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\"/><line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\"/><polygon points=\"12 2 20 7 4 7\"/></svg>",
+};
+function ic(n, c){ return (IC_RAW[n]||"").replace("<svg ", "<svg class=\""+(c||"ic")+"\" "); }
+var DATA = {"categories":[{"id":1,"name":"Coffee","items":[{"id":41,"name":"MAGIC","description":"[SAMPLE] Temporary price — adjust via admin.","price":55000,"image":"/img/magic.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":42,"name":"FILTER COFFEE","description":"[SAMPLE] Temporary price — adjust via admin.","price":55000,"image":"/img/filter-coffee.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":43,"name":"MANUAL BREW","description":"[SAMPLE] Temporary price — adjust via admin.","price":65000,"image":"/img/manual-brew-v60.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":44,"name":"ICED COFFEE CREAM TOP","description":"[SAMPLE] Temporary price — adjust via admin.","price":65000,"image":"/img/iced-coffee-cream-top.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":45,"name":"ICED ESPRESSO","description":"[SAMPLE] Temporary price — adjust via admin.","price":45000,"image":"/img/iced-espresso.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":46,"name":"MOCTAIL","description":"[SAMPLE] Temporary price — adjust via admin.","price":65000,"image":"/img/moctail.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":47,"name":"BLEND COFFEE DRINK","description":"[SAMPLE] Temporary price — adjust via admin.","price":65000,"image":"/img/blend-solara.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":1,"name":"WHITE/BLACK","description":"Signature coffee — available as White or Black","price":55000,"image":"/img/latte.jpg","is_best_seller":1,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":2,"name":"COLD FASHION","description":"Old fashioned-style iced coffee","price":65000,"image":"/img/iced-coffee-cream-top.jpg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":3,"name":"CHERRISH","description":"Coffee with a touch of cherry","price":65000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":4,"name":"ORANGE ENVY","description":"Coffee with refreshing orange","price":55000,"image":"/img/blend-solara.jpg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":5,"name":"FLIGHT","description":"Flight tasting of several single origins","price":85000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":6,"name":"FLIGHT EXOTIC","description":"Flight tasting of exotic single origins","price":100000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":7,"name":"SIGNATURE COLD BREW","description":"Signature cold brew","price":65000,"image":"/img/signature-iced.jpg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]}]},{"id":2,"name":"Non Coffee","items":[{"id":8,"name":"MATCHA LATTE","description":"Matcha latte — choose hot or iced","price":40000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]}]},{"id":9,"name":"CHOCOLATE","description":"Chocolate — choose hot or iced","price":40000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":2,"name":"Serving","type":"single","required":1,"options":[{"id":3,"name":"Hot","price_delta":0},{"id":4,"name":"Iced","price_delta":15000}]}]},{"id":10,"name":"CLARIFIED GUAVA","description":"Refreshing clarified guava drink","price":50000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":11,"name":"TROPICAL SUNRISE","description":"Tropical mocktail","price":50000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":12,"name":"COCONUT MATCHA","description":"Matcha with coconut","price":55000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":13,"name":"WANDA & COSMO","description":"Signature mocktail","price":65000,"image":"/img/moctail.jpg","is_best_seller":0,"option_groups":[]},{"id":14,"name":"CLEO WATER","description":"Premium mineral water","price":30000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]}]},{"id":3,"name":"Artisan Tea","items":[{"id":15,"name":"ARTISAN BLEND TEA","description":"Artisan blend tea — includes 1x refill","price":40000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]}]}]},{"id":4,"name":"Exotic Tea","items":[{"id":16,"name":"LONGBOARD GEISHA FLOWER TEA","description":"Exotic flower tea — choose medium or light character","price":400000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]}]},{"id":5,"name":"Omakase","items":[{"id":17,"name":"THE FOUNDERS COURSE","description":"Nett — 5 course: Welcome Drink, Split Espresso & Freeze Distilled Milk, Exotic Filter, Mocktail & Sweet Pairing","price":325000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]}]},{"id":6,"name":"Small & Bites","items":[{"id":18,"name":"Croissant Plain","description":"Classic crispy croissant","price":28000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":19,"name":"Croissant Crunchy Gianduja","description":"Croissant with crispy gianduja","price":30000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":20,"name":"Croissant Strawberry","description":"Croissant with strawberries","price":30000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":21,"name":"Croissant Butter","description":"Savory butter croissant","price":30000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":22,"name":"Croissant Almond","description":"Croissant topped with almonds","price":43000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":23,"name":"Grilled Cheese Original","description":"Classic grilled cheese","price":65000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":24,"name":"Grilled Cheese Smoked Beef","description":"Grilled cheese with smoked beef","price":80000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":25,"name":"Grilled Cheese Kimchi","description":"Grilled cheese with kimchi","price":90000,"image":"/img/placeholder.svg","is_best_seller":1,"is_new":1,"option_groups":[]},{"id":26,"name":"Monkey Chocolate","description":"Banana with chocolate","price":43000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":27,"name":"Cheesecake","description":"Smooth cheesecake","price":55000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":28,"name":"Caramel Pudding","description":"Sweet caramel pudding","price":35000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]}]},{"id":7,"name":"Retail — Founders Roast Home","items":[{"id":29,"name":"Semendo 120H HSN","description":"Founders Roast Home — tube packaging","price":60000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":30,"name":"Solok Natural","description":"Founders Roast Home — tube packaging","price":65000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":31,"name":"Blueberry Milk Tea","description":"Founders Roast Home — tube packaging","price":65000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":32,"name":"Ciwidey Best Nano Lot","description":"Founders Roast Home — tube packaging","price":75000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":33,"name":"Costa Rica Mozart Raisin Honey","description":"Founders Roast Home — tube packaging","price":100000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":34,"name":"Mt. Mekarwangi","description":"Founders Roast Home — tube packaging","price":85000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":35,"name":"Yunnan Catimor","description":"Founders Roast Home — tube packaging","price":110000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":36,"name":"Inama Geisha Janson Alpes","description":"Founders Roast Home — tube packaging","price":170000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":37,"name":"Roma Nativo","description":"Founders Roast Home — tube packaging","price":125000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":38,"name":"Paraiso Plum","description":"Founders Roast Home — tube packaging","price":130000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":39,"name":"Raspberry Candy","description":"Founders Roast Home — tube packaging","price":95000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":40,"name":"Additional Eugenioides","description":"Founders Roast Home — tube packaging","price":50000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]}]},{"id":8,"name":"New","items":[]}],"items":[]};
+var cats = DATA.categories || [];
+/* Kategori "New" virtual: otomatis berisi semua produk bertanda New (tanpa pindah kategori asli) */
+(function(){
+  var nk = null;
+  cats.forEach(function(c){ if(String(c.name||"").toLowerCase()==="new") nk = c; });
+  if(nk){
+    var semua = [];
+    cats.forEach(function(c){ (c.items||[]).forEach(function(i){ semua.push(i); }); });
+    nk.items = semua.filter(function(i){ return i.is_new; });
+  }
+})();
+var byId = {};
+cats.forEach(function(c){ (c.items||[]).forEach(function(i){ i._cat = c.name; byId[i.id]=i; }); });
+var bridge = (window.hatchWidget && window.hatchWidget.getState) ? window.hatchWidget : null;
+var S = bridge ? bridge.getState({cart:[], orders:{}}) : {cart:[], orders:{}};
+if(!S.cart) S.cart = []; if(!S.orders) S.orders = {};
+/* Migrasi sekali: pilihan tipe lama (dari default paksa) dihapus agar awal netral */
+if(S._v !== 2){ S._v = 2; S.tipe = null; }
+function save(){ if(bridge) bridge.setState(S); }
+if(bridge) window.addEventListener("hatch-widget-state", function(e){ S = e.detail.state || S; renderCart(); });
+
+var CUP = '<svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="#F7F2E6" stroke-width="1.7" stroke-linecap="round"><path d="M4 10h12v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M16 11h1.6a2.4 2.4 0 0 1 0 4.8H16"/><path d="M7.5 7c0-1.2 1-1.2 1-2.4M11.5 7c0-1.2 1-1.2 1-2.4"/></svg>';
+var IMGS=["app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg","app/public/img/placeholder.svg"];
+var IMGM={1:7,2:3,3:14,4:6,5:10,6:9,7:8,8:12,9:13,10:14,11:14,12:12,13:5,14:14,15:15,16:15,17:10,18:16,19:16,20:16,21:16,22:16,23:17,24:17,25:17,26:13,27:18,28:18,29:19,30:19,31:19,32:19,33:19,34:19,35:19,36:19,37:19,38:19,39:19,40:19,41:0,42:1,43:2,44:3,45:4,46:5,47:6};
+function gbr(it){var u=it&&IMGS[IMGM[it.id]];return u?'<img src="'+u+'" alt="">':'<span class="cupw">'+CUP+'</span>';}
+function rp(n){ return "Rp" + Number(n||0).toLocaleString("id-ID"); }
+function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function $(id){ return document.getElementById(id); }
+var cart = S.cart, orders = S.orders, activeCat = "all", cur = null;
+var TIPE = {"dine-in":"Dine-In","takeaway":"Take Away"};
+var PAY = {qris:"QRIS",tunai:"Cash",transfer:"Bank Transfer"};
+// Promo demo (contoh flash sale)
+byId[41].promo = {title:"Flash Sale: MAGIC", final:45000, ends: Date.now()+6*3600*1000};
+byId[44].promo = {title:"Save 15%: Iced Coffee Cream Top", final:55000, ends: Date.now()+6*3600*1000};
+function hargaDasar(it){ return (it.promo && it.promo.final!=null) ? it.promo.final : it.price; }
+
+document.querySelectorAll(".ndemo .tabs button").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.querySelectorAll(".ndemo .tabs button").forEach(function(x){x.classList.remove("on")});
+    b.classList.add("on");
+    document.querySelectorAll(".ndemo .view").forEach(function(v){v.classList.remove("on")});
+    $("v-"+b.dataset.v).classList.add("on");
+  });
+});
+
+/* Animasi tap: setiap tombol/link memantul kecil saat diklik */
+document.addEventListener("click", function(e){
+  var el = e.target && e.target.closest ? e.target.closest(".ndemo button, .ndemo a") : null;
+  if(!el) return;
+  el.classList.remove("ketuk"); void el.offsetWidth; el.classList.add("ketuk");
+});
+
+/* Sembunyikan navbar & FAB saat ada modal/sheet terbuka (biar tombol tidak ketutup) */
+(function(){
+  var nd = document.querySelector(".ndemo");
+  if(!nd) return;
+  function segarkan(){
+    var buka = !!nd.querySelector(".dov.open, .ov.open");
+    nd.classList.toggle("modal-terbuka", buka);
+  }
+  ["dov","dov2","dov3","dov4","ov"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el && window.MutationObserver) new MutationObserver(segarkan).observe(el,{attributes:true,attributeFilter:["class"]});
+  });
+  segarkan();
+})();
+
+/* Header animasi saat discroll: jadi ringkas (flex row) setelah scroll > 24px */
+(function(){
+  var ph = document.querySelector(".ndemo .phone"), nd = document.querySelector(".ndemo");
+  if(!ph || !nd) return;
+  var tick = false;
+  ph.addEventListener("scroll", function(){
+    if(tick) return; tick = true;
+    requestAnimationFrame(function(){
+      tick = false;
+      nd.classList.toggle("scrolled", ph.scrollTop > 24);
+    });
+  }, {passive:true});
+})();
+
+function goTab(v){ var b = document.querySelector('.ndemo .tabs button[data-v="'+v+'"]'); if(b) b.click(); }
+
+function renderPills(){
+  var h = '<button class="pill on" data-c="all">All</button>';
+  var sisanya = [];
+  cats.forEach(function(c){
+    var b = '<button class="pill" data-c="'+c.id+'">'+esc(c.name)+"</button>";
+    if(String(c.name||"").toLowerCase()==="new") h += b; else sisanya.push(b);
+  });
+  sisanya.forEach(function(b){ h += b; });
+  $("pills").innerHTML = h;
+  var pills = document.querySelectorAll(".ndemo .pill");
+  pills.forEach(function(p){
+    p.addEventListener("click", function(){
+      pills.forEach(function(x){x.classList.remove("on")});
+      p.classList.add("on"); activeCat = p.dataset.c; renderGrid();
+    });
+  });
+}
+function renderGrid(){
+  var h = "";
+  var sudah = {};
+  cats.forEach(function(c){
+    if(activeCat!=="all" && String(c.id)!==String(activeCat)) return;
+    (c.items||[]).forEach(function(i){
+      if(sudah[i.id]) return; sudah[i.id]=1;
+      h += '<button class="card" data-id="'+i.id+'">' +
+        (i.promo?'<span class="bdg2" style="position:absolute;top:8px;left:8px;margin:0">'+ic("api","ic-bdg")+'</span>':((i.is_best_seller?'<span class="bdg">Best Seller</span>':'')+(i.is_new?'<span class="bdg-new"'+(i.is_best_seller?' style="top:34px"':'')+'>'+ic("kilau","ic-bdg")+' New</span>':''))) +
+        '<span class="art">'+gbr(i)+'</span>' +
+        '<span class="cb"><span class="cn">'+esc(i.name)+'</span>' +
+        '<span class="cd">'+esc(i.description||"")+'</span>' +
+        '<span class="cp">'+(i.promo?'<span class="coret"><s>'+rp(i.price)+'</s></span> <span class="merah">'+rp(i.promo.final)+'</span>':rp(i.price))+'</span></span></button>';
+    });
+  });
+  $("grid").innerHTML = h || '<p class="empty" style="grid-column:1/-1">Empty.</p>';
+  var cards = document.querySelectorAll(".ndemo .card");
+  cards.forEach(function(el){ el.addEventListener("click", function(){ openItem(byId[el.dataset.id]); }); });
+}
+
+function openItem(it){
+  if(!it) return;
+  cur = { item: it, qty: 1, sel: {} };
+  var bg = it && IMGS[IMGM[it.id]];
+  var h = '<div class="sart'+(bg?'':' noimg')+'"'+(bg?' style="background-image:url(&quot;'+bg+'&quot;)"':'')+'>'+(bg?'':'<span class="cupbig">'+CUP+'</span>')+'<div class="sname">'+esc(it.name)+(it.is_new?' <span class="tag-new">'+ic("kilau","ic-bdg")+' New</span>':'')+'</div><button class="x" id="sh-x" aria-label="Close">'+ic("tutup","ic-x")+'</button></div><div class="spanel"><div class="sb">' +
+    '<div class="sbd">'+esc(it.description||"")+'</div>' +
+    '<div class="sbp">'+(it.promo?'<s class="coret">'+rp(it.price)+'</s> <b class="merah">'+rp(it.promo.final)+'</b><br><span class="bdg2">'+ic("api","ic-bdg")+' '+esc(it.promo.title)+'</span>':rp(it.price))+'</div>';
+  (it.option_groups||[]).forEach(function(g){
+    h += '<div class="og" data-g="'+g.id+'"><h4>'+esc(g.name)+(g.required?' <span class="req">*</span>':'')+'</h4>';
+    g.options.forEach(function(o){
+      var dl = o.price_delta>0 ? "+"+rp(o.price_delta) : "Free";
+      h += '<label class="op"><input type="'+(g.type==="multiple"?"checkbox":"radio")+'" name="g'+g.id+'" value="'+o.id+'">' +
+        '<span class="onm">'+esc(o.name)+'</span><span class="dl'+(o.price_delta===0?" free":"")+'">'+dl+'</span></label>';
+    });
+    h += '</div>';
+  });
+  h += '</div><div class="sfoot"><div class="qtyrow"><div class="step"><button id="q-min" type="button">'+ic("kurang","ic-step")+'</button><span class="qv" id="q-v">1</span><button id="q-pl" type="button">'+ic("tambah","ic-step")+'</button></div>' +
+    '<div class="live" id="sh-live"></div></div>' +
+    '<button class="btn" id="sh-add" type="button">'+ic("keranjang","ic-btn")+' Add to Cart</button><div class="toast" id="toast"></div></div></div>';
+  $("sheet").innerHTML = h;
+  $("ov").classList.add("open");
+  $("sh-x").onclick = closeSheet;
+  $("ov").onclick = function(e){ if(e.target===$("ov")) closeSheet(); };
+  $("q-min").onclick = function(){ if(cur.qty>1){cur.qty--;updSheet();} };
+  $("q-pl").onclick = function(){ if(cur.qty<20){cur.qty++;updSheet();} };
+  var inputs = document.querySelectorAll('.ndemo .og input');
+  inputs.forEach(function(inp){ inp.addEventListener("change", updSheet); });
+  $("sh-add").onclick = addToCart;
+  updSheet();
+}
+function sheetDelta(){
+  var d = 0, sel = {};
+  (cur.item.option_groups||[]).forEach(function(g){
+    var checked = document.querySelectorAll('.ndemo .og[data-g="'+g.id+'"] input:checked');
+    sel[g.id] = [];
+    checked.forEach(function(c){
+      var o = null;
+      g.options.forEach(function(x){ if(String(x.id)===c.value) o = x; });
+      if(o){ d += o.price_delta; sel[g.id].push(o); }
+    });
+  });
+  cur.sel = sel; return d;
+}
+function updSheet(){
+  if(!cur) return;
+  $("q-v").textContent = cur.qty;
+  var d = sheetDelta();
+  $("sh-live").textContent = rp((hargaDasar(cur.item) + d) * cur.qty);
+}
+function closeSheet(){ $("ov").classList.remove("open"); cur = null; }
+var toastT = null;
+function toast(msg){
+  var t = $("toast"); if(!t) return;
+  t.textContent = msg; t.classList.add("show");
+  if(toastT) clearTimeout(toastT);
+  toastT = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+}
+function addToCart(){
+  var missing = (cur.item.option_groups||[]).filter(function(g){
+    return g.required && (!cur.sel[g.id] || !cur.sel[g.id].length);
+  });
+  if(missing.length){
+    toast("Please select: " + missing.map(function(g){return g.name;}).join(", "));
+    return;
+  }
+  var d = sheetDelta(), unit = hargaDasar(cur.item) + d, optList = [];
+  (cur.item.option_groups||[]).forEach(function(g){
+    (cur.sel[g.id]||[]).forEach(function(o){ optList.push({group:g.name, name:o.name, delta:o.price_delta}); });
+  });
+  var key = cur.item.id + "|" + optList.map(function(o){return o.group+":"+o.name;}).sort().join(";");
+  var ex = null;
+  cart.forEach(function(c){ if(c.key===key) ex = c; });
+  if(ex) ex.qty = Math.min(20, ex.qty + cur.qty);
+  else cart.push({key:key, id:cur.item.id, name:cur.item.name, unit:unit, qty:cur.qty, opts:optList});
+  save(); closeSheet(); openDrawer();
+}
+
+function cartCount(){ return cart.reduce(function(a,c){return a+c.qty;},0); }
+function cartSub(){ return cart.reduce(function(a,c){return a+c.unit*c.qty;},0); }
+function bukaModal(v,m){ $(v).classList.add("open"); var e=$(m); e.classList.add("open"); e.classList.add("fresh"); setTimeout(function(){e.classList.remove("fresh");},750); }
+function openDrawer(){ renderCart(); bukaModal("dov","drw"); }
+function closeDrawer(){ $("dov").classList.remove("open"); $("drw").classList.remove("open"); }
+function openData(){ renderDataForm(); bukaModal("dov2","drw2"); }
+function closeData(){ $("dov2").classList.remove("open"); $("drw2").classList.remove("open"); }
+function openBayar(){ renderBayarForm(); bukaModal("dov3","drw3"); }
+function closeBayar(){ $("dov3").classList.remove("open"); $("drw3").classList.remove("open"); }
+function closeSemua(){ closeDrawer(); closeData(); closeBayar(); }
+$("fab").onclick = openDrawer;
+$("drw-x").onclick = closeDrawer;
+$("dov").onclick = closeDrawer;
+$("drw2-x").onclick = closeData;
+$("dov2").onclick = closeData;
+$("drw3-x").onclick = closeBayar;
+$("dov3").onclick = closeBayar;
+// Modal status pesanan (muncul otomatis setiap kali order dibuat, di tab mana pun)
+var statusCode = null;
+function renderStatus(){
+  var o = orders[statusCode];
+  var b = $("drw4-b"), f = $("drw4-f");
+  if(!o){ b.innerHTML = ""; f.innerHTML = ""; return; }
+  b.innerHTML = '<div class="suc" style="padding:18px 8px 6px"><div class="ck">&#10003;</div>' +
+    '<h2>' + (o.stage===3 ? ic("pesta","ic-sm")+" " : "") + STAGES[o.stage] + '</h2>' +
+    '<div class="code">'+esc(o.code)+'</div><div class="tt2">'+rp(o.total)+'</div>' +
+    '<p>Show this code to the cashier.<br>Your order goes straight to the barista.</p>' +
+    stepsHtml(o.stage) + '</div>';
+  f.innerHTML = '<button class="btn" id="st-lacak" type="button" style="width:100%">Track Order</button>' +
+    '<button class="btn ghost" id="st-tutup" type="button" style="width:100%;margin-top:8px">Close</button>';
+  $("st-lacak").onclick = function(){ closeStatus(); goTab("lacak"); renderPesanan(); };
+  $("st-tutup").onclick = closeStatus;
+}
+function openStatus(code){ statusCode = code; renderStatus(); $("dov4").classList.add("open"); $("drw4").classList.add("open"); }
+function closeStatus(){ statusCode = null; $("dov4").classList.remove("open"); $("drw4").classList.remove("open"); }
+$("drw4-x").onclick = closeStatus;
+$("dov4").onclick = closeStatus;
+
+function renderCart(){
+  var n = cartCount(), badge = $("fab-n");
+  badge.style.display = n ? "flex" : "none"; badge.textContent = n;
+  var b = $("drw-b"), f = $("drw-f"), h = "", fh = "";
+  if(!cart.length){
+    h = '<div class="kartu empty"><div class="empty-ic">'+ic("keranjang","ic-e")+'</div><b>Your cart is empty</b><p>Your favorite brews are one tap away.</p></div>';
+  } else {
+    cart.forEach(function(c,ix){
+      var os = c.opts.map(function(o){return o.name+(o.delta>0?" (+"+rp(o.delta)+")":"");}).join(", ");
+      var th = IMGS[IMGM[c.id]];
+      h += '<div class="ci">' +
+        '<span class="cit'+(th?'':' noimg')+'"'+(th?' style="background-image:url(&quot;'+th+'&quot;)"':'')+'>'+(th?'':CUP)+'</span>' +
+        '<div class="cinfo"><div class="t"><span>'+esc(c.name)+'</span></div>' +
+        '<div class="st">'+rp(c.unit*c.qty)+'</div>' +
+        (os?'<div class="o">'+esc(os)+'</div>':"") +
+        '<div class="b"><div class="step sm"><button data-dec="'+ix+'" type="button" aria-label="Decrease">'+ic("kurang","ic-step")+'</button><span class="qv">'+c.qty+'</span><button data-inc="'+ix+'" type="button" aria-label="Increase">'+ic("tambah","ic-step")+'</button></div></div></div>' +
+        '<button class="del" data-del="'+ix+'" type="button" aria-label="Remove item">'+ic("hapus","ic-del")+'</button></div>';
+    });
+    fh = '<div class="fm"><div class="tr tt"><span>Subtotal</span><span>'+rp(cartSub())+'</span></div></div>' +
+      '<button class="btn gold" id="btn-co" type="button"><span>Checkout &middot; '+n+' item'+(n>1?'s':'')+'</span>&nbsp;&rarr;</button>';
+  }
+  b.innerHTML = h; f.innerHTML = fh;
+  var dels = b.querySelectorAll("[data-del]");
+  dels.forEach(function(x){ x.onclick=function(){ cart.splice(+x.dataset.del,1); save(); renderCart(); }; });
+  var incs = b.querySelectorAll("[data-inc]");
+  incs.forEach(function(x){ x.onclick=function(){ var c=cart[+x.dataset.inc]; if(c.qty<20)c.qty++; save(); renderCart(); }; });
+  var decs = b.querySelectorAll("[data-dec]");
+  decs.forEach(function(x){ x.onclick=function(){ var c=cart[+x.dataset.dec]; c.qty--; if(c.qty<1)cart.splice(+x.dataset.dec,1); save(); renderCart(); }; });
+  pasangSeg();
+  var bc = $("btn-co");
+  if(bc) bc.onclick = function(){ closeDrawer(); openData(); };
+}
+
+function pasangSeg(){
+  var segs = document.querySelectorAll(".ndemo #f-tipe .pick-c, .ndemo #f-bayar .pick-c");
+  segs.forEach(function(l){
+    l.addEventListener("click", function(){
+      var sibs = l.parentElement.querySelectorAll(".pick-c");
+      sibs.forEach(function(x){x.classList.remove("on");});
+      l.classList.add("on");
+      var inp = l.querySelector("input");
+      if(inp) inp.checked = true;
+      if(inp && inp.name==="tipe"){ S.tipe = inp.value; save(); renderSegTipe(); $("w-meja").style.display = S.tipe==="dine-in" ? "" : "none"; }
+    });
+  });
+}
+var PICK_CHECK = '<span class="pk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';
+function typeCard(t){
+  var dine = t==="dine-in";
+  return '<span class="pk-ic">'+ic(dine?"dinein":"takeaway","ic-pk")+'</span>' +
+    '<span class="pk-tx"><b>'+(dine?"Dine-In":"Take Away")+'</b><small>'+(dine?"Served at your table":"Packed fresh to go")+'</small></span>' + PICK_CHECK;
+}
+function dataFormHtml(){
+  return '<div class="fm"><h3>Order Details</h3>' +
+    '<label class="lbl">Name</label><input class="inp" id="f-nama" placeholder="Your name" autocomplete="name">' +
+    '<label class="lbl">WhatsApp Number</label><input class="inp" id="f-wa" placeholder="08xx..." inputmode="tel">' +
+    '<label class="lbl">Order Type</label><div class="pick" id="f-tipe">' +
+    (S.tipe
+      ? '<label class="pick-c on"><input type="radio" name="tipe" value="'+S.tipe+'" checked>'+typeCard(S.tipe)+'</label>'
+      : '<label class="pick-c on"><input type="radio" name="tipe" value="dine-in" checked>'+typeCard("dine-in")+'</label>' +
+        '<label class="pick-c"><input type="radio" name="tipe" value="takeaway">'+typeCard("takeaway")+'</label>') +
+    '</div>' +
+    '<div id="w-meja"><label class="lbl">Table Number</label><select class="inp" id="f-meja">' +
+    [1,2,3,4,5,6,7,8].map(function(m){return '<option value="'+m+'">Table '+m+'</option>';}).join("") + '</select></div>' +
+    '<label class="lbl">Notes <span class="opt">(optional)</span></label><input class="inp" id="f-note" placeholder="e.g., just a little ice">' +
+    '</div>';
+}
+function renderDataForm(){
+  $("drw2-b").innerHTML = dataFormHtml();
+  $("drw2-f").innerHTML = '<div class="err" id="co-err2"></div>' +
+    '<div class="dfrow"><button class="btn ghost" id="btn-back2" type="button">'+ic("kembali","ic-bk")+'<span>Back</span></button>' +
+    '<button class="btn gold" id="btn-lanjut" type="button"><span>Continue</span>&nbsp;&rarr;</button></div>';
+  pasangSeg();
+  $("w-meja").style.display = S.tipe==="dine-in" ? "" : "none";
+  $("btn-back2").onclick = function(){ closeData(); openDrawer(); };
+  $("btn-lanjut").onclick = lanjutBayar;
+}
+function lanjutBayar(){
+  var err = $("co-err2"); err.classList.remove("show");
+  var nama = $("f-nama").value.trim();
+  if(!nama){ err.textContent="Please enter your name."; err.classList.add("show"); return; }
+  closeData(); openBayar();
+}
+
+/* Modal 3: Pembayaran */
+function bayarFormHtml(){
+  return '<div class="fm"><h3>Payment Method</h3><div class="pick cols3" id="f-bayar">' +
+    '<label class="pick-c on"><input type="radio" name="bayar" value="qris" checked>' +
+    '<span class="pk-ic">'+ic("qr","ic-pk")+'</span><span class="pk-tx"><b>QRIS</b><small>Scan to pay</small></span>'+PICK_CHECK+'</label>' +
+    '<label class="pick-c"><input type="radio" name="bayar" value="tunai">' +
+    '<span class="pk-ic">'+ic("tunai","ic-pk")+'</span><span class="pk-tx"><b>Cash</b><small>At the counter</small></span>'+PICK_CHECK+'</label>' +
+    '<label class="pick-c"><input type="radio" name="bayar" value="transfer">' +
+    '<span class="pk-ic">'+ic("bank","ic-pk")+'</span><span class="pk-tx"><b>Transfer</b><small>Bank transfer</small></span>'+PICK_CHECK+'</label>' +
+    '</div></div>';
+}
+function bayarFootHtml(){
+  var sub = cartSub(), tax = Math.round(sub*0.10);
+  return '<div class="fm"><div class="tr"><span>Subtotal</span><span>'+rp(sub)+'</span></div>' +
+    '<div class="tr"><span>Tax (10%)</span><span>'+rp(tax)+'</span></div>' +
+    '<div class="tr tt"><span>Total</span><span>'+rp(sub+tax)+'</span></div></div>' +
+    '<div class="err" id="co-err"></div>' +
+    '<div class="dfrow"><button class="btn ghost" id="btn-back3" type="button">'+ic("kembali","ic-bk")+'<span>Back</span></button>' +
+    '<button class="btn gold" id="btn-order" type="button"><span>Place Order &middot; '+rp(sub+tax)+'</span></button></div>';
+}
+function renderBayarForm(){
+  $("drw3-b").innerHTML = bayarFormHtml();
+  $("drw3-f").innerHTML = bayarFootHtml();
+  pasangSeg();
+  $("btn-back3").onclick = function(){ closeBayar(); openData(); };
+  $("btn-order").onclick = buatPesanan;
+}
+function buatPesanan(){
+  var err = $("co-err"); err.classList.remove("show");
+  var nama = $("f-nama").value.trim();
+  if(!nama){ closeBayar(); openData(); return; }
+  var tipe = document.querySelector('.ndemo #f-tipe input:checked').value;
+  var bayarEl = document.querySelector('.ndemo #f-bayar input:checked');
+  if(!bayarEl){ err.textContent="Please choose a payment method."; err.classList.add("show"); return; }
+  var bayar = bayarEl.value;
+  var btn = $("btn-order");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span><span>Placing your order...</span>';
+  setTimeout(function(){
+    var sub = cartSub(), tax = Math.round(sub*0.10), total = sub+tax;
+    var code = "NRD-" + Math.random().toString(36).slice(2,6).toUpperCase();
+    orders[code] = { code:code, nama:nama, tipe:TIPE[tipe], bayar:PAY[bayar],
+      meja: tipe==="dine-in" ? $("f-meja").value : null,
+      items: cart.map(function(c){return {id:c.id, name:c.name, qty:c.qty, unit:c.unit,
+        opts:c.opts.map(function(o){return o.name;}).join(", ")};}),
+      total:total, stage:0, at:Date.now() };
+    S.cart = []; cart = S.cart; save(); renderCart(); closeSemua();
+    openStatus(code);
+  }, 900);
+}
+
+var STAGES = ["Order received","Confirmed by cashier","Being prepared by the barista","Ready for pickup","Completed"];
+var STAGE_PILL = ["Received","Confirmed","Being prepared","Ready","Completed"];
+function stepsHtml(stage){
+  var ik = [ic("catatan","ic-stage"),ic("sukses","ic-stage"),ic("dinein","ic-stage"),ic("bel","ic-stage"),ic("pesta","ic-stage")];
+  var lb = ["Received","Confirmed","Being prepared","Ready","Completed"];
+  var h = "";
+  for(var i=0;i<5;i++){
+    var cls = i<stage ? "done" : (i===stage ? "now" : "");
+    h += '<div class="tstep '+cls+'"><span class="tnode">'+ik[i]+'</span><span class="tlab">'+lb[i]+'</span></div>';
+  }
+  return '<div class="steps">'+h+'</div>';
+}
+function daftarOrder(){
+  var arr = [];
+  for(var k in orders){ if(orders.hasOwnProperty(k)) arr.push(orders[k]); }
+  arr.sort(function(a,b){ return b.at - a.at; });
+  return arr;
+}
+function renderPesanan(){
+  var box = $("hasil-lacak");
+  var arr = daftarOrder();
+  if(!arr.length){
+    box.innerHTML = '<div class="emptybox">'+ic("kosong","ic-empty")+'<p>No orders yet.<br>Order from the Menu tab first!</p></div>';
+    return;
+  }
+  var h = "";
+  arr.forEach(function(o){
+    h += '<div class="ocard"><div class="oh"><div><p class="oc">'+esc(o.code)+'</p>' +
+      '<p class="ow">'+esc(o.nama)+' &bull; '+esc(o.tipe)+'</p></div>' +
+      '<span class="pill s'+o.stage+'">'+STAGE_PILL[o.stage]+'</span></div>';
+    h += stepsHtml(o.stage);
+    h += '<div class="of"><span class="ot">'+rp(o.total)+'</span>' +
+      (o.stage===4 ? '<button class="btn sm" data-ulang="'+esc(o.code)+'">'+ic("ulangi","ic-btn")+' Order Again</button>' :
+        (o.stage===3 ? '<span style="font-size:.75rem;font-weight:700;color:#1E7A34">'+ic("pesta","ic-sm")+' Show code to the cashier</span>' : '')) +
+      '</div></div>';
+  });
+  box.innerHTML = h;
+  var btns = box.querySelectorAll("[data-ulang]");
+  btns.forEach(function(b){ b.addEventListener("click", function(){ pesanLagiDemo(b.getAttribute("data-ulang")); }); });
+}
+function pesanLagiDemo(code){
+  var o = orders[code];
+  if(!o || !o.items) return;
+  o.items.forEach(function(ci){
+    var it = byId[ci.id];
+    var key = ci.id + "|" + (ci.opts||"");
+    var ex = null;
+    cart.forEach(function(c){ if(c.key===key) ex = c; });
+    if(ex) ex.qty = Math.min(20, ex.qty + ci.qty);
+    else cart.push({key:key, id:ci.id, name:ci.name, unit:ci.unit, qty:ci.qty,
+      opts:(ci.opts||"").split(", ").filter(Boolean).map(function(nm){ return {group:"", name:nm, delta:0}; })});
+  });
+  save(); renderCart(); openDrawer();
+}
+// Simulasi dapur: status pesanan maju otomatis tiap 8 detik (untuk demo)
+function simTick(){
+  var berubah = false;
+  for(var k in orders){
+    if(orders.hasOwnProperty(k) && orders[k].stage < 4){ orders[k].stage++; berubah = true; }
+  }
+  if(berubah){ save(); renderPesanan(); renderBeranda(); if(statusCode) renderStatus(); }
+}
+// ---------- Beranda ----------
+function renderSegTipe(){
+  var wrap = $("seg-tipe");
+  var btns = wrap.querySelectorAll("button");
+  btns.forEach(function(b){
+    b.classList.toggle("on", b.dataset.t === S.tipe);
+    b.onclick = function(){ S.tipe = b.dataset.t; save(); renderSegTipe(); };
+  });
+  wrap.classList.toggle("ada-pilih", !!S.tipe);
+  renderModeChip();
+}
+function renderModeChip(){
+  var chip = $("mode-chip");
+  if(!chip) return;
+  if(S.tipe){
+    chip.textContent = S.tipe==="dine-in" ? "Dine-In" : "Take Away";
+    chip.classList.add("tampil");
+  } else {
+    chip.classList.remove("tampil");
+  }
+  chip.onclick = function(){ goTab("beranda"); var el = $("seg-tipe"); if(el) el.scrollIntoView({behavior:"smooth", block:"center"}); };
+}
+function renderBeranda(){
+  renderSegTipe();
+  var arr = daftarOrder();
+  // Banner iklan
+  var BANNERS = [
+    {judul:"Omakase Coffee Experience", img:"app/public/img/placeholder.svg"},
+    {judul:"Flash Sale Every Day", img:"app/public/img/placeholder.svg"}
+  ];
+  (function(){
+    var kor = $("kor-banner"), dots = $("titik-banner");
+    if(!kor) return;
+    kor.innerHTML = BANNERS.map(function(b,i){
+      var isi = b.img
+        ? '<img src="'+b.img+'" alt="'+esc(b.judul)+'">'
+        : '<span class="bi"><h3>'+esc(b.judul)+'</h3>'+(b.sub?'<p>'+esc(b.sub)+'</p>':"")+(b.cta?'<span class="bcta">'+esc(b.cta)+'</span>':"")+'</span>';
+      return '<button type="button" class="bnr'+(b.img?' g':' t-'+(b.tema||'hijau'))+'" data-i="'+i+'">'+isi+'</button>';
+    }).join("");
+    dots.innerHTML = BANNERS.map(function(_,i){ return '<span class="'+(i===0?"on":"")+'"></span>'; }).join("");
+    var idx = 0, sentuh = false;
+    kor.addEventListener("pointerdown", function(){ sentuh = true; }, {passive:true});
+    window.addEventListener("pointerup", function(){ sentuh = false; }, {passive:true});
+    kor.addEventListener("scroll", function(){
+      var tengah = kor.scrollLeft + kor.clientWidth/2, aktif = 0, jm = 1e9;
+      Array.prototype.forEach.call(kor.children, function(anak,i){
+        var j = Math.abs((anak.offsetLeft + anak.offsetWidth/2) - tengah);
+        if(j < jm){ jm = j; aktif = i; }
+      });
+      Array.prototype.forEach.call(dots.children, function(d,i){ d.classList.toggle("on", i===aktif); });
+    }, {passive:true});
+    if(BANNERS.length > 1) setInterval(function(){
+      if(sentuh || document.hidden) return;
+      idx = (idx+1) % BANNERS.length;
+      var anak = kor.children[idx];
+      if(anak) kor.scrollTo({left: Math.max(0, anak.offsetLeft-16), behavior:"smooth"});
+    }, 5000);
+  })();
+  // Flash sale
+  var promos = [byId[41], byId[44]].filter(function(x){ return x && x.promo; });
+  var h = "";
+  promos.forEach(function(it){
+    h += '<div class="pcard"><div class="pimg">'+gbr(it)+'</div><div class="pb">' +
+      '<h4>'+esc(it.promo.title)+'</h4><p class="pn">'+esc(it.name)+'</p>' +
+      '<div class="ph tumpuk"><div class="coret"><s>'+rp(it.price)+'</s></div><div class="merah">'+rp(it.promo.final)+'</div></div>' +
+      '<button class="padd" data-beli="'+it.id+'" aria-label="Buy '+esc(it.name)+'">'+ic("keranjang","ic-btn")+'<span class="pplus">+</span></button></div></div>';
+  });
+  $("hs-promo").innerHTML = h;
+  $("hs-promo").querySelectorAll("[data-beli]").forEach(function(b){
+    b.addEventListener("click", function(e){ e.stopPropagation(); openItem(byId[b.getAttribute("data-beli")]); });
+  });
+  // Produk baru
+  var semua = [], sudahSemua = {};
+  cats.forEach(function(c){ (c.items||[]).forEach(function(i){ if(sudahSemua[i.id]) return; sudahSemua[i.id]=1; semua.push(i); }); });
+  var baru = semua.filter(function(i){ return i.is_new; });
+  var tampil = (baru.length ? baru : semua).slice(0, 8);
+  var h2 = "";
+  tampil.forEach(function(it){
+    h2 += '<button class="ucard" data-id="'+it.id+'">' +
+      (it.promo ? '<span class="bdg2" style="position:absolute;top:8px;left:8px;margin:0">'+ic("api","ic-bdg")+'</span>' : (it.is_new ? '<span class="bdg-new">'+ic("kilau","ic-bdg")+' New</span>' : '')) +
+      '<div class="uimg">'+gbr(it)+'</div><div class="ub"><h4>'+esc(it.name)+'</h4>' +
+      '<div class="up">'+(it.promo ? '<span class="coret"><s>'+rp(it.price)+'</s></span> <span class="merah">'+rp(it.promo.final)+'</span>' : rp(it.price))+'</div>' +
+      '</div></button>';
+  });
+  $("hs-untukmu").innerHTML = h2;
+  $("hs-untukmu").querySelectorAll(".ucard").forEach(function(el){
+    el.addEventListener("click", function(){ openItem(byId[el.getAttribute("data-id")]); });
+  });
+  var gm = $("go-menu"); if(gm) gm.onclick = function(){ goTab("pesan"); };
+  // Pesan lagi (pakai arr yang sudah ada)
+  var selesai = arr.filter(function(o){ return o.stage === 4; }).slice(0, 2);
+  var wl = $("wrap-lagi");
+  if(selesai.length){
+    var h3 = '<div class="sechead" style="margin-left:0;margin-right:0"><h3>'+ic("ulangi","ic-h")+' Order Again</h3></div>';
+    selesai.forEach(function(o){
+      h3 += '<div class="lagi"><div><p class="lk">'+esc(o.code)+'</p>' +
+        '<p class="lt">'+o.items.length+' items &bull; '+rp(o.total)+'</p></div>' +
+        '<button class="btn sm" data-ulang="'+esc(o.code)+'">Order Again</button></div>';
+    });
+    wl.innerHTML = h3;
+    wl.querySelectorAll("[data-ulang]").forEach(function(b){
+      b.addEventListener("click", function(){ pesanLagiDemo(b.getAttribute("data-ulang")); });
+    });
+  } else { wl.innerHTML = ""; }
+}
+function tickCountdown(){
+  var el = $("cd");
+  if(!el) return;
+  var min = null;
+  [byId[41], byId[44]].forEach(function(it){
+    if(it && it.promo && it.promo.ends && (min===null || it.promo.ends < min)) min = it.promo.ends;
+  });
+  if(min === null){ el.textContent = ""; return; }
+  var ms = min - Date.now();
+  if(ms < 0) ms = 0;
+  var h2 = Math.floor(ms/3600000), m = Math.floor(ms%3600000/60000), sc = Math.floor(ms%60000/1000);
+  function p2(x){ return (x<10?"0":"")+x; }
+  el.textContent = "\u23F3 " + p2(h2) + ":" + p2(m) + ":" + p2(sc);
+}
+
+function lacak(){
+  var code = $("kode").value.trim().toUpperCase(), box = $("hasil-lacak");
+  var o = orders[code];
+  if(!o){ box.innerHTML = '<div class="kartu"><p style="color:#B3261E;margin:0">Code <b>'+esc(code)+'</b> not found. In this demo, only newly created codes can be tracked &mdash; try placing an order first.</p></div>'; return; }
+  var tl = STAGES.map(function(s,i){
+    var cls = i<2 ? "done" : (i===2 ? "now" : "");
+    var ket = i<2 ? "Completed" : (i===2 ? "In progress" : "Waiting");
+    return '<li class="'+cls+'"><span class="dt"></span><div class="tn">'+s+'</div><div class="tk">'+ket+'</div></li>';
+  }).join("");
+  var items = o.items.map(function(i){
+    return '<div class="irow"><span><b>'+i.qty+'&times;</b> '+esc(i.name)+(i.opts?'<div class="isub">'+esc(i.opts)+'</div>':"")+'</span><span>'+rp(i.unit*i.qty)+'</span></div>';
+  }).join("");
+  box.innerHTML = '<div class="kartu"><h3>Order '+esc(o.code)+' <span class="stt">In progress</span></h3>' +
+    '<div class="kv">Name<b>'+esc(o.nama)+'</b></div>' +
+    '<div class="kv">Type<b>'+esc(o.tipe)+(o.meja?" &mdash; Table "+esc(o.meja):"")+'</b></div>' +
+    '<div class="kv">Payment<b>'+esc(o.bayar)+'</b></div>' +
+    '<div class="kv">Total<b>'+rp(o.total)+'</b></div></div>' +
+    '<div class="kartu"><h3>Status</h3><ul class="tl">'+tl+'</ul></div>' +
+    '<div class="kartu"><h3>Items</h3>'+items+'</div>';
+}
+var _bl = $("btn-lacak"); if(_bl) _bl.onclick = lacak;
+var _kd = $("kode"); if(_kd) _kd.addEventListener("keydown", function(e){ if(e.key==="Enter") lacak(); });
+
+/* Info About: sosmed & pembayaran (cermin /api/info aplikasi asli) */
+var DEMO_INFO = {
+  social_links: {instagram:"", tiktok:"", facebook:"", whatsapp:"https://wa.me/62895385381158"},
+  payment_methods: [{id:"qris",label:"QRIS"},{id:"tunai",label:"Cash"},{id:"transfer",label:"Bank Transfer"}]
+};
+function renderAboutInfo(){
+  var SOS = [["instagram","Instagram"],["tiktok","TikTok"],["facebook","Facebook"],["whatsapp","WhatsApp"]];
+  var sl = DEMO_INFO.social_links, h = "";
+  SOS.forEach(function(d){
+    var u = String(sl[d[0]]||"").trim();
+    if(u) h += '<a href="'+esc(u)+'" target="_blank" rel="noopener" aria-label="'+d[1]+'">'+ic(d[0])+"</a>";
+  });
+  var se = $("demo-sosmed"); if(se) se.innerHTML = h;
+  var IB = {qris:"qr", tunai:"tunai", transfer:"bank"};
+  var ph = DEMO_INFO.payment_methods.map(function(m){
+    var id = String(m.id||"").toLowerCase();
+    return '<span class="chip">'+ic(IB[id]||"dompet")+"<span>"+esc(m.label||m.id)+"</span></span>";
+  }).join("");
+  var pe = $("demo-bayar"); if(pe) pe.innerHTML = ph;
+}
+renderPills(); renderGrid(); renderCart(); renderBeranda(); renderPesanan(); renderAboutInfo();
+setTimeout(function(){var sp=$("splash");if(sp){sp.classList.add("pergi");setTimeout(function(){sp.style.display="none"},650);}},2500);
+setInterval(simTick, 8000);
+setInterval(tickCountdown, 1000); tickCountdown();
+})();
+</script>
