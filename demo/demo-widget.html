@@ -409,6 +409,16 @@ border-bottom:1px solid rgba(201,162,39,.45)}
 .ndemo .pick.cols3 .pick-c{flex-direction:column;gap:8px;text-align:center;padding:16px 8px 13px}
 .ndemo .pick.cols3 .pk-tx b{font-size:.8rem}
 .ndemo .pick.cols3 .pk-tx small{font-size:.66rem}
+/* ===== Payment tiles: premium ===== */
+.ndemo #f-bayar .pick-c{flex-direction:column;gap:10px;text-align:center;padding:20px 8px 16px;border-radius:20px;background:linear-gradient(160deg,#FFFFFF 0%,#FDF8EA 100%)}
+.ndemo #f-bayar .pk-ic{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#F8F0D8,#EDDFAE);color:#8A6D1A;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 5px 12px rgba(201,162,39,.20)}
+.ndemo #f-bayar .pk-ic svg{width:27px;height:27px}
+.ndemo #f-bayar .pick-c.on{background:linear-gradient(160deg,#234231 0%,#132A20 100%);border-color:#C9A227;box-shadow:0 14px 28px rgba(20,42,33,.35),0 0 0 1px rgba(201,162,39,.35)}
+.ndemo #f-bayar .pick-c.on .pk-ic{background:radial-gradient(circle at 32% 28%,#F5DC8E,#C9A227);color:#142A21;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 5px 12px rgba(201,162,39,.35)}
+.ndemo #f-bayar .pk-tx b{font-size:.85rem;letter-spacing:.03em}
+.ndemo #f-bayar .pick-c.on .pk-tx b{color:#F7F2E6}
+.ndemo #f-bayar .pk-tx small{font-size:.68rem}
+.ndemo #f-bayar .pick-c.on .pk-tx small{color:#C4B896}
 .ndemo .btn{position:relative;overflow:hidden;border-radius:16px;letter-spacing:.01em;transition:transform .15s,box-shadow .25s,filter .2s}
 .ndemo .btn:active{transform:scale(.97)}
 .ndemo .btn.gold{background:linear-gradient(135deg,#DDB84A 0%,#C9A227 55%,#AE8C1D 100%);color:#0F2019;box-shadow:0 12px 26px rgba(201,162,39,.35),inset 0 1px 0 rgba(255,255,255,.55)}
@@ -435,6 +445,9 @@ border-bottom:1px solid rgba(201,162,39,.45)}
   .ndemo .pick{gap:8px}
   .ndemo .pick.cols3{grid-template-columns:1fr}
   .ndemo .pick-c{padding:11px 10px}
+  .ndemo #f-bayar .pick-c{flex-direction:row;text-align:left;padding:12px 14px;gap:13px}
+  .ndemo #f-bayar .pk-ic{width:50px;height:50px}
+  .ndemo #f-bayar .pk-tx{flex:1;min-width:0}
   .ndemo .csteps span{font-size:.6rem;letter-spacing:.04em}
   .ndemo .ci .t{font-size:.88rem}
 }
@@ -1175,7 +1188,27 @@ function lacak(){
 var _bl = $("btn-lacak"); if(_bl) _bl.onclick = lacak;
 var _kd = $("kode"); if(_kd) _kd.addEventListener("keydown", function(e){ if(e.key==="Enter") lacak(); });
 
-renderPills(); renderGrid(); renderCart(); renderBeranda(); renderPesanan();
+/* Info About: sosmed & pembayaran (cermin /api/info aplikasi asli) */
+var DEMO_INFO = {
+  social_links: {instagram:"", tiktok:"", facebook:"", whatsapp:"https://wa.me/62895385381158"},
+  payment_methods: [{id:"qris",label:"QRIS"},{id:"tunai",label:"Cash"},{id:"transfer",label:"Bank Transfer"}]
+};
+function renderAboutInfo(){
+  var SOS = [["instagram","Instagram"],["tiktok","TikTok"],["facebook","Facebook"],["whatsapp","WhatsApp"]];
+  var sl = DEMO_INFO.social_links, h = "";
+  SOS.forEach(function(d){
+    var u = String(sl[d[0]]||"").trim();
+    if(u) h += '<a href="'+esc(u)+'" target="_blank" rel="noopener" aria-label="'+d[1]+'">'+ic(d[0])+"</a>";
+  });
+  var se = $("demo-sosmed"); if(se) se.innerHTML = h;
+  var IB = {qris:"qr", tunai:"tunai", transfer:"bank"};
+  var ph = DEMO_INFO.payment_methods.map(function(m){
+    var id = String(m.id||"").toLowerCase();
+    return '<span class="chip">'+ic(IB[id]||"dompet")+"<span>"+esc(m.label||m.id)+"</span></span>";
+  }).join("");
+  var pe = $("demo-bayar"); if(pe) pe.innerHTML = ph;
+}
+renderPills(); renderGrid(); renderCart(); renderBeranda(); renderPesanan(); renderAboutInfo();
 setTimeout(function(){var sp=$("splash");if(sp){sp.classList.add("pergi");setTimeout(function(){sp.style.display="none"},650);}},2500);
 setInterval(simTick, 8000);
 setInterval(tickCountdown, 1000); tickCountdown();
