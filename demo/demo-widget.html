@@ -166,7 +166,7 @@ border-bottom:1px solid rgba(201,162,39,.45)}
 
 
 .ndemo .ocard{background:#fff;border-radius:18px;padding:16px;box-shadow:0 2px 12px rgba(20,42,33,.10);margin:0 0 14px}
-.ndemo .ocard .oh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.ndemo .ocard .oh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
 .ndemo .ocard .oc{margin:0 0 4px;font-weight:800;font-size:1.02rem;letter-spacing:.02em;color:#1C3A2E}
 .ndemo .ocard .ow{margin:0;color:#8a7f68;font-size:.85rem}
 .ndemo .ocard .pill{flex:0 0 auto;cursor:default;font-size:.72rem;font-weight:800;padding:7px 13px;white-space:nowrap}
@@ -338,14 +338,114 @@ border-bottom:1px solid rgba(201,162,39,.45)}
 .ndemo .kor-banner .bnr .bi h3{margin:0 0 4px;font-size:1.02rem}
 .ndemo .kor-banner .bnr .bi p{margin:0 0 10px;font-size:.78rem;opacity:.85}
 .ndemo .bcta{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:#C9A227;color:#1C3A2E}
+.ndemo .art,.ndemo .pimg,.ndemo .uimg{display:block;overflow:hidden;padding:0}.ndemo .sheet{display:flex;flex-direction:column;overflow:visible;position:relative;background:transparent}.ndemo .toast{position:absolute;left:20px;right:20px;bottom:calc(100% + 12px);z-index:60;background:rgba(28,42,34,.96);color:#FFF6E3;border:1px solid rgba(201,162,75,.45);border-radius:14px;padding:13px 16px;font-size:.9rem;font-weight:600;text-align:center;box-shadow:0 14px 32px rgba(20,35,28,.4);opacity:0;transform:translateY(10px);transition:opacity .25s ease,transform .25s ease;pointer-events:none}.ndemo .toast.show{opacity:1;transform:translateY(0)}.ndemo .sart{display:block;position:relative;z-index:2;flex:none;height:220px;margin:14px 16px 0;border-radius:18px;background:#1C3A2E;background-size:cover;background-position:center;box-shadow:0 12px 26px rgba(28,58,46,.20);overflow:hidden}.ndemo .spanel{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;background:#fff;border-radius:24px 24px 0 0;margin-top:-110px;padding-top:110px}.ndemo .sart.noimg{display:flex;align-items:center;justify-content:center}.ndemo .sart .cupbig{display:flex;align-items:center;justify-content:center}.ndemo .sb{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain}.ndemo .sfoot{flex:none;position:relative;background:#fff;border-top:1px solid #EFE7D3;padding:10px 20px calc(14px + env(safe-area-inset-bottom,0px));box-shadow:0 -10px 24px rgba(28,58,46,.08)}.ndemo .sfoot .qtyrow{margin:2px 0 10px}.ndemo .sart .x{position:absolute;top:10px;right:10px;float:none;margin:0;z-index:6}.ndemo .sname{position:absolute;left:0;right:0;bottom:0;margin:0;padding:34px 16px 14px;color:#FFF6E3;font-size:1.08rem;font-weight:700;line-height:1.25;background:linear-gradient(transparent,rgba(12,26,19,.80))}.ndemo .art img,.ndemo .pimg img,.ndemo .uimg img{width:100%;height:100%;object-fit:cover;display:block}.ndemo .cupw{display:flex;align-items:center;justify-content:center;width:100%;height:196px;border-radius:18px;box-shadow:0 12px 26px rgba(28,58,46,.20);background:linear-gradient(135deg,#1C3A2E,#2d5a46)}
+/* ===== Checkout modern (2026-10-01): premium + animasi ===== */
+.ndemo{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){.ndemo .dov,.ndemo .drw{transition:none}.ndemo .drw.fresh .db>*,.ndemo .drw.fresh .df>*{animation:none}.ndemo .btn.gold::after,.ndemo .btn .spin{animation:none}}
+
+.ndemo .dov{display:block;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility 0s linear .35s}
+.ndemo .dov.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .35s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ndemo .drw{border-radius:26px;background:#FCFAF2;box-shadow:0 32px 80px rgba(8,20,15,.45),0 0 0 1px rgba(201,162,39,.22);transform:translate(-50%,-48%) scale(.92);transition:transform .45s cubic-bezier(.22,1.36,.36,1),opacity .3s ease}
+.ndemo .drw.open{transform:translate(-50%,-50%) scale(1)}
+.ndemo .drw.fresh .db>*{animation:mdlUp .55s cubic-bezier(.22,1,.36,1) both}
+.ndemo .drw.fresh .db>*:nth-child(2){animation-delay:.07s}
+.ndemo .drw.fresh .db>*:nth-child(3){animation-delay:.14s}
+.ndemo .drw.fresh .db>*:nth-child(4){animation-delay:.21s}
+.ndemo .drw.fresh .db>*:nth-child(5){animation-delay:.28s}
+.ndemo .drw.fresh .db>*:nth-child(n+6){animation-delay:.34s}
+.ndemo .drw.fresh .df>*{animation:mdlUp .55s .16s cubic-bezier(.22,1,.36,1) both}
+@keyframes mdlUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.ndemo .dh{position:relative;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:12px;padding:16px 18px 15px}
+.ndemo .dh::after{content:"";position:absolute;left:18px;right:18px;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,.55),transparent)}
+.ndemo .dh-top{display:flex;align-items:center;justify-content:space-between}
+.ndemo .dh h2{font-size:1.14rem;letter-spacing:.01em}
+.ndemo .csteps{display:flex;gap:6px}
+.ndemo .csteps span{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font-size:.66rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:rgba(247,242,230,.42);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);padding:7px 4px;border-radius:999px;transition:all .35s ease}
+.ndemo .csteps span i{font-style:normal;flex:none;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.14);display:inline-flex;align-items:center;justify-content:center;font-size:.62rem}
+.ndemo .csteps span.on{background:rgba(201,162,39,.22);border-color:rgba(201,162,39,.55);color:#F3D98B}
+.ndemo .csteps span.on i{background:#C9A227;color:#0F2019}
+.ndemo .db{padding:16px 16px 24px}
+.ndemo .df{padding:14px 16px calc(16px + env(safe-area-inset-bottom,0px));background:#F7F2E6;border-top:1px solid rgba(201,162,39,.28)}
+.ndemo .ci{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid rgba(226,211,176,.55);border-radius:18px;box-shadow:0 8px 22px rgba(20,42,33,.08);padding:12px;margin-bottom:12px}
+.ndemo .cit{flex:none;width:64px;height:64px;border-radius:14px;background-color:#1C3A2E;background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.ndemo .cit.noimg{display:flex;align-items:center;justify-content:center}
+.ndemo .cinfo{flex:1;min-width:0}
+.ndemo .ci .t{font-weight:800;font-size:.95rem;color:#142A21;letter-spacing:.01em}
+.ndemo .ci .o{font-size:.78rem;color:#8A7E66;margin:3px 0 10px;line-height:1.45}
+.ndemo .ci .b{display:flex;justify-content:flex-start;align-items:center;gap:10px}
+.ndemo .ci .st{font-weight:700;color:#1C3A2E;font-size:.88rem;white-space:nowrap;margin:3px 0 0;letter-spacing:.01em}
+.ndemo .del{flex:none;width:34px;height:34px;border:none;border-radius:11px;background:#FBEFEA;color:#B3261E;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:transform .15s,background .2s}
+.ndemo .del:active{transform:scale(.88);background:#F6E2DB}
+.ndemo .del svg{width:16px;height:16px}
+.ndemo .step.sm button{width:32px;height:32px;border:1.5px solid #D8CBA6;background:#FCFAF2;font-size:1.05rem;transition:all .18s}
+.ndemo .step.sm button:active{background:#1C3A2E;border-color:#1C3A2E;color:#fff;transform:scale(.9)}
+.ndemo .empty-ic{width:76px;height:76px;margin:8px auto 14px;border-radius:24px;background:linear-gradient(135deg,#1C3A2E,#2d5a46);color:#F3D98B;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(28,58,46,.25)}
+.ndemo .empty-ic svg{width:34px;height:34px}
+.ndemo .empty b{display:block;font-size:1.02rem;color:#142A21;margin-bottom:6px}
+.ndemo .empty p{margin:0;font-size:.88rem}
+.ndemo .fm{background:#fff;border:1px solid rgba(226,211,176,.55);border-radius:18px;box-shadow:0 8px 22px rgba(20,42,33,.08);padding:16px 18px;margin:14px 0}
+.ndemo .fm h3{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:#8A7E66;margin:0 0 12px}
+.ndemo .tr{padding:7px 0;font-size:.93rem;color:#4A4438}
+.ndemo .tr.tt{border-top:1px solid #EFE6CF;font-size:1.18rem;color:#142A21;margin-top:8px;padding-top:12px}
+.ndemo .lbl{font-size:.74rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#8A7E66;margin:16px 0 7px}
+.ndemo .lbl .opt{text-transform:none;letter-spacing:0;font-weight:400}
+.ndemo .inp{border:1.5px solid #E7DCC0;border-radius:14px;padding:14px 16px;background:#fff;transition:border-color .25s,box-shadow .25s}
+.ndemo .inp:focus{outline:none;border-color:#C9A227;box-shadow:0 0 0 4px rgba(201,162,39,.16)}
+.ndemo .inp::placeholder{color:#BCAF92}
+.ndemo .pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ndemo .pick.cols3{grid-template-columns:repeat(3,1fr)}
+.ndemo .pick-c{position:relative;display:flex;align-items:center;gap:11px;border:1.5px solid #E7DCC0;border-radius:16px;padding:12px;background:#fff;cursor:pointer;transition:border-color .25s,background .25s,box-shadow .25s,transform .25s}
+.ndemo .pick-c input{position:absolute;opacity:0;pointer-events:none}
+.ndemo .pick-c.on{border-color:#C9A227;background:linear-gradient(135deg,#FFFEF9,#FBF3DA);box-shadow:0 10px 22px rgba(201,162,39,.20)}
+.ndemo .pk-ic{flex:none;width:44px;height:44px;border-radius:14px;background:#F1EAD3;color:#1C3A2E;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.ndemo .pk-ic svg{width:22px;height:22px}
+.ndemo .pick-c.on .pk-ic{background:#1C3A2E;color:#F3D98B}
+.ndemo .pk-tx{min-width:0}
+.ndemo .pk-tx b{display:block;font-size:.9rem;color:#142A21}
+.ndemo .pk-tx small{display:block;font-size:.7rem;color:#8A7E66;margin-top:2px;line-height:1.35}
+.ndemo .pk-check{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;background:#C9A227;color:#0F2019;display:flex;align-items:center;justify-content:center;transform:scale(0);transition:transform .32s cubic-bezier(.34,1.65,.64,1);box-shadow:0 4px 10px rgba(201,162,39,.4)}
+.ndemo .pk-check svg{width:13px;height:13px}
+.ndemo .pick-c.on .pk-check{transform:scale(1)}
+.ndemo .pick.cols3 .pick-c{flex-direction:column;gap:8px;text-align:center;padding:16px 8px 13px}
+.ndemo .pick.cols3 .pk-tx b{font-size:.8rem}
+.ndemo .pick.cols3 .pk-tx small{font-size:.66rem}
+.ndemo .btn{position:relative;overflow:hidden;border-radius:16px;letter-spacing:.01em;transition:transform .15s,box-shadow .25s,filter .2s}
+.ndemo .btn:active{transform:scale(.97)}
+.ndemo .btn.gold{background:linear-gradient(135deg,#DDB84A 0%,#C9A227 55%,#AE8C1D 100%);color:#0F2019;box-shadow:0 12px 26px rgba(201,162,39,.35),inset 0 1px 0 rgba(255,255,255,.55)}
+.ndemo .btn.gold::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-30%;width:45px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-18deg);animation:shine 4.2s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%,58%{left:-30%}88%,100%{left:130%}}
+.ndemo .btn.ghost{background:rgba(255,255,255,.65);border:1.5px solid #D8CBA6;color:#1C3A2E;box-shadow:none}
+.ndemo .dfrow{display:flex;gap:10px;margin-top:10px}
+.ndemo .dfrow .btn{width:auto;min-width:0;margin-top:0;display:flex;align-items:center;justify-content:center}
+.ndemo .dfrow .ghost{flex:0 0 auto;padding:15px 20px;font-size:.92rem}
+.ndemo .dfrow .gold{flex:1}
+.ndemo .ic-bk{width:18px;height:18px;margin-right:7px}
+.ndemo .btn .spin{display:inline-block;width:17px;height:17px;vertical-align:-3px;margin-right:9px;border:2.5px solid rgba(15,32,25,.25);border-top-color:#0F2019;border-radius:50%;animation:spinPutar .7s linear infinite}
+@keyframes spinPutar{to{transform:rotate(360deg)}}
+.ndemo .btn[disabled]{filter:saturate(.65);cursor:wait}
+.ndemo .err{border-radius:12px}
+.ndemo .err.show{display:block;animation:errIn .3s ease}
+@keyframes errIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+/* ===== Checkout responsif: layar kecil ===== */
+@media (max-width:380px){
+  .ndemo .drw{width:calc(100% - 24px);border-radius:22px}
+  .ndemo .dh{padding:18px 16px 12px}
+  .ndemo .db{padding:12px 16px}
+  .ndemo .df{padding:10px 16px calc(14px + env(safe-area-inset-bottom))}
+  .ndemo .pick{gap:8px}
+  .ndemo .pick.cols3{grid-template-columns:1fr}
+  .ndemo .pick-c{padding:11px 10px}
+  .ndemo .csteps span{font-size:.6rem;letter-spacing:.04em}
+  .ndemo .ci .t{font-size:.88rem}
+}
 </style>
 <div class="ndemo">
 <div class="phone">
 <div class="splash" id="splash"><div class="splash-inner">
-<img class="splash-emblem" src="../app/public/img/placeholder.svg" alt="Nordic emblem">
+<img class="splash-emblem" src="/img/placeholder.svg" alt="Nordic emblem">
 <div class="splash-word" aria-label="NORDIC"><span>N</span><span>O</span><span>R</span><span>D</span><span>I</span><span>C</span></div>
 <div class="splash-rule"></div>
-<img class="splash-founders" src="../app/public/img/placeholder.svg" alt="by the Founders">
+<img class="splash-founders" src="/img/placeholder.svg" alt="by the Founders">
 </div></div>
   <div class="hdr"><button class="mode-chip" id="mode-chip" type="button" aria-label="Order mode"></button><div class="hdiv" aria-hidden="true"><i></i></div><p>Artisan specialty coffee &bull; Surabaya</p></div>
   <div class="tabs">
@@ -426,25 +526,25 @@ border-bottom:1px solid rgba(201,162,39,.45)}
   <button class="fab" id="fab" aria-label="Open cart"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/><path d="M2 3h3l2.6 12.4a1.5 1.5 0 0 0 1.5 1.1h7.9a1.5 1.5 0 0 0 1.5-1.2L20.5 7H6"/></svg><span class="n" id="fab-n" style="display:none">0</span></button>
   <div class="dov" id="dov"></div>
   <aside class="drw" id="drw">
-    <div class="dh"><h2>Cart</h2><button class="x" id="drw-x" aria-label="Close cart" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+    <div class="dh"><div class="dh-top"><h2>Cart</h2><button class="x" id="drw-x" aria-label="Close cart" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="csteps"><span class="on"><i>1</i>Cart</span><span><i>2</i>Details</span><span><i>3</i>Payment</span></div></div>
     <div class="db" id="drw-b"></div>
     <div class="df" id="drw-f"></div>
   </aside>
   <div class="dov" id="dov2"></div>
   <aside class="drw" id="drw2">
-    <div class="dh"><h2>Order Details</h2><button class="x" id="drw2-x" aria-label="Close order details" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+    <div class="dh"><div class="dh-top"><h2>Order Details</h2><button class="x" id="drw2-x" aria-label="Close order details" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="csteps"><span><i>1</i>Cart</span><span class="on"><i>2</i>Details</span><span><i>3</i>Payment</span></div></div>
     <div class="db" id="drw2-b"></div>
     <div class="df" id="drw2-f"></div>
   </aside>
   <div class="dov" id="dov3"></div>
   <aside class="drw" id="drw3">
-    <div class="dh"><h2>Payment</h2><button class="x" id="drw3-x" aria-label="Close payment" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+    <div class="dh"><div class="dh-top"><h2>Payment</h2><button class="x" id="drw3-x" aria-label="Close payment" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="csteps"><span><i>1</i>Cart</span><span><i>2</i>Details</span><span class="on"><i>3</i>Payment</span></div></div>
     <div class="db" id="drw3-b"></div>
     <div class="df" id="drw3-f"></div>
   </aside>
   <div class="dov" id="dov4"></div>
   <aside class="drw" id="drw4">
-    <div class="dh"><h2>Order Status</h2><button class="x" id="drw4-x" aria-label="Close order status" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+    <div class="dh"><div class="dh-top"><h2>Order Status</h2><button class="x" id="drw4-x" aria-label="Close order status" style="background:rgba(255,255,255,.15);color:#F7F2E6"><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div></div>
     <div class="db" id="drw4-b"></div>
     <div class="df" id="drw4-f"></div>
   </aside>
@@ -496,6 +596,7 @@ var IC_RAW = {
   segarkan: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8\"/><path d=\"M21 3v5h-5\"/><path d=\"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16\"/><path d=\"M8 16H3v5\"/></svg>",
   kamera: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z\"/><circle cx=\"12\" cy=\"13\" r=\"3\"/></svg>",
   pensil: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\"/><path d=\"m15 5 4 4\"/></svg>",
+  bank: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\"/><line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\"/><line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\"/><line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\"/><line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\"/><polygon points=\"12 2 20 7 4 7\"/></svg>",
 };
 function ic(n, c){ return (IC_RAW[n]||"").replace("<svg ", "<svg class=\""+(c||"ic")+"\" "); }
 var DATA = {"categories":[{"id":1,"name":"Coffee","items":[{"id":41,"name":"MAGIC","description":"[SAMPLE] Temporary price — adjust via admin.","price":55000,"image":"/img/magic.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":42,"name":"FILTER COFFEE","description":"[SAMPLE] Temporary price — adjust via admin.","price":55000,"image":"/img/filter-coffee.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":43,"name":"MANUAL BREW","description":"[SAMPLE] Temporary price — adjust via admin.","price":65000,"image":"/img/manual-brew-v60.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":44,"name":"ICED COFFEE CREAM TOP","description":"[SAMPLE] Temporary price — adjust via admin.","price":65000,"image":"/img/iced-coffee-cream-top.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":45,"name":"ICED ESPRESSO","description":"[SAMPLE] Temporary price — adjust via admin.","price":45000,"image":"/img/iced-espresso.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":46,"name":"MOCTAIL","description":"[SAMPLE] Temporary price — adjust via admin.","price":65000,"image":"/img/moctail.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":47,"name":"BLEND COFFEE DRINK","description":"[SAMPLE] Temporary price — adjust via admin.","price":65000,"image":"/img/blend-solara.jpg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]},{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]},{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]},{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]},{"id":1,"name":"WHITE/BLACK","description":"Signature coffee — available as White or Black","price":55000,"image":"/img/latte.jpg","is_best_seller":1,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":2,"name":"COLD FASHION","description":"Old fashioned-style iced coffee","price":65000,"image":"/img/iced-coffee-cream-top.jpg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":3,"name":"CHERRISH","description":"Coffee with a touch of cherry","price":65000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":4,"name":"ORANGE ENVY","description":"Coffee with refreshing orange","price":55000,"image":"/img/blend-solara.jpg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":5,"name":"FLIGHT","description":"Flight tasting of several single origins","price":85000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":6,"name":"FLIGHT EXOTIC","description":"Flight tasting of exotic single origins","price":100000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]},{"id":7,"name":"SIGNATURE COLD BREW","description":"Signature cold brew","price":65000,"image":"/img/signature-iced.jpg","is_best_seller":0,"option_groups":[{"id":3,"name":"Sugar Level","type":"single","required":0,"options":[{"id":5,"name":"0%","price_delta":0},{"id":6,"name":"30%","price_delta":0},{"id":7,"name":"50%","price_delta":0},{"id":8,"name":"70%","price_delta":0},{"id":9,"name":"100%","price_delta":0}]},{"id":4,"name":"Ice Level","type":"single","required":0,"options":[{"id":10,"name":"Normal","price_delta":0},{"id":11,"name":"Less ice","price_delta":0},{"id":12,"name":"No ice","price_delta":0}]},{"id":5,"name":"Extras","type":"multiple","required":0,"options":[{"id":13,"name":"Extra Shot","price_delta":10000},{"id":14,"name":"Oat Milk","price_delta":10000},{"id":15,"name":"Almond Milk","price_delta":10000}]}]}]},{"id":2,"name":"Non Coffee","items":[{"id":8,"name":"MATCHA LATTE","description":"Matcha latte — choose hot or iced","price":40000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":1,"name":"Serving","type":"single","required":1,"options":[{"id":1,"name":"Hot","price_delta":0},{"id":2,"name":"Iced","price_delta":10000}]}]},{"id":9,"name":"CHOCOLATE","description":"Chocolate — choose hot or iced","price":40000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":2,"name":"Serving","type":"single","required":1,"options":[{"id":3,"name":"Hot","price_delta":0},{"id":4,"name":"Iced","price_delta":15000}]}]},{"id":10,"name":"CLARIFIED GUAVA","description":"Refreshing clarified guava drink","price":50000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":11,"name":"TROPICAL SUNRISE","description":"Tropical mocktail","price":50000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":12,"name":"COCONUT MATCHA","description":"Matcha with coconut","price":55000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":13,"name":"WANDA & COSMO","description":"Signature mocktail","price":65000,"image":"/img/moctail.jpg","is_best_seller":0,"option_groups":[]},{"id":14,"name":"CLEO WATER","description":"Premium mineral water","price":30000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]}]},{"id":3,"name":"Artisan Tea","items":[{"id":15,"name":"ARTISAN BLEND TEA","description":"Artisan blend tea — includes 1x refill","price":40000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":6,"name":"Variant","type":"single","required":1,"options":[{"id":16,"name":"PINA COLADA","price_delta":0},{"id":17,"name":"MISTY ROSE","price_delta":0},{"id":18,"name":"BLACKFOREST","price_delta":0}]}]}]},{"id":4,"name":"Exotic Tea","items":[{"id":16,"name":"LONGBOARD GEISHA FLOWER TEA","description":"Exotic flower tea — choose medium or light character","price":400000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[{"id":7,"name":"Character","type":"single","required":1,"options":[{"id":19,"name":"MEDIUM","price_delta":0},{"id":20,"name":"LIGHT","price_delta":0}]}]}]},{"id":5,"name":"Omakase","items":[{"id":17,"name":"THE FOUNDERS COURSE","description":"Nett — 5 course: Welcome Drink, Split Espresso & Freeze Distilled Milk, Exotic Filter, Mocktail & Sweet Pairing","price":325000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]}]},{"id":6,"name":"Small & Bites","items":[{"id":18,"name":"Croissant Plain","description":"Classic crispy croissant","price":28000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":19,"name":"Croissant Crunchy Gianduja","description":"Croissant with crispy gianduja","price":30000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":20,"name":"Croissant Strawberry","description":"Croissant with strawberries","price":30000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":21,"name":"Croissant Butter","description":"Savory butter croissant","price":30000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":22,"name":"Croissant Almond","description":"Croissant topped with almonds","price":43000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":23,"name":"Grilled Cheese Original","description":"Classic grilled cheese","price":65000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":24,"name":"Grilled Cheese Smoked Beef","description":"Grilled cheese with smoked beef","price":80000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":25,"name":"Grilled Cheese Kimchi","description":"Grilled cheese with kimchi","price":90000,"image":"/img/placeholder.svg","is_best_seller":1,"is_new":1,"option_groups":[]},{"id":26,"name":"Monkey Chocolate","description":"Banana with chocolate","price":43000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":27,"name":"Cheesecake","description":"Smooth cheesecake","price":55000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":28,"name":"Caramel Pudding","description":"Sweet caramel pudding","price":35000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]}]},{"id":7,"name":"Retail — Founders Roast Home","items":[{"id":29,"name":"Semendo 120H HSN","description":"Founders Roast Home — tube packaging","price":60000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":30,"name":"Solok Natural","description":"Founders Roast Home — tube packaging","price":65000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":31,"name":"Blueberry Milk Tea","description":"Founders Roast Home — tube packaging","price":65000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":32,"name":"Ciwidey Best Nano Lot","description":"Founders Roast Home — tube packaging","price":75000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":33,"name":"Costa Rica Mozart Raisin Honey","description":"Founders Roast Home — tube packaging","price":100000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":34,"name":"Mt. Mekarwangi","description":"Founders Roast Home — tube packaging","price":85000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":35,"name":"Yunnan Catimor","description":"Founders Roast Home — tube packaging","price":110000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":36,"name":"Inama Geisha Janson Alpes","description":"Founders Roast Home — tube packaging","price":170000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":37,"name":"Roma Nativo","description":"Founders Roast Home — tube packaging","price":125000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":38,"name":"Paraiso Plum","description":"Founders Roast Home — tube packaging","price":130000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":39,"name":"Raspberry Candy","description":"Founders Roast Home — tube packaging","price":95000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]},{"id":40,"name":"Additional Eugenioides","description":"Founders Roast Home — tube packaging","price":50000,"image":"/img/placeholder.svg","is_best_seller":0,"option_groups":[]}]},{"id":8,"name":"New","items":[]}],"items":[]};
@@ -521,10 +622,15 @@ function save(){ if(bridge) bridge.setState(S); }
 if(bridge) window.addEventListener("hatch-widget-state", function(e){ S = e.detail.state || S; renderCart(); });
 
 var CUP = '<svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="#F7F2E6" stroke-width="1.7" stroke-linecap="round"><path d="M4 10h12v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M16 11h1.6a2.4 2.4 0 0 1 0 4.8H16"/><path d="M7.5 7c0-1.2 1-1.2 1-2.4M11.5 7c0-1.2 1-1.2 1-2.4"/></svg>';
+var IMGS=["/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg","/img/placeholder.svg"];
+var IMGM={1:7,2:3,3:14,4:6,5:10,6:9,7:8,8:12,9:13,10:14,11:14,12:12,13:5,14:14,15:15,16:15,17:10,18:16,19:16,20:16,21:16,22:16,23:17,24:17,25:17,26:13,27:18,28:18,29:19,30:19,31:19,32:19,33:19,34:19,35:19,36:19,37:19,38:19,39:19,40:19,41:0,42:1,43:2,44:3,45:4,46:5,47:6};
+function gbr(it){var u=it&&IMGS[IMGM[it.id]];return u?'<img src="'+u+'" alt="">':'<span class="cupw">'+CUP+'</span>';}
 function rp(n){ return "Rp" + Number(n||0).toLocaleString("id-ID"); }
 function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 function $(id){ return document.getElementById(id); }
 var cart = S.cart, orders = S.orders, activeCat = "all", cur = null;
+var TIPE = {"dine-in":"Dine-In","takeaway":"Take Away"};
+var PAY = {qris:"QRIS",tunai:"Cash",transfer:"Bank Transfer"};
 // Promo demo (contoh flash sale)
 byId[41].promo = {title:"Flash Sale: MAGIC", final:45000, ends: Date.now()+6*3600*1000};
 byId[44].promo = {title:"Save 15%: Iced Coffee Cream Top", final:55000, ends: Date.now()+6*3600*1000};
@@ -579,7 +685,12 @@ function goTab(v){ var b = document.querySelector('.ndemo .tabs button[data-v="'
 
 function renderPills(){
   var h = '<button class="pill on" data-c="all">All</button>';
-  cats.forEach(function(c){ h += '<button class="pill" data-c="'+c.id+'">'+esc(c.name)+"</button>"; });
+  var sisanya = [];
+  cats.forEach(function(c){
+    var b = '<button class="pill" data-c="'+c.id+'">'+esc(c.name)+"</button>";
+    if(String(c.name||"").toLowerCase()==="new") h += b; else sisanya.push(b);
+  });
+  sisanya.forEach(function(b){ h += b; });
   $("pills").innerHTML = h;
   var pills = document.querySelectorAll(".ndemo .pill");
   pills.forEach(function(p){
@@ -598,7 +709,7 @@ function renderGrid(){
       if(sudah[i.id]) return; sudah[i.id]=1;
       h += '<button class="card" data-id="'+i.id+'">' +
         (i.promo?'<span class="bdg2" style="position:absolute;top:8px;left:8px;margin:0">'+ic("api","ic-bdg")+'</span>':((i.is_best_seller?'<span class="bdg">Best Seller</span>':'')+(i.is_new?'<span class="bdg-new"'+(i.is_best_seller?' style="top:34px"':'')+'>'+ic("kilau","ic-bdg")+' New</span>':''))) +
-        '<span class="art">'+CUP+'</span>' +
+        '<span class="art">'+gbr(i)+'</span>' +
         '<span class="cb"><span class="cn">'+esc(i.name)+'</span>' +
         '<span class="cd">'+esc(i.description||"")+'</span>' +
         '<span class="cp">'+(i.promo?'<span class="coret"><s>'+rp(i.price)+'</s></span> <span class="merah">'+rp(i.promo.final)+'</span>':rp(i.price))+'</span></span></button>';
@@ -612,10 +723,10 @@ function renderGrid(){
 function openItem(it){
   if(!it) return;
   cur = { item: it, qty: 1, sel: {} };
-  var h = '<button class="x" id="sh-x" aria-label="Close">'+ic("tutup","ic-x")+'</button>' +
-    '<div class="sart">'+CUP+'</div><div class="sb">' +
-    '<h2>'+esc(it.name)+(it.is_new?' <span class="tag-new">'+ic("kilau","ic-bdg")+' New</span>':'')+'</h2><div class="sbd">'+esc(it.description||"")+'</div>' +
-    '<div class="sbp">'+(it.promo?'<s class="coret">'+rp(it.price)+'</s> <b class="merah">'+rp(it.promo.final)+'</b><br><span class="bdg2">'+ic("api","ic-bdg")+' '+esc(it.promo.title)+'</span>':'Base price: '+rp(it.price))+'</div><div class="err" id="sh-err"></div>';
+  var bg = it && IMGS[IMGM[it.id]];
+  var h = '<div class="sart'+(bg?'':' noimg')+'"'+(bg?' style="background-image:url(&quot;'+bg+'&quot;)"':'')+'>'+(bg?'':'<span class="cupbig">'+CUP+'</span>')+'<div class="sname">'+esc(it.name)+(it.is_new?' <span class="tag-new">'+ic("kilau","ic-bdg")+' New</span>':'')+'</div><button class="x" id="sh-x" aria-label="Close">'+ic("tutup","ic-x")+'</button></div><div class="spanel"><div class="sb">' +
+    '<div class="sbd">'+esc(it.description||"")+'</div>' +
+    '<div class="sbp">'+(it.promo?'<s class="coret">'+rp(it.price)+'</s> <b class="merah">'+rp(it.promo.final)+'</b><br><span class="bdg2">'+ic("api","ic-bdg")+' '+esc(it.promo.title)+'</span>':rp(it.price))+'</div>';
   (it.option_groups||[]).forEach(function(g){
     h += '<div class="og" data-g="'+g.id+'"><h4>'+esc(g.name)+(g.required?' <span class="req">*</span>':'')+'</h4>';
     g.options.forEach(function(o){
@@ -625,9 +736,9 @@ function openItem(it){
     });
     h += '</div>';
   });
-  h += '<div class="qtyrow"><div class="step"><button id="q-min" type="button">'+ic("kurang","ic-step")+'</button><span class="qv" id="q-v">1</span><button id="q-pl" type="button">'+ic("tambah","ic-step")+'</button></div>' +
+  h += '</div><div class="sfoot"><div class="qtyrow"><div class="step"><button id="q-min" type="button">'+ic("kurang","ic-step")+'</button><span class="qv" id="q-v">1</span><button id="q-pl" type="button">'+ic("tambah","ic-step")+'</button></div>' +
     '<div class="live" id="sh-live"></div></div>' +
-    '<button class="btn" id="sh-add" type="button">'+ic("keranjang","ic-btn")+' Add to Cart</button></div>';
+    '<button class="btn" id="sh-add" type="button">'+ic("keranjang","ic-btn")+' Add to Cart</button><div class="toast" id="toast"></div></div></div>';
   $("sheet").innerHTML = h;
   $("ov").classList.add("open");
   $("sh-x").onclick = closeSheet;
@@ -659,14 +770,20 @@ function updSheet(){
   $("sh-live").textContent = rp((hargaDasar(cur.item) + d) * cur.qty);
 }
 function closeSheet(){ $("ov").classList.remove("open"); cur = null; }
+var toastT = null;
+function toast(msg){
+  var t = $("toast"); if(!t) return;
+  t.textContent = msg; t.classList.add("show");
+  if(toastT) clearTimeout(toastT);
+  toastT = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+}
 function addToCart(){
-  var err = $("sh-err"); err.classList.remove("show");
   var missing = (cur.item.option_groups||[]).filter(function(g){
     return g.required && (!cur.sel[g.id] || !cur.sel[g.id].length);
   });
   if(missing.length){
-    err.textContent = "Please select: " + missing.map(function(g){return g.name;}).join(", ");
-    err.classList.add("show"); return;
+    toast("Please select: " + missing.map(function(g){return g.name;}).join(", "));
+    return;
   }
   var d = sheetDelta(), unit = hargaDasar(cur.item) + d, optList = [];
   (cur.item.option_groups||[]).forEach(function(g){
@@ -682,11 +799,12 @@ function addToCart(){
 
 function cartCount(){ return cart.reduce(function(a,c){return a+c.qty;},0); }
 function cartSub(){ return cart.reduce(function(a,c){return a+c.unit*c.qty;},0); }
-function openDrawer(){ renderCart(); $("dov").classList.add("open"); $("drw").classList.add("open"); }
+function bukaModal(v,m){ $(v).classList.add("open"); var e=$(m); e.classList.add("open"); e.classList.add("fresh"); setTimeout(function(){e.classList.remove("fresh");},750); }
+function openDrawer(){ renderCart(); bukaModal("dov","drw"); }
 function closeDrawer(){ $("dov").classList.remove("open"); $("drw").classList.remove("open"); }
-function openData(){ renderDataForm(); $("dov2").classList.add("open"); $("drw2").classList.add("open"); }
+function openData(){ renderDataForm(); bukaModal("dov2","drw2"); }
 function closeData(){ $("dov2").classList.remove("open"); $("drw2").classList.remove("open"); }
-function openBayar(){ renderBayarForm(); $("dov3").classList.add("open"); $("drw3").classList.add("open"); }
+function openBayar(){ renderBayarForm(); bukaModal("dov3","drw3"); }
 function closeBayar(){ $("dov3").classList.remove("open"); $("drw3").classList.remove("open"); }
 function closeSemua(){ closeDrawer(); closeData(); closeBayar(); }
 $("fab").onclick = openDrawer;
@@ -722,17 +840,21 @@ function renderCart(){
   badge.style.display = n ? "flex" : "none"; badge.textContent = n;
   var b = $("drw-b"), f = $("drw-f"), h = "", fh = "";
   if(!cart.length){
-    h = '<div class="kartu empty">Your cart is empty.<br>Pick your favorites!</div>';
+    h = '<div class="kartu empty"><div class="empty-ic">'+ic("keranjang","ic-e")+'</div><b>Your cart is empty</b><p>Your favorite brews are one tap away.</p></div>';
   } else {
     cart.forEach(function(c,ix){
       var os = c.opts.map(function(o){return o.name+(o.delta>0?" (+"+rp(o.delta)+")":"");}).join(", ");
-      h += '<div class="ci"><div class="t"><span>'+esc(c.name)+'</span><button class="del" data-del="'+ix+'" type="button" aria-label="Remove item">'+ic("hapus","ic-del")+'</button></div>' +
+      var th = IMGS[IMGM[c.id]];
+      h += '<div class="ci">' +
+        '<span class="cit'+(th?'':' noimg')+'"'+(th?' style="background-image:url(&quot;'+th+'&quot;)"':'')+'>'+(th?'':CUP)+'</span>' +
+        '<div class="cinfo"><div class="t"><span>'+esc(c.name)+'</span></div>' +
+        '<div class="st">'+rp(c.unit*c.qty)+'</div>' +
         (os?'<div class="o">'+esc(os)+'</div>':"") +
-        '<div class="b"><div class="step sm"><button data-dec="'+ix+'" type="button">'+ic("kurang","ic-step")+'</button><span class="qv">'+c.qty+'</span><button data-inc="'+ix+'" type="button">'+ic("tambah","ic-step")+'</button></div>' +
-        '<div class="st">'+rp(c.unit*c.qty)+'</div></div></div>';
+        '<div class="b"><div class="step sm"><button data-dec="'+ix+'" type="button" aria-label="Decrease">'+ic("kurang","ic-step")+'</button><span class="qv">'+c.qty+'</span><button data-inc="'+ix+'" type="button" aria-label="Increase">'+ic("tambah","ic-step")+'</button></div></div></div>' +
+        '<button class="del" data-del="'+ix+'" type="button" aria-label="Remove item">'+ic("hapus","ic-del")+'</button></div>';
     });
     fh = '<div class="fm"><div class="tr tt"><span>Subtotal</span><span>'+rp(cartSub())+'</span></div></div>' +
-      '<button class="btn gold" id="btn-co" type="button">Checkout &rarr;</button>';
+      '<button class="btn gold" id="btn-co" type="button"><span>Checkout &middot; '+n+' item'+(n>1?'s':'')+'</span>&nbsp;&rarr;</button>';
   }
   b.innerHTML = h; f.innerHTML = fh;
   var dels = b.querySelectorAll("[data-del]");
@@ -747,38 +869,44 @@ function renderCart(){
 }
 
 function pasangSeg(){
-  var segs = document.querySelectorAll(".ndemo #f-tipe label, .ndemo #f-bayar label");
+  var segs = document.querySelectorAll(".ndemo #f-tipe .pick-c, .ndemo #f-bayar .pick-c");
   segs.forEach(function(l){
     l.addEventListener("click", function(){
-      var nm = l.querySelector("input").name;
-      var sibs = l.parentElement.querySelectorAll("label");
+      var sibs = l.parentElement.querySelectorAll(".pick-c");
       sibs.forEach(function(x){x.classList.remove("on");});
       l.classList.add("on");
-      if(nm==="tipe"){ S.tipe = l.querySelector("input").value; save(); renderSegTipe(); $("w-meja").style.display = S.tipe==="dine-in" ? "" : "none"; }
+      var inp = l.querySelector("input");
+      if(inp) inp.checked = true;
+      if(inp && inp.name==="tipe"){ S.tipe = inp.value; save(); renderSegTipe(); $("w-meja").style.display = S.tipe==="dine-in" ? "" : "none"; }
     });
   });
 }
-
-/* Modal 2: form Data Pesanan (tanpa metode pembayaran) */
+var PICK_CHECK = '<span class="pk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';
+function typeCard(t){
+  var dine = t==="dine-in";
+  return '<span class="pk-ic">'+ic(dine?"dinein":"takeaway","ic-pk")+'</span>' +
+    '<span class="pk-tx"><b>'+(dine?"Dine-In":"Take Away")+'</b><small>'+(dine?"Served at your table":"Packed fresh to go")+'</small></span>' + PICK_CHECK;
+}
 function dataFormHtml(){
-  return '<button class="back" id="btn-back2" type="button" aria-label="Back to cart">'+ic("kembali","ic-back")+'</button>' +
-    '<div class="fm"><h3>Order Details</h3>' +
-    '<label class="lbl">Name</label><input class="inp" id="f-nama" placeholder="Your name">' +
+  return '<div class="fm"><h3>Order Details</h3>' +
+    '<label class="lbl">Name</label><input class="inp" id="f-nama" placeholder="Your name" autocomplete="name">' +
     '<label class="lbl">WhatsApp Number</label><input class="inp" id="f-wa" placeholder="08xx..." inputmode="tel">' +
-    '<label class="lbl">Order Type</label><div class="seg" id="f-tipe">' +
+    '<label class="lbl">Order Type</label><div class="pick" id="f-tipe">' +
     (S.tipe
-      ? '<label class="on"><input type="radio" name="tipe" value="'+S.tipe+'" checked>'+ic(S.tipe==="dine-in"?"dinein":"takeaway","ic-t")+' '+(S.tipe==="dine-in"?"Dine-In":"Take Away")+'</label>'
-      : '<label class="on"><input type="radio" name="tipe" value="dine-in" checked>'+ic("dinein","ic-t")+' Dine-In</label>' +
-        '<label><input type="radio" name="tipe" value="takeaway">'+ic("takeaway","ic-t")+' Take Away</label>') +
+      ? '<label class="pick-c on"><input type="radio" name="tipe" value="'+S.tipe+'" checked>'+typeCard(S.tipe)+'</label>'
+      : '<label class="pick-c on"><input type="radio" name="tipe" value="dine-in" checked>'+typeCard("dine-in")+'</label>' +
+        '<label class="pick-c"><input type="radio" name="tipe" value="takeaway">'+typeCard("takeaway")+'</label>') +
     '</div>' +
     '<div id="w-meja"><label class="lbl">Table Number</label><select class="inp" id="f-meja">' +
     [1,2,3,4,5,6,7,8].map(function(m){return '<option value="'+m+'">Table '+m+'</option>';}).join("") + '</select></div>' +
-    '<label class="lbl">Notes (optional)</label><input class="inp" id="f-note" placeholder="e.g., just a little ice">' +
+    '<label class="lbl">Notes <span class="opt">(optional)</span></label><input class="inp" id="f-note" placeholder="e.g., just a little ice">' +
     '</div>';
 }
 function renderDataForm(){
   $("drw2-b").innerHTML = dataFormHtml();
-  $("drw2-f").innerHTML = '<div class="err" id="co-err2"></div><button class="btn gold" id="btn-lanjut" type="button">Continue to Payment &rarr;</button>';
+  $("drw2-f").innerHTML = '<div class="err" id="co-err2"></div>' +
+    '<div class="dfrow"><button class="btn ghost" id="btn-back2" type="button">'+ic("kembali","ic-bk")+'<span>Back</span></button>' +
+    '<button class="btn gold" id="btn-lanjut" type="button"><span>Continue</span>&nbsp;&rarr;</button></div>';
   pasangSeg();
   $("w-meja").style.display = S.tipe==="dine-in" ? "" : "none";
   $("btn-back2").onclick = function(){ closeData(); openDrawer(); };
@@ -793,11 +921,14 @@ function lanjutBayar(){
 
 /* Modal 3: Pembayaran */
 function bayarFormHtml(){
-  return '<button class="back" id="btn-back3" type="button" aria-label="Back to order details">'+ic("kembali","ic-back")+'</button>' +
-    '<div class="fm"><h3>Payment Method</h3><div class="seg" id="f-bayar">' +
-    '<label class="on"><input type="radio" name="bayar" value="qris" checked>QRIS</label>' +
-    '<label><input type="radio" name="bayar" value="tunai">Cash</label>' +
-    '<label><input type="radio" name="bayar" value="transfer">Bank Transfer</label></div></div>';
+  return '<div class="fm"><h3>Payment Method</h3><div class="pick cols3" id="f-bayar">' +
+    '<label class="pick-c on"><input type="radio" name="bayar" value="qris" checked>' +
+    '<span class="pk-ic">'+ic("qr","ic-pk")+'</span><span class="pk-tx"><b>QRIS</b><small>Scan to pay</small></span>'+PICK_CHECK+'</label>' +
+    '<label class="pick-c"><input type="radio" name="bayar" value="tunai">' +
+    '<span class="pk-ic">'+ic("tunai","ic-pk")+'</span><span class="pk-tx"><b>Cash</b><small>At the counter</small></span>'+PICK_CHECK+'</label>' +
+    '<label class="pick-c"><input type="radio" name="bayar" value="transfer">' +
+    '<span class="pk-ic">'+ic("bank","ic-pk")+'</span><span class="pk-tx"><b>Transfer</b><small>Bank transfer</small></span>'+PICK_CHECK+'</label>' +
+    '</div></div>';
 }
 function bayarFootHtml(){
   var sub = cartSub(), tax = Math.round(sub*0.10);
@@ -805,7 +936,8 @@ function bayarFootHtml(){
     '<div class="tr"><span>Tax (10%)</span><span>'+rp(tax)+'</span></div>' +
     '<div class="tr tt"><span>Total</span><span>'+rp(sub+tax)+'</span></div></div>' +
     '<div class="err" id="co-err"></div>' +
-    '<button class="btn gold" id="btn-order" type="button">Place Order &mdash; '+rp(sub+tax)+'</button>';
+    '<div class="dfrow"><button class="btn ghost" id="btn-back3" type="button">'+ic("kembali","ic-bk")+'<span>Back</span></button>' +
+    '<button class="btn gold" id="btn-order" type="button"><span>Place Order &middot; '+rp(sub+tax)+'</span></button></div>';
 }
 function renderBayarForm(){
   $("drw3-b").innerHTML = bayarFormHtml();
@@ -814,26 +946,6 @@ function renderBayarForm(){
   $("btn-back3").onclick = function(){ closeBayar(); openData(); };
   $("btn-order").onclick = buatPesanan;
 }
-
-var PAY = {qris:"QRIS", tunai:"Cash", transfer:"Bank Transfer"};
-var SOSIAL = {instagram:"", tiktok:"", facebook:"", whatsapp:"https://wa.me/62895385381158"};
-(function(){
-  var urut = [["instagram","Instagram"],["tiktok","TikTok"],["facebook","Facebook"],["whatsapp","WhatsApp"]];
-  var el = document.getElementById("demo-sosmed");
-  if(el){
-    el.innerHTML = urut.filter(function(x){ return SOSIAL[x[0]]; }).map(function(x){
-      return '<a href="'+SOSIAL[x[0]]+'" target="_blank" rel="noopener" aria-label="'+x[1]+'">'+ic(x[0],"")+"</a>";
-    }).join("");
-  }
-  var ikonBayar = {qris:"qr", tunai:"tunai", transfer:"transfer"};
-  var by = document.getElementById("demo-bayar");
-  if(by){
-    by.innerHTML = Object.keys(PAY).map(function(k){
-      return '<span class="chip">'+ic(ikonBayar[k]||"dompet","")+"<span>"+PAY[k]+"</span></span>";
-    }).join("");
-  }
-})();
-var TIPE = {"dine-in":"Dine-In", takeaway:"Take Away"};
 function buatPesanan(){
   var err = $("co-err"); err.classList.remove("show");
   var nama = $("f-nama").value.trim();
@@ -842,23 +954,29 @@ function buatPesanan(){
   var bayarEl = document.querySelector('.ndemo #f-bayar input:checked');
   if(!bayarEl){ err.textContent="Please choose a payment method."; err.classList.add("show"); return; }
   var bayar = bayarEl.value;
-  var sub = cartSub(), tax = Math.round(sub*0.10), total = sub+tax;
-  var code = "NRD-" + Math.random().toString(36).slice(2,6).toUpperCase();
-  orders[code] = { code:code, nama:nama, tipe:TIPE[tipe], bayar:PAY[bayar],
-    meja: tipe==="dine-in" ? $("f-meja").value : null,
-    items: cart.map(function(c){return {id:c.id, name:c.name, qty:c.qty, unit:c.unit,
-      opts:c.opts.map(function(o){return o.name;}).join(", ")};}),
-    total:total, stage:0, at:Date.now() };
-  S.cart = []; cart = S.cart; save(); renderCart(); closeSemua();
-  openStatus(code);
+  var btn = $("btn-order");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span><span>Placing your order...</span>';
+  setTimeout(function(){
+    var sub = cartSub(), tax = Math.round(sub*0.10), total = sub+tax;
+    var code = "NRD-" + Math.random().toString(36).slice(2,6).toUpperCase();
+    orders[code] = { code:code, nama:nama, tipe:TIPE[tipe], bayar:PAY[bayar],
+      meja: tipe==="dine-in" ? $("f-meja").value : null,
+      items: cart.map(function(c){return {id:c.id, name:c.name, qty:c.qty, unit:c.unit,
+        opts:c.opts.map(function(o){return o.name;}).join(", ")};}),
+      total:total, stage:0, at:Date.now() };
+    S.cart = []; cart = S.cart; save(); renderCart(); closeSemua();
+    openStatus(code);
+  }, 900);
 }
 
 var STAGES = ["Order received","Confirmed by cashier","Being prepared by the barista","Ready for pickup","Completed"];
+var STAGE_PILL = ["Received","Confirmed","Being prepared","Ready","Completed"];
 function stepsHtml(stage){
-  var ik = [ic("catatan","ic-stage"),ic("sukses","ic-stage"),ic("dinein","ic-stage"),ic("bel","ic-stage")];
-  var lb = ["Received","Confirmed","Being prepared","Ready"];
+  var ik = [ic("catatan","ic-stage"),ic("sukses","ic-stage"),ic("dinein","ic-stage"),ic("bel","ic-stage"),ic("pesta","ic-stage")];
+  var lb = ["Received","Confirmed","Being prepared","Ready","Completed"];
   var h = "";
-  for(var i=0;i<4;i++){
+  for(var i=0;i<5;i++){
     var cls = i<stage ? "done" : (i===stage ? "now" : "");
     h += '<div class="tstep '+cls+'"><span class="tnode">'+ik[i]+'</span><span class="tlab">'+lb[i]+'</span></div>';
   }
@@ -880,9 +998,9 @@ function renderPesanan(){
   var h = "";
   arr.forEach(function(o){
     h += '<div class="ocard"><div class="oh"><div><p class="oc">'+esc(o.code)+'</p>' +
-      '<p class="ow">'+esc(o.nama)+' &bull; '+esc(o.tipe)+' &bull; '+rp(o.total)+'</p></div>' +
-      '<span class="pill s'+o.stage+'">'+STAGES[o.stage]+'</span></div>';
-    if(o.stage < 4) h += stepsHtml(o.stage);
+      '<p class="ow">'+esc(o.nama)+' &bull; '+esc(o.tipe)+'</p></div>' +
+      '<span class="pill s'+o.stage+'">'+STAGE_PILL[o.stage]+'</span></div>';
+    h += stepsHtml(o.stage);
     h += '<div class="of"><span class="ot">'+rp(o.total)+'</span>' +
       (o.stage===4 ? '<button class="btn sm" data-ulang="'+esc(o.code)+'">'+ic("ulangi","ic-btn")+' Order Again</button>' :
         (o.stage===3 ? '<span style="font-size:.75rem;font-weight:700;color:#1E7A34">'+ic("pesta","ic-sm")+' Show code to the cashier</span>' : '')) +
@@ -941,8 +1059,8 @@ function renderBeranda(){
   var arr = daftarOrder();
   // Banner iklan
   var BANNERS = [
-    {judul:"Omakase Coffee Experience", img:"../app/public/img/placeholder.svg"},
-    {judul:"Flash Sale Every Day", img:"../app/public/img/placeholder.svg"}
+    {judul:"Omakase Coffee Experience", img:"/img/placeholder.svg"},
+    {judul:"Flash Sale Every Day", img:"/img/placeholder.svg"}
   ];
   (function(){
     var kor = $("kor-banner"), dots = $("titik-banner");
@@ -976,7 +1094,7 @@ function renderBeranda(){
   var promos = [byId[41], byId[44]].filter(function(x){ return x && x.promo; });
   var h = "";
   promos.forEach(function(it){
-    h += '<div class="pcard"><div class="pimg">'+CUP+'</div><div class="pb">' +
+    h += '<div class="pcard"><div class="pimg">'+gbr(it)+'</div><div class="pb">' +
       '<h4>'+esc(it.promo.title)+'</h4><p class="pn">'+esc(it.name)+'</p>' +
       '<div class="ph tumpuk"><div class="coret"><s>'+rp(it.price)+'</s></div><div class="merah">'+rp(it.promo.final)+'</div></div>' +
       '<button class="padd" data-beli="'+it.id+'" aria-label="Buy '+esc(it.name)+'">'+ic("keranjang","ic-btn")+'<span class="pplus">+</span></button></div></div>';
@@ -994,7 +1112,7 @@ function renderBeranda(){
   tampil.forEach(function(it){
     h2 += '<button class="ucard" data-id="'+it.id+'">' +
       (it.promo ? '<span class="bdg2" style="position:absolute;top:8px;left:8px;margin:0">'+ic("api","ic-bdg")+'</span>' : (it.is_new ? '<span class="bdg-new">'+ic("kilau","ic-bdg")+' New</span>' : '')) +
-      '<div class="uimg">'+CUP+'</div><div class="ub"><h4>'+esc(it.name)+'</h4>' +
+      '<div class="uimg">'+gbr(it)+'</div><div class="ub"><h4>'+esc(it.name)+'</h4>' +
       '<div class="up">'+(it.promo ? '<span class="coret"><s>'+rp(it.price)+'</s></span> <span class="merah">'+rp(it.promo.final)+'</span>' : rp(it.price))+'</div>' +
       '</div></button>';
   });
