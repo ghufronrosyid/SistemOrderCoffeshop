@@ -692,6 +692,8 @@ textarea.input { min-height: 76px; resize: vertical; }
 .segmen.ada-pilih button.aktif { flex: 2.8; }
 .segmen.ada-pilih button:not(.aktif) { flex: .62; padding: 8px 2px; min-height: 46px; }
 .segmen.ada-pilih button:not(.aktif) span { opacity: 0; font-size: 0; }
+/* Ikon di-render ulang oleh JS via window.IKON (tanpa class) — kunci ukurannya di sini */
+.segmen button svg { width: 30px; height: 30px; flex: none; }
 
 /* ===== Penanda mode Dine-In / Take Away — chip inline premium ===== */
 .mode-chip { display: none; vertical-align: .2em; margin-left: 10px;
