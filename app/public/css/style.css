@@ -32,6 +32,13 @@ body {
 
 img { max-width: 100%; display: block; }
 
+/* Jaring pengaman: SVG ikon tanpa class yang di-inject via JS (window.IKON)
+   jangan pernah meledak ke ukuran default browser — ikut ukuran font sekitarnya.
+   Rule kontainer yang lebih spesifik (mis. .btn-bulat svg) tetap menang. */
+svg:not([class]) { width: 1.25em; height: 1.25em; vertical-align: -.22em; flex: none; }
+/* Pengecualian: ilustrasi peta di halaman Tentang memang full-width */
+.peta-mini svg { width: 100%; height: auto; display: block; }
+
 /* ---------- Header ---------- */
 .header {
   position: sticky;
